@@ -1,16 +1,14 @@
-import LoginPage from "./components/LoginPage";
+import LoginForm from "./LoginForm";
 
-function App() {
+function LoginPage() {
   //state {etat, données}
-
   //comportements
-
   //affichage (render)
   return ( 
     <div>
-      <LoginPage/>
+      <LoginForm/>
     </div>
   );
 }
 
-export default App;
+export default LoginPage;
