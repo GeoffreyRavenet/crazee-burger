@@ -1,13 +1,11 @@
-import Login from "./components/Login.jsx";
+import LoginForm from "./LoginForm.jsx";
 function App() {
   //state {etat, données}
-
   //comportements
-
   //affichage (render)
   return ( 
     <div>
-      <Login/>
+      <LoginForm/>
     </div>
   );
 }
