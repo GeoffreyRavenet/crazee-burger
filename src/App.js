@@ -1,4 +1,5 @@
-import Login from "./components/Login.jsx";
+import LoginPage from "./components/LoginPage";
+
 function App() {
   //state {etat, données}
 
@@ -7,7 +8,7 @@ function App() {
   //affichage (render)
   return ( 
     <div>
-      <Login/>
+      <LoginPage/>
     </div>
   );
 }

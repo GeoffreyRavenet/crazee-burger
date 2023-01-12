@@ -1,5 +1,6 @@
-import LoginForm from "./LoginForm.jsx";
-function App() {
+import LoginForm from "./LoginForm";
+
+function LoginPage() {
   //state {etat, données}
   //comportements
   //affichage (render)
@@ -10,4 +11,4 @@ function App() {
   );
 }
 
-export default App;
+export default LoginPage;
