@@ -11,9 +11,9 @@ function App() {
   //affichage (render)
   return ( 
     <Routes>
-      <Route path="/" element={<LoginPage/>} />
-      <Route path="/order/:loginName" element={<OrderPage/>} />
-      <Route path="*" element={<ErrorPage/>} />
+      <Route path="/" element={<LoginPage />} />
+      <Route path="/order/:loginName" element={<OrderPage />} />
+      <Route path="*" element={<ErrorPage />} />
     </Routes>
   );
 }
