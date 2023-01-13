@@ -1,31 +1,20 @@
 import LoginPage from "./components/pages/login/LoginPage";
-import ErrorPage from "./components/pages/ErrorPage";
-import OrderPage from "./components/pages/OrderPage";
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import ErrorPage from "./components/pages/error/ErrorPage";
+import OrderPage from "./components/pages/order/OrderPage";
+import {Route, Routes} from "react-router-dom";
 
 function App() {
   //state {etat, données}
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <LoginPage/>,
-      errorElement: <ErrorPage/>,
-    },
-    {
-      path: "/order/:loginName",
-      element: <OrderPage />,
-    },
-  ]);
+  
   //comportements
 
   //affichage (render)
   return ( 
-    <div>
-      <RouterProvider router={router} />
-    </div>
+    <Routes>
+      <Route path="/" element={<LoginPage/>} />
+      <Route path="/order/:loginName" element={<OrderPage/>} />
+      <Route path="*" element={<ErrorPage/>} />
+    </Routes>
   );
 }
 
