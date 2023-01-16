@@ -48,7 +48,7 @@ const LoginPageStyled = styled.div`
   a::before {
     content: '';
     position: absolute;
-    width: 65%;
+    width: 650px;
     height: 4px;
     border-radius: 4px;
     background-color: ${theme.colors.primary_burger};
