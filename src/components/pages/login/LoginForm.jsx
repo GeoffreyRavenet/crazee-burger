@@ -23,15 +23,15 @@ function LoginForm() {
   
   //affichage (render)
   return ( 
-    <div>
       <LoginFormStyled onSubmit={handleSubmit}>
+        <h1><span>Bienvenue chez nous !</span></h1>
+        <h2>Connectez-vous</h2>
         <div className="inputName">
           <HiUserCircle/>
           <input type="text" value={name} onChange={handleChange} placeholder="Entrer votre prénom" required/>
         </div>
         <button>Accéder à mon espace<IoIosArrowForward/></button>
       </LoginFormStyled>
-    </div>
   );
 }
 
@@ -42,6 +42,30 @@ const LoginFormStyled = styled.form`
   justify-content: center;
   flex-direction: column;
   align-items: center;
+
+  span{
+    display:block;
+  }
+
+  h1{
+    margin: 0;
+  }
+  h1::after{
+    content: '';
+    display: inline-block;
+    width: 370px;
+    height: 4px;
+    background: ${theme.colors.primary_burger};
+    border-radius: 2px;
+  }
+  h1{
+    font-size:3.8rem;
+  }
+  h2{
+    margin: 0;
+    font-size: 2.8rem;
+    margin-top: 17px;
+  }
 
   .inputName{
     position: relative;
