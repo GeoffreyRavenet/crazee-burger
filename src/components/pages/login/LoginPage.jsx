@@ -19,7 +19,6 @@ function LoginPage() {
 export default LoginPage;
 
 const LoginPageStyled = styled.div` 
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),url(${require(`../../../assets/burger-background.jpg`)}) center center / cover no-repeat;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -27,4 +26,21 @@ const LoginPageStyled = styled.div`
   flex-direction: column;
   color: ${theme.colors.white};
   font-family: 'Amatic SC', cursive;
+
+  ::before{
+    content: "";
+    background: url("/images/burger-background.jpg"), rgba(0,0,0,.7);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: darken;
+
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    z-index:-1;
+  }
+
 `;

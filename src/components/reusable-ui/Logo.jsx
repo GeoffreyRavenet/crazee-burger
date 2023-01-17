@@ -2,14 +2,12 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 import { theme } from '../../theme/index.js';
 
-export default function Logo() {
-    const logo = require(`../../assets/logo-orange.png`);
-
+export default function Logo() {   
     return (
         <LogoStyled>
             <Link to={`/`}>
               <span>crazee</span>
-              <img src={logo} alt="" />
+              <img src="/images/logo-orange.png" alt="" />
               <span>burger</span>
           </Link>
         </LogoStyled>
