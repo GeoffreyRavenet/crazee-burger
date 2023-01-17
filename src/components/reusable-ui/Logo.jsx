@@ -6,47 +6,38 @@ export default function Logo() {
     return (
         <LogoStyled>
             <Link to={`/`}>
-              <span>crazee</span>
-              <img src="/images/logo-orange.png" alt="" />
-              <span>burger</span>
+              <h1>crazee</h1>
+              <img src="/images/logo-orange.png" alt="logo-crazee-burger" />
+              <h1>burger</h1>
           </Link>
         </LogoStyled>
     )
 }
 
 const LogoStyled = styled.div`
-    font-weight: bold;
   a{
-    text-decoration:none;
-    font-size: 8rem;
-    color: ${theme.colors.primary_burger};
-    position: relative;
     display: flex;
-    justify-content:center;
+    align-items:center;
+    transform: scale(2.5);
+    text-decoration:none;
   }
 
-  a::before {
-    content: '';
-    position: absolute;
-    width: 650px;
-    height: 4px;
-    border-radius: 4px;
-    background-color: ${theme.colors.primary_burger};
-    bottom: 0;
-    transform-origin: right;
-    transform: scaleX(0);
-    transition: transform .3s ease-in-out;
+  h1{
+    display: inline;
+    text-align: center;
+    color: ${theme.colors.primary_burger};
+    font-size: ${theme.fonts.P4};
+    line-height: 1em;
+    font-weight: ${theme.weights.bold};
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-family: 'Amatic SC', cursive;
   }
-
-  a:hover::before {
-    transform-origin: left;
-    transform: scaleX(1);
-  }
-
   img{
-    height: 178px;
-    position: relative;
-    padding: 0px 16px;
-    flex:none;
+    object-fit: contain;
+    object-position: center;
+    height: 60px;
+    width: 80px;
+    margin: 0 5px;
   }
 `;
