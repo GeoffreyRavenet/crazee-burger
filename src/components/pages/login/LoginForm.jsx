@@ -23,9 +23,12 @@ function LoginForm() {
   
   //affichage (render)
   return ( 
-      <LoginFormStyled onSubmit={handleSubmit}>
-        <h1><span>Bienvenue chez nous !</span></h1>
-        <h2>Connectez-vous</h2>
+      <LoginFormStyled action="submit" onSubmit={handleSubmit}>
+        <div>
+          <h1>Bienvenue chez nous !</h1>
+          <hr/>
+          <h2>Connectez-vous</h2>
+        </div>
         <div className="inputName">
           <HiUserCircle/>
           <input type="text" value={name} onChange={handleChange} placeholder="Entrer votre prénom" required/>
@@ -38,33 +41,30 @@ function LoginForm() {
 export default LoginForm;
 
 const LoginFormStyled = styled.form`
-  display:flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-
-  span{
-    display:block;
-  }
+  text-align: center;
+  max-width: 500px;
+  min-width: 400px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+  border-radius: 5px;
+  font-family: "Amatic SC", cursive;
 
   h1{
-    margin: 0;
+    color: ${theme.colors.white};
+    font-size: ${theme.fonts.P5};
   }
-  h1::after{
-    content: '';
-    display: inline-block;
-    width: 370px;
-    height: 4px;
-    background: ${theme.colors.primary_burger};
-    border-radius: 2px;
+
+  hr{
+    background-color: ${theme.colors.primary_burger};
+    border: 1.5px solid ${theme.colors.primary_burger};
+    border-radius: 5px;
+    margin-bottom: 40px;
   }
-  h1{
-    font-size:3.8rem;
-  }
+
   h2{
-    margin: 0;
-    font-size: 2.8rem;
-    margin-top: 17px;
+    color: ${theme.colors.white};
+    margin: 20px 10px 10px;
+    font-size: ${theme.fonts.P4};
   }
 
   .inputName{
