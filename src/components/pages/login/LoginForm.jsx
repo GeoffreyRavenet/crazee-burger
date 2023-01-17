@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { theme } from "../../../theme/index.js";
 import { IoIosArrowForward } from 'react-icons/io';
-import { HiUserCircle } from 'react-icons/hi'
+import { BsPersonCircle } from 'react-icons/bs'
 
 function LoginForm() {
   //state (etat, données)
@@ -29,8 +29,8 @@ function LoginForm() {
           <hr/>
           <h2>Connectez-vous</h2>
         </div>
-        <div className="inputName">
-          <HiUserCircle/>
+        <div className="input-with-icon">
+          <BsPersonCircle className="icon"/>
           <input type="text" value={name} onChange={handleChange} placeholder="Entrer votre prénom" required/>
         </div>
         <button>Accéder à mon espace<IoIosArrowForward/></button>
@@ -67,30 +67,31 @@ const LoginFormStyled = styled.form`
     font-size: ${theme.fonts.P4};
   }
 
-  .inputName{
-    position: relative;
+  .input-with-icon{
+    background-color: ${theme.colors.white};
+    border-radius: 5px;
     display: flex;
     align-items: center;
-    svg{
-      position: absolute;
-      left: 45px;
-      color: ${theme.colors.greyDark};
-      width: 25px;
-      height: 25px;
+    padding: 18px 24px;
+    margin: 18px 0;
+
+    .icon{
+      color: ${theme.colors.greySemiDark};
+      font-size: ${theme.fonts.P0};
+      margin-right: 8px;
     }
     input{
-      padding-left: 60px;
+      border: none;
+      font-size: ${theme.fonts.P0};
       color: ${theme.colors.dark};
-      height: 65px;
-      width: calc(503px - 60px);
-      border-radius: 6px;
-      border: 1px solid transparent;
-      margin: 25px;
-      font-size: ${theme.fonts.P1};
-      outline-offset: 0px;
-      outline: 0px;
+    }
+
+    &::placeholder {
+      background: ${theme.colors.white};
+      color: ${theme.colors.greyLight};
     }
   }
+  
   
   button {
     display: flex;
