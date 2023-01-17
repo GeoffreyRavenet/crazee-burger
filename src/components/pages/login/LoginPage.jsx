@@ -10,7 +10,7 @@ function LoginPage() {
   //affichage (render)
   return ( 
     
-    <LoginPageStyled>
+    <LoginPageStyled className="loginBody">
       <div className="logo">
         <Link to={`/`}>
           <span>crazee</span>
@@ -32,7 +32,7 @@ const LoginPageStyled = styled.div`
   width: 100vw;
   height: 100vh;
   position: absolute;
-  background: url(${require(`../../../assets/burger-background.jpg`)}) center center / cover no-repeat;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),url(${require(`../../../assets/burger-background.jpg`)}) center center / cover no-repeat;
   color: ${theme.colors.white};
   font-family: 'Amatic SC', cursive;
 
