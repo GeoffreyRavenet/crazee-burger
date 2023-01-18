@@ -11,7 +11,7 @@ export default function TextInput({value, onChange,Icon, ...other }) {
 }
 const TextInputStyled = styled.div`
     background-color: ${theme.colors.white};
-    border-radius: 5px;
+    border-radius: ${theme.borderRadius.round};
     display: flex;
     align-items: center;
     padding: 18px 24px;
@@ -27,10 +27,10 @@ const TextInputStyled = styled.div`
       font-size: ${theme.fonts.P0};
       color: ${theme.colors.dark};
       width: 100%;
-    }
 
-    &::placeholder {
-      background: ${theme.colors.white};
-      color: ${theme.colors.greyLight};
+      &::placeholder {
+        background: ${theme.colors.white};
+        color: ${theme.colors.greyMedium};
+      }
     }
 `;

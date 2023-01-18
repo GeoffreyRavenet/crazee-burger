@@ -12,7 +12,6 @@ export default function PrimaryButton({label, Icon}) {
 
 const PrimaryButtonStyled = styled.button`
     width: 100%;
-    border: 1px solid red;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -22,7 +21,7 @@ const PrimaryButtonStyled = styled.button`
     line-height: 1;
 
     padding: 18px 24px;
-    border-radius: 5px;
+    border-radius: ${theme.borderRadius.round};
     font-size: ${theme.fonts.P0};
     font-weight: ${theme.weights.heavy};
     color: ${theme.colors.white};

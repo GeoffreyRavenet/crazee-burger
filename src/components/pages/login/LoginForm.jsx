@@ -46,7 +46,7 @@ const LoginFormStyled = styled.form`
   min-width: 400px;
   margin: 0 auto;
   padding: 2.5rem 2rem;
-  border-radius: 5px;
+  border-radius: ${theme.borderRadius.round};
   font-family: "Amatic SC", cursive;
 
   h1{
@@ -57,7 +57,7 @@ const LoginFormStyled = styled.form`
   hr{
     background-color: ${theme.colors.primary_burger};
     border: 1.5px solid ${theme.colors.primary_burger};
-    border-radius: 5px;
+    border-radius: ${theme.borderRadius.round};
     margin-bottom: 40px;
   }
 
