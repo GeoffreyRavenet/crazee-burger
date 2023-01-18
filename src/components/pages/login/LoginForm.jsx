@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { theme } from "../../../theme/index.js";
 import { IoChevronForward } from 'react-icons/io5';
 import { BsPersonCircle } from 'react-icons/bs'
+import Input from "../../reusable-ui/TextInput";
 
 function LoginForm() {
   //state (etat, données)
@@ -29,10 +30,8 @@ function LoginForm() {
           <hr/>
           <h2>Connectez-vous</h2>
         </div>
-        <div className="input-with-icon">
-          <BsPersonCircle className="icon"/>
-          <input type="text" value={name} onChange={handleChange} placeholder="Entrer votre prénom" required/>
-        </div>
+        <Input value={name} onChange={handleChange} placeholder="Entrer votre prénom" required Icon={<BsPersonCircle className="icon"/>} />
+
         <button className="button-with-icon">
           <span>Accéder à mon espace</span>
           <IoChevronForward className="icon"/>
@@ -70,32 +69,6 @@ const LoginFormStyled = styled.form`
     font-size: ${theme.fonts.P4};
   }
 
-  .input-with-icon{
-    background-color: ${theme.colors.white};
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    padding: 18px 24px;
-    margin: 18px 0;
-
-    .icon{
-      color: ${theme.colors.greySemiDark};
-      font-size: ${theme.fonts.P0};
-      margin-right: 8px;
-    }
-    input{
-      border: none;
-      font-size: ${theme.fonts.P0};
-      color: ${theme.colors.dark};
-      width: 100%;
-    }
-
-    &::placeholder {
-      background: ${theme.colors.white};
-      color: ${theme.colors.greyLight};
-    }
-  }
-  
   .button-with-icon{
     width: 100%;
     border: 1px solid red;
