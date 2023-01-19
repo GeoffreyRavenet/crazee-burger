@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom"
 import styled from "styled-components"
 import Logo from "../../reusable-ui/Logo.jsx"
 import { useNavigate } from "react-router"

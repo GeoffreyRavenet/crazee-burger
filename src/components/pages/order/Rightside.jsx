@@ -9,10 +9,10 @@ export default function Rightside() {
   return (
     <RightsideStyled>
       <div className="left">
-        <h2>
-          <span>Hey, </span>
+        <div>
+          Hey,
           <span className="name">{username}</span>
-        </h2>
+        </div>
         <Link to={`/`}>Se déconnecter</Link>
       </div>
       <BsPersonCircle className="icon" />
@@ -30,12 +30,12 @@ const RightsideStyled = styled.div`
 
   .left {
     padding-right: 10px;
-    h2 {
-      font-weight: 400;
+    div {
+      font-weight: 16px;
       margin: 0 0 4px;
       .name {
         color: ${theme.colors.primary_burger};
-        font-weight: 700;
+        font-weight: ${theme.weights.bold};
       }
     }
     a {
