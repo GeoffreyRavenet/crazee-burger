@@ -11,7 +11,7 @@ export default function Rightside() {
       <div className="left">
         <div>
           Hey,
-          <span className="name">{username}</span>
+          <span className="name"> {username}</span>
         </div>
         <Link to={`/`}>Se déconnecter</Link>
       </div>
@@ -26,7 +26,6 @@ const RightsideStyled = styled.div`
   align-items: center;
   color: ${theme.colors.greyBlue};
   margin-right: 70px;
-  font-family: "Open Sans", sans-serif;
 
   .left {
     padding-right: 10px;

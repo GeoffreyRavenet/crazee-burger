@@ -11,12 +11,12 @@ export default function Navbar() {
   )
 }
 
-const NavbarStyled = styled.div`
+const NavbarStyled = styled.nav`
   background: white;
+  height: 10vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
   max-width: 100%;
-  margin: 0 auto;
   border-radius: 15px 15px 0px 0px;
 `
