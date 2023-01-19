@@ -18,4 +18,5 @@ const NavbarStyled = styled.div`
   align-items: center;
   max-width: 100%;
   margin: 0 auto;
+  border-radius: 15px 15px 0px 0px;
 `
