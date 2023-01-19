@@ -1,15 +1,12 @@
-import React from 'react'
-import { Link, useParams } from 'react-router-dom'
+import React from "react"
+import Main from "./Main.jsx"
+import Navbar from "./Navbar"
 
 export default function OrderPage() {
-  const {username} = useParams();
-
   return (
     <div>
-      <h1>Bonjour {username}</h1>
-      <Link to={`/`}>
-        <button>Déconnection</button>
-      </Link>
+      <Navbar />
+      <Main />
     </div>
   )
 }
