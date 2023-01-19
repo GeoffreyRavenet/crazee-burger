@@ -3,7 +3,7 @@ import { theme } from "../../theme/index.js"
 
 export default function Logo() {
   return (
-    <LogoStyled>
+    <LogoStyled className="logo">
       <h1>crazee</h1>
       <img src="/images/logo-orange.png" alt="logo-crazee-burger" />
       <h1>burger</h1>
@@ -14,8 +14,7 @@ export default function Logo() {
 const LogoStyled = styled.div`
   display: flex;
   align-items: center;
-  transform: scale(2.5);
-  text-decoration: none;
+
   h1 {
     display: inline;
     text-align: center;
