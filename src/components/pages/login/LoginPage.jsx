@@ -9,7 +9,7 @@ function LoginPage() {
   //affichage (render)
   return (
     <LoginPageStyled>
-      <Logo />
+      <Logo className="logo-login" />
       <LoginForm />
     </LoginPageStyled>
   )
@@ -42,7 +42,7 @@ const LoginPageStyled = styled.div`
     right: 0;
     z-index: -1;
   }
-  .logo {
+  .logo-login {
     transform: scale(2.5);
   }
 `

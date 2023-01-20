@@ -11,7 +11,9 @@ export default function Profile() {
       <div>
         Hey,
         <span className="name"> {username}</span>
-        <Link to={`/`}>Se déconnecter</Link>
+        <Link to={`/`}>
+          <small>Se déconnecter</small>
+        </Link>
       </div>
 
       <BsPersonCircle className="icon" />
