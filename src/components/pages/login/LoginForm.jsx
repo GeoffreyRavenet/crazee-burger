@@ -39,7 +39,11 @@ function LoginForm() {
         Icon={<BsPersonCircle className="icon" />}
       />
 
-      <PrimaryButton label="Accéder à mon espace" Icon={<IoChevronForward className="icon" />} />
+      <PrimaryButton
+        className="button-login"
+        label="Accéder à mon espace"
+        Icon={<IoChevronForward className="icon" />}
+      />
     </LoginFormStyled>
   )
 }
@@ -80,5 +84,9 @@ const LoginFormStyled = styled.form`
     font-size: 15px;
     margin-left: 10px;
     padding-top: 2px;
+  }
+
+  .button-login {
+    width: 100%;
   }
 `

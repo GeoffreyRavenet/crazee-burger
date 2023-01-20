@@ -11,7 +11,6 @@ export default function PrimaryButton({ label, Icon }) {
 }
 
 const PrimaryButtonStyled = styled.button`
-  width: 100%;
   display: inline-flex;
   justify-content: center;
   align-items: center;
