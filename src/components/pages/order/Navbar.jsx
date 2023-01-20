@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { theme } from "../../../theme/index.js"
 import Leftside from "./Leftside.jsx"
 import Rightside from "./Rightside.jsx"
 
@@ -18,5 +19,5 @@ const NavbarStyled = styled.nav`
   justify-content: space-between;
   align-items: center;
   max-width: 100%;
-  border-radius: 15px 15px 0px 0px;
+  border-radius: ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound} 0px 0px;
 `
