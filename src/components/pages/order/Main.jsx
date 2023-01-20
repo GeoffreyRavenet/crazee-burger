@@ -1,8 +1,13 @@
 import styled from "styled-components"
-import { theme } from "../../../theme/index.js"
+import { theme } from "../../../theme/index"
+import ShoppingList from "./ShoppingList"
 
 export default function Main() {
-  return <MainStyled>Main</MainStyled>
+  return (
+    <MainStyled>
+      <ShoppingList />
+    </MainStyled>
+  )
 }
 
 const MainStyled = styled.div`
