@@ -22,7 +22,7 @@ const OrderPageStyled = styled.div`
 
   ::before {
     content: "";
-    background: ${theme.colors.primary_burger};
+    background: ${theme.colors.primary};
     position: fixed;
     top: 0;
     left: 0;

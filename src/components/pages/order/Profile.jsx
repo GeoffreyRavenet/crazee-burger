@@ -32,8 +32,8 @@ const ProfileStyled = styled.div`
     font-weight: 16px;
     margin-right: 10px;
     .name {
-      color: ${theme.colors.primary_burger};
-      font-weight: ${theme.weights.bold};
+      color: ${theme.colors.primary};
+      font-weight: ${theme.fonts.weights.bold};
     }
 
     a {

@@ -22,23 +22,23 @@ const PrimaryButtonStyled = styled.button`
 
   padding: 18px 24px;
   border-radius: ${theme.borderRadius.round};
-  font-size: ${theme.fonts.P0};
-  font-weight: ${theme.weights.heavy};
+  font-size: ${theme.fonts.size.P0};
+  font-weight: ${theme.fonts.weights.heavy};
   color: ${theme.colors.white};
-  background-color: ${theme.colors.primary_burger};
-  border: 1px solid ${theme.colors.primary_burger};
+  background-color: ${theme.colors.primary};
+  border: 1px solid ${theme.colors.primary};
 
   &:hover:not(:disabled) {
     background-color: ${theme.colors.white};
-    color: ${theme.colors.primary_burger};
-    border: 1px solid ${theme.colors.primary_burger};
+    color: ${theme.colors.primary};
+    border: 1px solid ${theme.colors.primary};
     transition: all 200ms ease-out;
   }
 
   &:active {
     color: ${theme.colors.white};
-    background-color: ${theme.colors.primary_burger};
-    border: 1px solid ${theme.colors.primary_burger};
+    background-color: ${theme.colors.primary};
+    border: 1px solid ${theme.colors.primary};
   }
 
   &:disabled {

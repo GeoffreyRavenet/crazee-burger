@@ -19,12 +19,12 @@ const TextInputStyled = styled.div`
 
   .icon {
     color: ${theme.colors.greySemiDark};
-    font-size: ${theme.fonts.P0};
+    font-size: ${theme.fonts.size.P0};
     margin-right: 8px;
   }
   input {
     border: none;
-    font-size: ${theme.fonts.P0};
+    font-size: ${theme.fonts.size.P0};
     color: ${theme.colors.dark};
     width: 100%;
 
