@@ -1,10 +1,10 @@
 import { useState } from "react"
 import styled from "styled-components"
-import { fakeMenu1 } from "../../../fakeData/fakeMenu"
+import { fakeMenu2 } from "../../../fakeData/fakeMenu"
 import CarteItem from "./CarteItem.jsx"
 
 export default function ShoppingList() {
-  const [listCartes, setlistCartes] = useState(fakeMenu1)
+  const [listCartes, setlistCartes] = useState(fakeMenu2)
   return (
     <ShoppingListStyled>
       {listCartes.map(({ id, imageSource, title, price }) => (
@@ -18,5 +18,7 @@ const ShoppingListStyled = styled.div`
   grid-template-columns: repeat(4, 240px);
   grid-template-rows: repeat(4, 330px);
   grid-gap: 56px 76px;
-  margin: calc(180px - 10vh) 150px;
+  margin-top: calc(160px - 10vh);
+  align-items: center;
+  justify-content: center;
 `

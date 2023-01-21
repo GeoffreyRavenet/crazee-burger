@@ -15,7 +15,7 @@ export default function OrderPage() {
 
 const OrderPageStyled = styled.div`
   width: 1400px;
-  height: 95vh;
+  min-height: 95vh;
   margin: 20px auto;
   display: flex;
   flex-direction: column;

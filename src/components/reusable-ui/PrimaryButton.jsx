@@ -3,7 +3,7 @@ import { theme } from "../../theme/index.js"
 
 export default function PrimaryButton({ label, Icon }) {
   return (
-    <PrimaryButtonStyled>
+    <PrimaryButtonStyled type="button">
       <span>{label}</span>
       {Icon && Icon}
     </PrimaryButtonStyled>
