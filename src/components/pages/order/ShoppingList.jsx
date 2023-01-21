@@ -5,6 +5,7 @@ import CarteItem from "./CarteItem.jsx"
 
 export default function ShoppingList() {
   const [listCartes, setlistCartes] = useState(fakeMenu2)
+
   return (
     <ShoppingListStyled>
       {listCartes.map(({ id, imageSource, title, price }) => (
@@ -15,10 +16,12 @@ export default function ShoppingList() {
 }
 const ShoppingListStyled = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 240px);
-  grid-template-rows: repeat(4, 330px);
-  grid-gap: 56px 76px;
-  margin-top: calc(160px - 10vh);
+  justify-items: center;
   align-items: center;
-  justify-content: center;
+
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  /* gap: 56px 76px; */
+  grid-row-gap: 60px;
+  padding: 50px 100px;
+  /* margin-top: calc(160px - 10vh); */
 `
