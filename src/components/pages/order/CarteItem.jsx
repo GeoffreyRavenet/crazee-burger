@@ -5,8 +5,9 @@ import PrimaryButton from "../../reusable-ui/PrimaryButton.jsx"
 export default function CarteItem({ id, imageSource, title, price }) {
   return (
     <CarteItemStyled key={id}>
-      <img src={imageSource} alt="{title}" />
-
+      <div className="carte-img">
+        <img src={imageSource} alt="{title}" />
+      </div>
       <h3>{title}</h3>
       <div className="bottom-carte">
         <span>{price}</span>
@@ -17,35 +18,48 @@ export default function CarteItem({ id, imageSource, title, price }) {
 }
 
 const CarteItemStyled = styled.div`
-  background: ${theme.colors.white};
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 50px 20px 10px;
+
+  height: 330px;
+  width: 240px;
+  background: ${theme.colors.white};
+
   font-family: "Amatic SC", cursive;
   border-radius: 15px;
   box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
 
-  img {
-    width: 100%;
+  .carte-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 145px;
-    object-fit: contain;
+    margin-top: 50px;
+    img {
+      max-width: 200px;
+      max-height: 145px;
+    }
   }
+
   h3 {
-    width: 100%;
+    width: 200px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     font-size: 36px;
     margin-bottom: 10px;
+    margin-top: 20px;
   }
 
-  div {
+  .bottom-carte {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 200px;
     color: ${theme.colors.primary};
-    width: 100%;
     font-family: "Open Sans", cursive;
+    margin-bottom: 10px;
   }
 `
