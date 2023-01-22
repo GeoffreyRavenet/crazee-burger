@@ -18,10 +18,11 @@ const ShoppingListStyled = styled.div`
   display: grid;
   justify-items: center;
   align-items: center;
+  overflow: auto;
 
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   /* gap: 56px 76px; */
   grid-row-gap: 60px;
-  padding: 50px 100px;
+  padding: 50px;
   /* margin-top: calc(160px - 10vh); */
 `

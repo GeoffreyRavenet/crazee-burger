@@ -7,27 +7,35 @@ import Navbar from "./Navbar"
 export default function OrderPage() {
   return (
     <OrderPageStyled>
-      <Navbar />
-      <Main />
+      <div className="container">
+        <Navbar />
+        <Main />
+      </div>
     </OrderPageStyled>
   )
 }
 
 const OrderPageStyled = styled.div`
-  width: 1400px;
-  min-height: 95vh;
-  margin: 20px auto;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 
-  ::before {
-    content: "";
-    background: ${theme.colors.primary};
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
+  .container {
+    width: 100%;
+    max-width: 1400px;
+    height: 95vh;
+
+    ::before {
+      content: "";
+      background: ${theme.colors.primary};
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+    }
   }
 `
