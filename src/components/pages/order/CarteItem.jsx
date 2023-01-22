@@ -1,6 +1,7 @@
 import styled from "styled-components"
-import { theme } from "../../../theme/index.js"
-import PrimaryButton from "../../reusable-ui/PrimaryButton.jsx"
+import { theme } from "../../../theme/index"
+import { formatPrice } from "../../../utils/maths"
+import PrimaryButton from "../../reusable-ui/PrimaryButton"
 
 export default function CarteItem({ id, imageSource, title, price }) {
   return (
@@ -10,7 +11,7 @@ export default function CarteItem({ id, imageSource, title, price }) {
       </div>
       <h3>{title}</h3>
       <div className="bottom-carte">
-        <span>{price}</span>
+        <span>{formatPrice(price)}</span>
         <PrimaryButton label="Ajouter" className="button-carte" />
       </div>
     </CarteItemStyled>
@@ -60,6 +61,18 @@ const CarteItemStyled = styled.div`
     width: 200px;
     color: ${theme.colors.primary};
     font-family: "Open Sans", cursive;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+
+    .button-carte {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      font-size: ${theme.fonts.size.XS};
+      font-weight: ${theme.fonts.weights.semiBold};
+    }
+
+    .button-carte:active {
+      background: ${theme.colors.primary};
+      color: ${theme.colors.white};
+    }
   }
 `
