@@ -1,7 +1,7 @@
 import styled from "styled-components"
-import { theme } from "../../../theme/index"
-import { refreshPage } from "../../../utils/windows"
-import Logo from "../../reusable-ui/Logo"
+import { theme } from "../../../../theme/index"
+import { refreshPage } from "../../../../utils/windows"
+import Logo from "../../../reusable-ui/Logo"
 import Rightside from "./Rightside"
 
 export default function Navbar() {
