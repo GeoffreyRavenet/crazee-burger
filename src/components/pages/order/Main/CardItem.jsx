@@ -1,9 +1,9 @@
 import styled from "styled-components"
-import { theme } from "../../../theme/index"
-import { formatPrice } from "../../../utils/maths"
-import PrimaryButton from "../../reusable-ui/PrimaryButton"
+import { theme } from "../../../../theme/index.js"
+import { formatPrice } from "../../../../utils/maths"
+import PrimaryButton from "../../../reusable-ui/PrimaryButton"
 
-export default function CarteItem({ id, imageSource, title, price }) {
+export default function CardItem({ id, imageSource, title, price }) {
   return (
     <CarteItemStyled key={id}>
       <div className="carte-img">

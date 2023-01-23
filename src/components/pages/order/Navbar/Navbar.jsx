@@ -21,7 +21,8 @@ const NavbarStyled = styled.nav`
   align-items: center;
   max-width: 100%;
   border-radius: ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound} 0px 0px;
-
+  z-index: 3;
+  box-shadow: 0px 4px 10px rgb(0 0 0 / 10%);
   .logo-nav {
     cursor: pointer;
     margin-left: 20px;

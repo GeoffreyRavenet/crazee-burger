@@ -1,8 +1,9 @@
 import React from "react"
 import styled from "styled-components"
-import { theme } from "../../../theme/index.js"
-import Main from "./Main.jsx"
-import Navbar from "./Navbar"
+import { theme } from "../../../theme/index"
+import Main from "./Main/Main"
+
+import Navbar from "./Navbar/Navbar"
 
 export default function OrderPage() {
   return (
