@@ -1,54 +1,71 @@
 import { BsPersonCircle } from "react-icons/bs"
 import { Link, useParams } from "react-router-dom"
 import styled from "styled-components"
-import { theme } from "../../../../theme/index.js"
+import { theme } from "../../../../theme"
 
 export default function Profile() {
   const { username } = useParams()
 
   return (
     <ProfileStyled>
-      <div>
-        Hey,
-        <span className="name"> {username}</span>
-        <Link to={`/`}>
-          <small>Se déconnecter</small>
+      <div className="info">
+        <p>
+          Hey, <b>{username}</b>
+        </p>
+        <Link to="/">
+          <div className="description">
+            <small>Se déconnecter</small>
+          </div>
         </Link>
       </div>
-
-      <BsPersonCircle className="icon" />
+      <div className="picture">
+        <BsPersonCircle />
+      </div>
     </ProfileStyled>
   )
 }
 
 const ProfileStyled = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
-  color: ${theme.colors.greyBlue};
+  justify-content: space-between;
+  min-width: 100px;
 
-  div {
-    font-weight: 16px;
+  .info {
+    text-align: right;
     margin-right: 10px;
-    .name {
-      color: ${theme.colors.primary};
-      font-weight: ${theme.fonts.weights.bold};
-    }
-
-    a {
-      display: block;
-      margin-top: 4px;
-      text-decoration: none;
+    p {
+      margin: 0;
       color: ${theme.colors.greyBlue};
-      font-family: "Open Sans", sans-serif;
-      :hover {
-        text-decoration: underline;
+      b {
+        color: ${theme.colors.primary};
+      }
+    }
+    a {
+      text-decoration: none;
+      .description {
+        &:hover {
+          text-decoration: underline;
+          color: ${theme.colors.greyDark};
+        }
+        small {
+          font-size: ${theme.fonts.size.XXS};
+          color: ${theme.colors.greyBlue};
+          font-weight: ${theme.fonts.weights.medium};
+          text-decoration: none;
+          position: relative;
+          bottom: 2px;
+        }
       }
     }
   }
 
-  .icon {
-    font-size: 36px;
+  .picture {
+    /* border: 1px solid red; */
+    height: auto;
+    display: flex;
+    height: 100%;
+    font-size: ${theme.fonts.size.P4};
+    color: ${theme.colors.greyBlue};
   }
 `

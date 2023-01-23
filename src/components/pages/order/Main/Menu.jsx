@@ -2,24 +2,23 @@ import { useState } from "react"
 import styled from "styled-components"
 import { fakeMenu2 } from "../../../../fakeData/fakeMenu"
 import { formatPrice } from "../../../../utils/maths.js"
-import CardItem from "../../../reusable-ui/CardItem"
+import Card from "../../../reusable-ui/Card"
 
-export default function ListMenu() {
-  const [listMenu, setlistMenu] = useState(fakeMenu2)
+export default function Menu() {
+  const [products, setProducts] = useState(fakeMenu2)
 
   return (
-    <ListMenuStyled>
-      {listMenu.map(({ id, imageSource, title, price }) => (
-        <CardItem key={id} imageSource={imageSource} title={title} price={formatPrice(price)} />
+    <MenuStyled>
+      {products.map(({ id, imageSource, title, price }) => (
+        <Card key={id} imageSource={imageSource} title={title} price={formatPrice(price)} />
       ))}
-    </ListMenuStyled>
+    </MenuStyled>
   )
 }
-const ListMenuStyled = styled.div`
+const MenuStyled = styled.div`
   display: grid;
   justify-items: center;
   align-items: center;
-  overflow: auto;
   overflow-y: scroll;
 
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

@@ -1,12 +1,12 @@
 import styled from "styled-components"
 import { theme } from "../../../../theme/index"
-import ListMenu from "./ListMenu"
+import Menu from "./Menu"
 
 export default function Main() {
   return (
     <MainStyled>
       {/* <div className="Basket">Basket</div> */}
-      <ListMenu />
+      <Menu />
     </MainStyled>
   )
 }

@@ -2,22 +2,22 @@ import styled from "styled-components"
 import { theme } from "../../theme/index.js"
 import PrimaryButton from "./PrimaryButton"
 
-export default function CardItem({ imageSource, title, price }) {
+export default function Card({ imageSource, title, price }) {
   return (
-    <CarteItemStyled>
-      <div className="carte-img">
+    <CardStyled>
+      <div className="card-img">
         <img src={imageSource} alt="{title}" />
       </div>
       <h3>{title}</h3>
-      <div className="bottom-carte">
+      <div className="bottom-card">
         <span>{price}</span>
-        <PrimaryButton label="Ajouter" className="button-carte" />
+        <PrimaryButton label="Ajouter" className="button-card" />
       </div>
-    </CarteItemStyled>
+    </CardStyled>
   )
 }
 
-const CarteItemStyled = styled.div`
+const CardStyled = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,7 +31,7 @@ const CarteItemStyled = styled.div`
   border-radius: 15px;
   box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
 
-  .carte-img {
+  .card-img {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,7 +53,7 @@ const CarteItemStyled = styled.div`
     margin-top: 20px;
   }
 
-  .bottom-carte {
+  .bottom-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -62,14 +62,14 @@ const CarteItemStyled = styled.div`
     font-family: "Open Sans", cursive;
     margin-bottom: 20px;
 
-    .button-carte {
+    .button-card {
       padding-top: 12px;
       padding-bottom: 12px;
       font-size: ${theme.fonts.size.XS};
       font-weight: ${theme.fonts.weights.semiBold};
     }
 
-    .button-carte:active {
+    .button-card:active {
       background: ${theme.colors.primary};
       color: ${theme.colors.white};
     }
