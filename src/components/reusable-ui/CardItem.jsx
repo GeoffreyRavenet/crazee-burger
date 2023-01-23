@@ -1,17 +1,16 @@
 import styled from "styled-components"
-import { theme } from "../../../../theme/index.js"
-import { formatPrice } from "../../../../utils/maths"
-import PrimaryButton from "../../../reusable-ui/PrimaryButton"
+import { theme } from "../../theme/index.js"
+import PrimaryButton from "./PrimaryButton"
 
-export default function CardItem({ id, imageSource, title, price }) {
+export default function CardItem({ imageSource, title, price }) {
   return (
-    <CarteItemStyled key={id}>
+    <CarteItemStyled>
       <div className="carte-img">
         <img src={imageSource} alt="{title}" />
       </div>
       <h3>{title}</h3>
       <div className="bottom-carte">
-        <span>{formatPrice(price)}</span>
+        <span>{price}</span>
         <PrimaryButton label="Ajouter" className="button-carte" />
       </div>
     </CarteItemStyled>

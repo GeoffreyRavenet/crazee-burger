@@ -1,7 +1,8 @@
 import { useState } from "react"
 import styled from "styled-components"
 import { fakeMenu2 } from "../../../../fakeData/fakeMenu"
-import CardItem from "./CardItem"
+import { formatPrice } from "../../../../utils/maths.js"
+import CardItem from "../../../reusable-ui/CardItem"
 
 export default function ListMenu() {
   const [listMenu, setlistMenu] = useState(fakeMenu2)
@@ -9,7 +10,7 @@ export default function ListMenu() {
   return (
     <ListMenuStyled>
       {listMenu.map(({ id, imageSource, title, price }) => (
-        <CardItem id={id} imageSource={imageSource} title={title} price={price} />
+        <CardItem key={id} imageSource={imageSource} title={title} price={formatPrice(price)} />
       ))}
     </ListMenuStyled>
   )
