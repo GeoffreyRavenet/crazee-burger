@@ -39,7 +39,11 @@ function LoginForm() {
         Icon={<BsPersonCircle className="icon" />}
       />
 
-      <PrimaryButton label="Accéder à mon espace" Icon={<IoChevronForward className="icon" />} />
+      <PrimaryButton
+        className="button-login"
+        label="Accéder à mon espace"
+        Icon={<IoChevronForward className="icon" />}
+      />
     </LoginFormStyled>
   )
 }
@@ -57,12 +61,12 @@ const LoginFormStyled = styled.form`
 
   h1 {
     color: ${theme.colors.white};
-    font-size: ${theme.fonts.P5};
+    font-size: ${theme.fonts.size.P5};
   }
 
   hr {
-    background-color: ${theme.colors.primary_burger};
-    border: 1.5px solid ${theme.colors.primary_burger};
+    background-color: ${theme.colors.primary};
+    border: 1.5px solid ${theme.colors.primary};
     border-radius: ${theme.borderRadius.round};
     margin-bottom: 40px;
   }
@@ -70,7 +74,7 @@ const LoginFormStyled = styled.form`
   h2 {
     color: ${theme.colors.white};
     margin: 20px 10px 10px;
-    font-size: ${theme.fonts.P4};
+    font-size: ${theme.fonts.size.P4};
   }
 
   .icon {
@@ -80,5 +84,9 @@ const LoginFormStyled = styled.form`
     font-size: 15px;
     margin-left: 10px;
     padding-top: 2px;
+  }
+
+  .button-login {
+    width: 100%;
   }
 `

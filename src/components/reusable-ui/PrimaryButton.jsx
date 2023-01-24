@@ -1,9 +1,9 @@
 import styled from "styled-components"
 import { theme } from "../../theme/index.js"
 
-export default function PrimaryButton({ label, Icon }) {
+export default function PrimaryButton({ label, Icon, className }) {
   return (
-    <PrimaryButtonStyled>
+    <PrimaryButtonStyled className={className}>
       <span>{label}</span>
       {Icon && Icon}
     </PrimaryButtonStyled>
@@ -11,7 +11,6 @@ export default function PrimaryButton({ label, Icon }) {
 }
 
 const PrimaryButtonStyled = styled.button`
-  width: 100%;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -22,23 +21,23 @@ const PrimaryButtonStyled = styled.button`
 
   padding: 18px 24px;
   border-radius: ${theme.borderRadius.round};
-  font-size: ${theme.fonts.P0};
-  font-weight: ${theme.weights.heavy};
+  font-size: ${theme.fonts.size.P0};
+  font-weight: ${theme.fonts.weights.heavy};
   color: ${theme.colors.white};
-  background-color: ${theme.colors.primary_burger};
-  border: 1px solid ${theme.colors.primary_burger};
+  background-color: ${theme.colors.primary};
+  border: 1px solid ${theme.colors.primary};
 
   &:hover:not(:disabled) {
     background-color: ${theme.colors.white};
-    color: ${theme.colors.primary_burger};
-    border: 1px solid ${theme.colors.primary_burger};
+    color: ${theme.colors.primary};
+    border: 1px solid ${theme.colors.primary};
     transition: all 200ms ease-out;
   }
 
   &:active {
     color: ${theme.colors.white};
-    background-color: ${theme.colors.primary_burger};
-    border: 1px solid ${theme.colors.primary_burger};
+    background-color: ${theme.colors.primary};
+    border: 1px solid ${theme.colors.primary};
   }
 
   &:disabled {
