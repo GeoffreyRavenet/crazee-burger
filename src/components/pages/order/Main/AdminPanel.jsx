@@ -21,22 +21,24 @@ export default function AdminPanel() {
           modifier un produit
         </button>
       </nav>
-      <div style={{ display: isOpen ? "block" : "none" }}>
-        <li>Accueil</li>
-        <li>À propos</li>
-        <li>Contact</li>
-      </div>
+      <div style={{ display: isOpen ? "block" : "none" }}></div>
     </AdminPanelStyled>
   )
 }
 
 const AdminPanelStyled = styled.div`
   //border: 1px solid red;
+  background: transparent;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
   nav {
-    //border: 1px solid blue;
-    display: flex;
+    margin-left: 71px;
     button {
-      flex-direction: row-reverse;
+      min-width: 59px;
+      min-height: 42px;
       background: #fff;
       color: #93a2b1;
       border: 1px solid #93a2b1;
@@ -46,5 +48,6 @@ const AdminPanelStyled = styled.div`
   div {
     border: 1px solid green;
     background: white;
+    height: 250px;
   }
 `
