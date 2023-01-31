@@ -1,12 +1,13 @@
-import { useState } from "react"
+import { useContext } from "react"
 import { toast } from "react-toastify"
 import styled from "styled-components"
 import Profile from "./Profile"
 import ToggleButton from "../../../reusable-ui/ToggleButton"
 import Toast from "../../../reusable-ui/Toast"
+import isToggledContext from "../../../../context/IsToggledContext"
 
 export default function Rightside() {
-  const [isToggled, setIsToggled] = useState(false)
+  const { isToggled, setIsToggled } = useContext(isToggledContext)
 
   const onToggle = (event) => {
     if (!isToggled) {

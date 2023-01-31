@@ -1,14 +1,18 @@
+import { useContext } from "react"
 import styled from "styled-components"
+import isToggledContext from "../../../../context/IsToggledContext"
 import { theme } from "../../../../theme/index"
-import AdminPanel from "./AdminPanel.jsx"
+import AdminPanel from "./AdminPanel"
 import Menu from "./Menu"
 
 export default function Main() {
+  const { isToggled } = useContext(isToggledContext)
+
   return (
     <MainStyled>
       {/* <div className="Basket">Basket</div> */}
       <Menu />
-      <AdminPanel />
+      {isToggled ? <AdminPanel /> : null}
     </MainStyled>
   )
 }
