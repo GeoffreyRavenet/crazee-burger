@@ -7,7 +7,12 @@ import PanelButton from "../../../reusable-ui/PanelButton"
 
 export default function AdminPanel() {
   const [isOpen, setIsOpen] = useState(false)
-  const [isOpenMenu, setIsOpenMenu] = useState(1)
+  const [isTabMenu, setIsTabMenu] = useState(1)
+
+  const openMenu = (index) => {
+    setIsTabMenu(index)
+    setIsOpen(true)
+  }
 
   const panels = [
     {
@@ -16,15 +21,15 @@ export default function AdminPanel() {
       className: isOpen ? "active" : null,
     },
     {
-      onClick: () => setIsOpenMenu(1),
+      onClick: () => openMenu(1),
       icon: <AiOutlinePlus className="icon" />,
-      className: isOpenMenu === 1 ? "active" : null,
+      className: isTabMenu === 1 ? "active" : null,
       label: "Ajouter un produit",
     },
     {
-      onClick: () => setIsOpenMenu(2),
+      onClick: () => openMenu(2),
       icon: <MdModeEditOutline className="icon" />,
-      className: isOpenMenu === 2 ? "active" : null,
+      className: isTabMenu === 2 ? "active" : null,
       label: "Modifier un produit",
     },
   ]
