@@ -3,23 +3,44 @@ import styled from "styled-components"
 import { MdModeEditOutline } from "react-icons/md"
 import { AiOutlinePlus } from "react-icons/ai"
 import { FiChevronDown, FiChevronUp } from "react-icons/fi"
+import PanelButton from "../../../reusable-ui/PanelButton"
+
 export default function AdminPanel() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isOpenMenu, setIsOpenMenu] = useState(1)
+
+  const panels = [
+    {
+      onClick: () => setIsOpen(!isOpen),
+      icon: isOpen ? <FiChevronDown className="icon" /> : <FiChevronUp className="icon" />,
+      className: isOpen ? "active" : null,
+    },
+    {
+      onClick: () => setIsOpenMenu(1),
+      icon: <AiOutlinePlus className="icon" />,
+      className: isOpenMenu === 1 ? "active" : null,
+      label: "Ajouter un produit",
+    },
+    {
+      onClick: () => setIsOpenMenu(2),
+      icon: <MdModeEditOutline className="icon" />,
+      className: isOpenMenu === 2 ? "active" : null,
+      label: "Modifier un produit",
+    },
+  ]
 
   return (
     <AdminPanelStyled>
       <nav>
-        <button onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <FiChevronDown className="icon" /> : <FiChevronUp className="icon" />}
-        </button>
-        <button>
-          <AiOutlinePlus className="icon" />
-          ajouter un produit
-        </button>
-        <button>
-          <MdModeEditOutline className="icon" />
-          modifier un produit
-        </button>
+        {panels.map((item, index) => (
+          <PanelButton
+            key={index}
+            onClick={item.onClick}
+            Icon={item.icon}
+            active={item.className}
+            label={item.label}
+          />
+        ))}
       </nav>
       <div style={{ display: isOpen ? "block" : "none" }}></div>
     </AdminPanelStyled>
@@ -27,7 +48,6 @@ export default function AdminPanel() {
 }
 
 const AdminPanelStyled = styled.div`
-  //border: 1px solid red;
   background: transparent;
   position: absolute;
   bottom: 0;
@@ -36,18 +56,18 @@ const AdminPanelStyled = styled.div`
 
   nav {
     margin-left: 71px;
-    button {
-      min-width: 59px;
-      min-height: 42px;
-      background: #fff;
-      color: #93a2b1;
-      border: 1px solid #93a2b1;
-      border-radius: 5px 5px 0px 0px;
+    .active {
+      background: #292729;
+      border: 1px solid #292729;
+      color: #ffffff;
     }
   }
+
   div {
-    border: 1px solid green;
     background: white;
     height: 250px;
+    border-top: 1px solid #e4e5e9;
+    box-shadow: 0px -2px 8px -2px rgba(0, 0, 0, 0.2);
+    border-radius: 0px 0px 15px 15px;
   }
 `
