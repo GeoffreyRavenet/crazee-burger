@@ -12,7 +12,7 @@ export default function OrderPage() {
     isToggled,
     setIsToggled,
   }
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(true)
   const [isTabMenu, setIsTabMenu] = useState("add")
   const isPanelContext = {
     isOpen,
