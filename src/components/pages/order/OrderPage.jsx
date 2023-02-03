@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 import IsToggledContext from "../../../context/IsToggledContext"
+import IsPanelContext from "../../../context/IsPanelContext"
 import { theme } from "../../../theme/index"
 import Main from "./Main/Main"
 import Navbar from "./Navbar/Navbar"
@@ -11,13 +12,23 @@ export default function OrderPage() {
     isToggled,
     setIsToggled,
   }
+  const [isOpen, setIsOpen] = useState(false)
+  const [isTabMenu, setIsTabMenu] = useState("add")
+  const isPanelContext = {
+    isOpen,
+    setIsOpen,
+    isTabMenu,
+    setIsTabMenu,
+  }
 
   return (
     <OrderPageStyled>
       <div className="container">
         <IsToggledContext.Provider value={isToggledContext}>
           <Navbar />
-          <Main />
+          <IsPanelContext.Provider value={isPanelContext}>
+            <Main />
+          </IsPanelContext.Provider>
         </IsToggledContext.Provider>
       </div>
     </OrderPageStyled>

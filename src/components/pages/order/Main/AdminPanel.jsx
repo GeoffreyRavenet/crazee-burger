@@ -1,13 +1,15 @@
-import React, { useState } from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
 import { MdModeEditOutline } from "react-icons/md"
 import { AiOutlinePlus } from "react-icons/ai"
 import { FiChevronDown, FiChevronUp } from "react-icons/fi"
 import PanelButton from "../../../reusable-ui/PanelButton"
+import isPanelContext from "../../../../context/IsPanelContext"
+import AddProduct from "./AddProduct.jsx"
+import EditProduct from "./EditProduct.jsx"
 
 export default function AdminPanel() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [isTabMenu, setIsTabMenu] = useState(1)
+  const { isOpen, setIsOpen, isTabMenu, setIsTabMenu } = useContext(isPanelContext)
 
   const openMenu = (index) => {
     setIsTabMenu(index)
@@ -18,18 +20,18 @@ export default function AdminPanel() {
     {
       onClick: () => setIsOpen(!isOpen),
       icon: isOpen ? <FiChevronDown className="icon" /> : <FiChevronUp className="icon" />,
-      className: isOpen ? "active" : null,
+      className: !isOpen ? "active" : null,
     },
     {
-      onClick: () => openMenu(1),
+      onClick: () => openMenu("add"),
       icon: <AiOutlinePlus className="icon" />,
-      className: isTabMenu === 1 ? "active" : null,
+      className: isTabMenu.includes("add") ? "active" : null,
       label: "Ajouter un produit",
     },
     {
-      onClick: () => openMenu(2),
+      onClick: () => openMenu("edit"),
       icon: <MdModeEditOutline className="icon" />,
-      className: isTabMenu === 2 ? "active" : null,
+      className: isTabMenu.includes("edit") ? "active" : null,
       label: "Modifier un produit",
     },
   ]
@@ -47,7 +49,10 @@ export default function AdminPanel() {
           />
         ))}
       </nav>
-      <div style={{ display: isOpen ? "block" : "none" }}></div>
+      <div style={{ display: isOpen ? "block" : "none" }}>
+        {isTabMenu.includes("add") ? <AddProduct /> : null}
+        {isTabMenu.includes("edit") ? <EditProduct /> : null}
+      </div>
     </AdminPanelStyled>
   )
 }
@@ -71,7 +76,7 @@ const AdminPanelStyled = styled.div`
   div {
     background: white;
     height: 250px;
-    border-top: 1px solid #e4e5e9;
+    border: 1px solid #e4e5e9;
     box-shadow: 0px -2px 8px -2px rgba(0, 0, 0, 0.2);
     border-radius: 0px 0px 15px 15px;
   }
