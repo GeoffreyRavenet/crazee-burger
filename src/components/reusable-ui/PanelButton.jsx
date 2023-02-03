@@ -15,8 +15,9 @@ const PanelButtonStyle = styled.button`
   height: 42px;
   background: #fff;
   color: #93a2b1;
-  border: 1px solid #93a2b1;
+  border: 1px solid #e4e5e9;
   border-radius: 5px 5px 0px 0px;
+  margin-right: 1px;
 
   display: inline-flex;
   justify-content: center;
@@ -32,6 +33,7 @@ const PanelButtonStyle = styled.button`
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
+  cursor: pointer;
 
   .icon {
     display: flex;
