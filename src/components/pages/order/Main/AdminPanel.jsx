@@ -38,7 +38,7 @@ export default function AdminPanel() {
 
   return (
     <AdminPanelStyled>
-      <nav>
+      <nav className={isOpen ? "open" : "close"}>
         {panels.map((item, index) => (
           <PanelButton
             key={index}
@@ -49,7 +49,7 @@ export default function AdminPanel() {
           />
         ))}
       </nav>
-      <div style={{ display: isOpen ? "block" : "none" }}>
+      <div className="bodyPanel" style={{ display: isOpen ? "block" : "none" }}>
         {isTabMenu.includes("add") ? <AddProduct /> : null}
         {isTabMenu.includes("edit") ? <EditProduct /> : null}
       </div>
@@ -63,17 +63,37 @@ const AdminPanelStyled = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-
+  .close {
+    position: relative;
+    button {
+      border-bottom: 2px solid #fff;
+      .active {
+        border-bottom: 1px solid #292729;
+      }
+    }
+  }
   nav {
     margin-left: 71px;
+    position: absolute;
+    margin-top: -41px;
+
     .active {
       background: #292729;
-      border: 1px solid #292729;
+      border: 2px solid #292729;
       color: #ffffff;
+    }
+    button {
+      background: white;
+      border: 2px solid #e4e5e9;
+
+      :hover {
+        text-decoration: underline;
+        border-bottom: 2px solid transparent;
+      }
     }
   }
 
-  div {
+  .bodyPanel {
     background: white;
     height: 250px;
     border: 1px solid #e4e5e9;
