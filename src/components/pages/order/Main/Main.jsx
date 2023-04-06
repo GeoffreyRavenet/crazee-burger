@@ -2,7 +2,7 @@ import { useContext } from "react"
 import styled from "styled-components"
 import isToggledContext from "../../../../context/IsToggledContext"
 import { theme } from "../../../../theme/index"
-import AdminPanel from "./Admin/AdminPanel"
+import Admin from "./Admin/Admin"
 import Menu from "./Menu"
 
 export default function Main() {
@@ -13,7 +13,7 @@ export default function Main() {
       <div className="basket">Basket</div>
       <div className="menu-and-admin">
         <Menu />
-        {isToggled && <AdminPanel />}
+        {isToggled && <Admin />}
       </div>
     </MainStyled>
   )
