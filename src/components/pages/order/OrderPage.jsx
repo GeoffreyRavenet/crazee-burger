@@ -1,7 +1,5 @@
 import React, { useState } from "react"
 import styled from "styled-components"
-import IsToggledContext from "../../../context/IsToggledContext"
-import IsPanelContext from "../../../context/IsPanelContext"
 import { theme } from "../../../theme/index"
 import Main from "./Main/Main"
 import Navbar from "./Navbar/Navbar"
