@@ -3,10 +3,11 @@ import styled from "styled-components"
 import { MdModeEditOutline } from "react-icons/md"
 import { AiOutlinePlus } from "react-icons/ai"
 import { FiChevronDown, FiChevronUp } from "react-icons/fi"
-import PanelButton from "../../../reusable-ui/PanelButton"
-import isPanelContext from "../../../../context/IsPanelContext"
+import PanelButton from "../../../../reusable-ui/PanelButton"
+import isPanelContext from "../../../../../context/IsPanelContext"
 import AddProduct from "./AddProduct.jsx"
 import EditProduct from "./EditProduct.jsx"
+import { theme } from "../../../../../theme/index.js"
 
 export default function AdminPanel() {
   const { isOpen, setIsOpen, isTabMenu, setIsTabMenu } = useContext(isPanelContext)
@@ -94,10 +95,9 @@ const AdminPanelStyled = styled.div`
   }
 
   .bodyPanel {
-    background: white;
+    background: ${theme.colors.white};
     height: 250px;
-    border: 1px solid #e4e5e9;
-    box-shadow: 0px -2px 8px -2px rgba(0, 0, 0, 0.2);
-    border-radius: 0px 0px 15px 15px;
+    border: 1px solid ${theme.colors.greyLight};
+    box-shadow: ${theme.shadows.subtle};
   }
 `

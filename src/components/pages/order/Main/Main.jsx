@@ -2,7 +2,7 @@ import { useContext } from "react"
 import styled from "styled-components"
 import isToggledContext from "../../../../context/IsToggledContext"
 import { theme } from "../../../../theme/index"
-import AdminPanel from "./AdminPanel"
+import AdminPanel from "./Admin/AdminPanel"
 import Menu from "./Menu"
 
 export default function Main() {
@@ -10,22 +10,33 @@ export default function Main() {
 
   return (
     <MainStyled>
-      {/* <div className="Basket">Basket</div> */}
-      <Menu />
-      {isToggled ? <AdminPanel /> : null}
+      <div className="basket">Basket</div>
+      <div className="menu-and-admin">
+        <Menu />
+        {isToggled && <AdminPanel />}
+      </div>
     </MainStyled>
   )
 }
 
 const MainStyled = styled.div`
   flex: 1;
-  height: 85vh;
+  height: calc(95vh - 10vh);
   background: #f5f5f7;
-  position: relative;
-  box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
-  border-radius: 0px 0px ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
+  box-shadow: ${theme.shadows.strong};
 
   display: grid;
-  grid-template-columns: 1fr;
-  /* grid-template-columns: 25% 1fr; */
+  overflow-y: hidden;
+  /* grid-template-columns: 1fr;*/
+  grid-template-columns: 25% 1fr;
+  border-bottom-left-radius: ${theme.borderRadius.extraRound};
+  border-bottom-right-radius: ${theme.borderRadius.extraRound};
+  .basket {
+    background: pink;
+  }
+  .menu-and-admin {
+    position: relative;
+    display: grid;
+    overflow-y: hidden;
+  }
 `
