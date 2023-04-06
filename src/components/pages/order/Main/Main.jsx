@@ -1,12 +1,12 @@
 import { useContext } from "react"
 import styled from "styled-components"
-import isToggledContext from "../../../../context/IsToggledContext"
+import OrderContext from "../../../../context/OrderContext"
 import { theme } from "../../../../theme/index"
 import Admin from "./Admin/Admin"
 import Menu from "./Menu"
 
 export default function Main() {
-  const { isToggled } = useContext(isToggledContext)
+  const { isToggled } = useContext(OrderContext)
 
   return (
     <MainStyled>

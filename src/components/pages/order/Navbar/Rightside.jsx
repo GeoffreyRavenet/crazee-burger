@@ -4,10 +4,10 @@ import styled from "styled-components"
 import Profile from "./Profile"
 import ToggleButton from "../../../reusable-ui/ToggleButton"
 import Toast from "../../../reusable-ui/Toast"
-import isToggledContext from "../../../../context/IsToggledContext"
+import OrderContext from "../../../../context/OrderContext"
 
 export default function Rightside() {
-  const { isToggled, setIsToggled } = useContext(isToggledContext)
+  const { isToggled, setIsToggled } = useContext(OrderContext)
 
   const onToggle = (event) => {
     if (!isToggled) {

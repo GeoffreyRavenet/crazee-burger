@@ -5,33 +5,33 @@ import IsPanelContext from "../../../context/IsPanelContext"
 import { theme } from "../../../theme/index"
 import Main from "./Main/Main"
 import Navbar from "./Navbar/Navbar"
+import OrderContext from "../../../context/OrderContext.jsx"
 
 export default function OrderPage() {
+  //state
   const [isToggled, setIsToggled] = useState(false)
-  const isToggledContext = {
+  const [isCollapsed, setIsCollapsed] = useState(true)
+  const [isTabMenu, setIsTabMenu] = useState("add")
+
+  //comportements
+  const orderContextValue = {
     isToggled,
     setIsToggled,
-  }
-  const [isOpen, setIsOpen] = useState(true)
-  const [isTabMenu, setIsTabMenu] = useState("add")
-  const isPanelContext = {
-    isOpen,
-    setIsOpen,
+    isCollapsed,
+    setIsCollapsed,
     isTabMenu,
     setIsTabMenu,
   }
 
   return (
-    <OrderPageStyled>
-      <div className="container">
-        <IsToggledContext.Provider value={isToggledContext}>
+    <OrderContext.Provider value={orderContextValue}>
+      <OrderPageStyled>
+        <div className="container">
           <Navbar />
-          <IsPanelContext.Provider value={isPanelContext}>
-            <Main />
-          </IsPanelContext.Provider>
-        </IsToggledContext.Provider>
-      </div>
-    </OrderPageStyled>
+          <Main />
+        </div>
+      </OrderPageStyled>
+    </OrderContext.Provider>
   )
 }
 
