@@ -6,11 +6,11 @@ import EditProduct from "./EditProduct"
 import { theme } from "../../../../../theme/index.js"
 
 export default function AdminPanel() {
-  const { isTabMenu } = useContext(OrderContext)
+  const { currentTabSelected } = useContext(OrderContext)
 
   return (
     <AdminPanelStyled>
-      {isTabMenu.includes("add") ? <AddProduct /> : <EditProduct />}
+      {currentTabSelected.includes("add") ? <AddProduct /> : <EditProduct />}
     </AdminPanelStyled>
   )
 }

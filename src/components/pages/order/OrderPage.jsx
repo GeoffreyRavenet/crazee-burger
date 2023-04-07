@@ -9,7 +9,7 @@ export default function OrderPage() {
   //state
   const [isToggled, setIsToggled] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(true)
-  const [isTabMenu, setIsTabMenu] = useState("add")
+  const [currentTabSelected, SetCurrentTabSelected] = useState("add")
 
   //comportements
   const orderContextValue = {
@@ -17,8 +17,8 @@ export default function OrderPage() {
     setIsToggled,
     isCollapsed,
     setIsCollapsed,
-    isTabMenu,
-    setIsTabMenu,
+    currentTabSelected,
+    SetCurrentTabSelected,
   }
 
   return (

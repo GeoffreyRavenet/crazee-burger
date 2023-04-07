@@ -6,15 +6,16 @@ import { AiOutlinePlus } from "react-icons/ai"
 import { FiChevronDown, FiChevronUp } from "react-icons/fi"
 import { theme } from "../../../../../theme/index.js"
 import OrderContext from "../../../../../context/OrderContext"
+import { tabsButtons } from "./tabsConfig .jsx"
 
 export default function AdminTabs() {
-  const { isCollapsed, setIsCollapsed, isTabMenu, setIsTabMenu } = useContext(OrderContext)
+  const { isCollapsed, setIsCollapsed, currentTabSelected, SetCurrentTabSelected } =
+    useContext(OrderContext)
 
   const handleClick = (index) => {
-    setIsTabMenu(index)
+    SetCurrentTabSelected(index)
     setIsCollapsed(false)
   }
-
   return (
     <AdminTabsStyled>
       <Tab
@@ -23,18 +24,14 @@ export default function AdminTabs() {
         onClick={() => setIsCollapsed(!isCollapsed)}
         className={isCollapsed ? "is-active" : ""}
       />
-      <Tab
-        label="Ajouter un produit"
-        Icon={<AiOutlinePlus />}
-        onClick={() => handleClick("add")}
-        className={isTabMenu.includes("add") ? "is-active" : ""}
-      />
-      <Tab
-        label="Modifier un produit"
-        Icon={<MdModeEditOutline />}
-        onClick={() => handleClick("edit")}
-        className={isTabMenu.includes("edit") ? "is-active" : ""}
-      />
+      {tabsButtons.map((item) => (
+        <Tab
+          label={item.label}
+          Icon={item.icon}
+          onClick={() => handleClick(item.index)}
+          className={currentTabSelected.includes(item.index) ? "is-active" : ""}
+        />
+      ))}
     </AdminTabsStyled>
   )
 }
