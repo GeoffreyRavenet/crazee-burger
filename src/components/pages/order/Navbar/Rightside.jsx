@@ -7,10 +7,10 @@ import Toast from "../../../reusable-ui/Toast"
 import OrderContext from "../../../../context/OrderContext"
 
 export default function Rightside() {
-  const { isToggled, setIsToggled } = useContext(OrderContext)
+  const { isAdmin, setIsAdmin } = useContext(OrderContext)
 
   const onToggle = (event) => {
-    if (!isToggled) {
+    if (!isAdmin) {
       toast.info("Mode admin activé", {
         theme: "dark",
         position: "bottom-right",
@@ -22,13 +22,13 @@ export default function Rightside() {
         progress: undefined,
       })
     }
-    setIsToggled(!isToggled)
+    setIsAdmin(!isAdmin)
   }
 
   return (
     <RightsideStyled>
       <ToggleButton
-        isChecked={isToggled}
+        isChecked={isAdmin}
         labelIfChecked="DÉSACTIVER LE MODE ADMIN"
         labelIfUnchecked="ACTIVER LE MODE ADMIN"
         onToggle={onToggle}

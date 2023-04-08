@@ -6,14 +6,14 @@ import Admin from "./Admin/Admin"
 import Menu from "./Menu"
 
 export default function Main() {
-  const { isToggled } = useContext(OrderContext)
+  const { isAdmin } = useContext(OrderContext)
 
   return (
     <MainStyled>
       <div className="basket">Basket</div>
       <div className="menu-and-admin">
         <Menu />
-        {isToggled && <Admin />}
+        {isAdmin && <Admin />}
       </div>
     </MainStyled>
   )

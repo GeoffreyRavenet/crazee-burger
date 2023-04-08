@@ -7,18 +7,18 @@ import OrderContext from "../../../context/OrderContext.jsx"
 
 export default function OrderPage() {
   //state
-  const [isToggled, setIsToggled] = useState(false)
+  const [isAdmin, setIsAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(true)
-  const [currentTabSelected, SetCurrentTabSelected] = useState("add")
+  const [currentTabSelected, setCurrentTabSelected] = useState("add")
 
   //comportements
   const orderContextValue = {
-    isToggled,
-    setIsToggled,
+    isAdmin,
+    setIsAdmin,
     isCollapsed,
     setIsCollapsed,
     currentTabSelected,
-    SetCurrentTabSelected,
+    setCurrentTabSelected,
   }
 
   return (

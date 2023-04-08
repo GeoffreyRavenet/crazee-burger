@@ -9,11 +9,11 @@ import OrderContext from "../../../../../context/OrderContext"
 import { tabsButtons } from "./tabsConfig .jsx"
 
 export default function AdminTabs() {
-  const { isCollapsed, setIsCollapsed, currentTabSelected, SetCurrentTabSelected } =
+  const { isCollapsed, setIsCollapsed, currentTabSelected, setCurrentTabSelected } =
     useContext(OrderContext)
 
   const handleClick = (index) => {
-    SetCurrentTabSelected(index)
+    setCurrentTabSelected(index)
     setIsCollapsed(false)
   }
   return (
