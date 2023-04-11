@@ -1,18 +1,35 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { theme } from "../../../theme/index"
 import Main from "./Main/Main"
-
 import Navbar from "./Navbar/Navbar"
+import OrderContext from "../../../context/OrderContext.jsx"
 
 export default function OrderPage() {
+  //state
+  const [isAdmin, setIsAdmin] = useState(false)
+  const [isCollapsed, setIsCollapsed] = useState(true)
+  const [currentTabSelected, setCurrentTabSelected] = useState("add")
+
+  //comportements
+  const orderContextValue = {
+    isAdmin,
+    setIsAdmin,
+    isCollapsed,
+    setIsCollapsed,
+    currentTabSelected,
+    setCurrentTabSelected,
+  }
+
   return (
-    <OrderPageStyled>
-      <div className="container">
-        <Navbar />
-        <Main />
-      </div>
-    </OrderPageStyled>
+    <OrderContext.Provider value={orderContextValue}>
+      <OrderPageStyled>
+        <div className="container">
+          <Navbar />
+          <Main />
+        </div>
+      </OrderPageStyled>
+    </OrderContext.Provider>
   )
 }
 

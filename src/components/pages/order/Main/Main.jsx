@@ -1,24 +1,42 @@
+import { useContext } from "react"
 import styled from "styled-components"
+import OrderContext from "../../../../context/OrderContext"
 import { theme } from "../../../../theme/index"
+import Admin from "./Admin/Admin"
 import Menu from "./Menu"
 
 export default function Main() {
+  const { isAdmin } = useContext(OrderContext)
+
   return (
     <MainStyled>
-      {/* <div className="Basket">Basket</div> */}
-      <Menu />
+      <div className="basket">Basket</div>
+      <div className="menu-and-admin">
+        <Menu />
+        {isAdmin && <Admin />}
+      </div>
     </MainStyled>
   )
 }
 
 const MainStyled = styled.div`
   flex: 1;
-  height: 85vh;
-  background: #f5f5f7;
-  box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
-  border-radius: 0px 0px ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
+  height: calc(95vh - 10vh);
+  background: ${theme.colors.background_white};
+  box-shadow: ${theme.shadows.strong};
 
   display: grid;
-  grid-template-columns: 1fr;
-  /* grid-template-columns: 25% 1fr; */
+  overflow-y: hidden;
+  /* grid-template-columns: 1fr;*/
+  grid-template-columns: 25% 1fr;
+  border-bottom-left-radius: ${theme.borderRadius.extraRound};
+  border-bottom-right-radius: ${theme.borderRadius.extraRound};
+  .basket {
+    background: pink;
+  }
+  .menu-and-admin {
+    position: relative;
+    display: grid;
+    overflow-y: hidden;
+  }
 `
