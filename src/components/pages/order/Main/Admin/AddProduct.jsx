@@ -11,7 +11,7 @@ export default function AddProduct() {
 
   const [product, setProduct] = useState({
     id: 100000000,
-    imageSource: "/images/burger-vegan.png",
+    imageSource: "",
     title: "",
     price: 0,
     quantity: 0,
@@ -28,7 +28,11 @@ export default function AddProduct() {
     //
     <AddProductStyled onSubmit={handleSubmit}>
       <div className="img-add-product">
-        <img src={product.imageSource} alt="newproduct" />
+        {product.imageSource ? (
+          <img src={product.imageSource} alt="newproduct" />
+        ) : (
+          <span className="no-image">Aucune image</span>
+        )}
       </div>
       <TextInput
         Icon={<FaHamburger className="icon" />}
@@ -88,6 +92,21 @@ const AddProductStyled = styled.form`
     text-align: center;
 
     color: #ffffff;
+  }
+  .img-add-product:has(.no-image) {
+    border: 1px solid #e4e5e9;
+    border-radius: 5px;
+
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+
+    color: #93a2b1;
+    text-align: center;
+    display: flex;
+    align-items: center;
   }
   .img-add-product {
     grid-area: image;
