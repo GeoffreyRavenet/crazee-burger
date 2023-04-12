@@ -1,11 +1,11 @@
-import { useState } from "react"
+import { useContext } from "react"
 import styled from "styled-components"
-import { fakeMenu2 } from "../../../../fakeData/fakeMenu"
+import MainContext from "../../../../context/MainContext.jsx"
 import { formatPrice } from "../../../../utils/maths.js"
 import Card from "../../../reusable-ui/Card"
 
 export default function Menu() {
-  const [products, setProducts] = useState(fakeMenu2)
+  const { products } = useContext(MainContext)
 
   return (
     <MenuStyled>

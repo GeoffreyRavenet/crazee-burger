@@ -1,21 +1,31 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import styled from "styled-components"
 import OrderContext from "../../../../context/OrderContext"
+import MainContext from "../../../../context/MainContext.jsx"
+import { fakeMenu2 } from "../../../../fakeData/fakeMenu.js"
 import { theme } from "../../../../theme/index"
 import Admin from "./Admin/Admin"
 import Menu from "./Menu"
 
 export default function Main() {
   const { isAdmin } = useContext(OrderContext)
+  const [products, setProducts] = useState(fakeMenu2)
+
+  const mainContextValue = {
+    products,
+    setProducts,
+  }
 
   return (
-    <MainStyled>
-      <div className="basket">Basket</div>
-      <div className="menu-and-admin">
-        <Menu />
-        {isAdmin && <Admin />}
-      </div>
-    </MainStyled>
+    <MainContext.Provider value={mainContextValue}>
+      <MainStyled>
+        <div className="basket">Basket</div>
+        <div className="menu-and-admin">
+          <Menu />
+          {isAdmin && <Admin />}
+        </div>
+      </MainStyled>
+    </MainContext.Provider>
   )
 }
 
