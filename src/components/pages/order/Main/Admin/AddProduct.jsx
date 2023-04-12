@@ -1,16 +1,19 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import { BsFillCameraFill } from "react-icons/bs"
 import { FaHamburger } from "react-icons/fa"
 import { MdOutlineEuro } from "react-icons/md"
 import styled from "styled-components"
+import MainContext from "../../../../../context/MainContext.jsx"
 import TextInput from "../../../../reusable-ui/TextInput.jsx"
 
 export default function AddProduct() {
+  const { products, setProducts } = useContext(MainContext)
+
   const [product, setProduct] = useState({
     id: 100000000,
     imageSource: "/images/burger-vegan.png",
     title: "",
-    price: "",
+    price: 0,
     quantity: 0,
     isAvailable: true,
     isAdvertised: false,
@@ -18,45 +21,39 @@ export default function AddProduct() {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log("handleSubmit")
-  }
-
-  const handleChange = (event) => {
-    setProduct((product.title = event.target.value))
+    setProducts([product, ...products])
   }
 
   return (
     //
-    <>
-      <AddProductStyled action={handleSubmit}>
-        <div className="img-add-product">
-          <img src={product.imageSource} alt="newproduct" />
-        </div>
-        <TextInput
-          Icon={<FaHamburger className="icon" />}
-          value={product.title}
-          onChange={handleChange}
-          placeholder="Nom du produit (ex: Super Burger)"
-          className="input-title"
-        />
-        <TextInput
-          Icon={<BsFillCameraFill className="icon" />}
-          value={product.imageSource}
-          onChange={handleChange}
-          placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
-          className="input-imageSource"
-        />
-        <TextInput
-          type="number"
-          Icon={<MdOutlineEuro className="icon" />}
-          value={product.price}
-          onChange={handleChange}
-          placeholder="Prix"
-          className="input-price"
-        />
-        <button>Ajouter un nouveau produit au menu</button>
-      </AddProductStyled>
-    </>
+    <AddProductStyled onSubmit={handleSubmit}>
+      <div className="img-add-product">
+        <img src={product.imageSource} alt="newproduct" />
+      </div>
+      <TextInput
+        Icon={<FaHamburger className="icon" />}
+        value={product.title}
+        onChange={(e) => setProduct({ ...product, title: e.target.value })}
+        placeholder="Nom du produit (ex: Super Burger)"
+        className="input-title"
+      />
+      <TextInput
+        Icon={<BsFillCameraFill className="icon" />}
+        value={product.imageSource}
+        onChange={(e) => setProduct({ ...product, imageSource: e.target.value })}
+        placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
+        className="input-imageSource"
+      />
+      <TextInput
+        type="number"
+        Icon={<MdOutlineEuro className="icon" />}
+        value={product.price > 0 ? product.price : undefined}
+        onChange={(e) => setProduct({ ...product, price: e.target.value })}
+        placeholder="Prix"
+        className="input-price"
+      />
+      <button type="submit">Ajouter un nouveau produit au menu</button>
+    </AddProductStyled>
   )
 }
 const AddProductStyled = styled.form`
