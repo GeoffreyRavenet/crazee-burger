@@ -2,26 +2,36 @@ import React, { useContext, useState } from "react"
 import { BsFillCameraFill } from "react-icons/bs"
 import { FaHamburger } from "react-icons/fa"
 import { MdOutlineEuro } from "react-icons/md"
+import { FiCheck } from "react-icons/fi"
 import styled from "styled-components"
 import MainContext from "../../../../../context/MainContext.jsx"
 import TextInput from "../../../../reusable-ui/TextInput.jsx"
+import { isEmpty } from "lodash"
 
 export default function AddProduct() {
   const { products, setProducts } = useContext(MainContext)
 
-  const [product, setProduct] = useState({
+  const initstate = {
     id: 100000000,
     imageSource: "",
     title: "",
-    price: 0,
+    price: "",
     quantity: 0,
     isAvailable: true,
     isAdvertised: false,
-  })
+  }
+  const [product, setProduct] = useState(initstate)
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    setProducts([product, ...products])
+    const cpProduct = {
+      ...product,
+      id: parseInt(new Date().getTime()),
+      imageSource: isEmpty(product.imageSource) ? "/images/coming-soon.png" : product.imageSource,
+      price: isEmpty(product.price) ? "NaN" : parseFloat(product.price),
+    }
+    setProducts([cpProduct, ...products])
+    setProduct(initstate)
   }
 
   return (
@@ -49,14 +59,17 @@ export default function AddProduct() {
         className="input-imageSource"
       />
       <TextInput
-        type="number"
         Icon={<MdOutlineEuro className="icon" />}
-        value={product.price > 0 ? product.price : undefined}
+        value={product.price}
         onChange={(e) => setProduct({ ...product, price: e.target.value })}
         placeholder="Prix"
         className="input-price"
       />
       <button type="submit">Ajouter un nouveau produit au menu</button>
+      <div>
+        <FiCheck />
+        Ajouté avec succès !
+      </div>
     </AddProductStyled>
   )
 }
