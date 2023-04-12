@@ -1,9 +1,9 @@
 import styled from "styled-components"
 import { theme } from "../../theme/index.js"
 
-export default function TextInput({ value, onChange, Icon, ...other }) {
+export default function TextInput({ value, onChange, Icon, className, ...other }) {
   return (
-    <TextInputStyled>
+    <TextInputStyled className={className && className}>
       {Icon && Icon}
       <input type="text" value={value} onChange={onChange} {...other} />
     </TextInputStyled>
@@ -27,6 +27,7 @@ const TextInputStyled = styled.div`
     font-size: ${theme.fonts.size.SM};
     color: ${theme.colors.dark};
     width: 100%;
+    outline: none;
 
     &::placeholder {
       background: ${theme.colors.white};
