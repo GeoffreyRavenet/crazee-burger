@@ -4,38 +4,55 @@ import { FaHamburger } from "react-icons/fa"
 import { MdOutlineEuro } from "react-icons/md"
 import { FiCheck } from "react-icons/fi"
 import styled from "styled-components"
-import MainContext from "../../../../../context/MainContext.jsx"
 import TextInput from "../../../../reusable-ui/TextInput.jsx"
 import { isEmpty } from "lodash"
+import OrderContext from "../../../../../context/OrderContext.jsx"
+
+const EMPTY_PRODUCT = {
+  id: "100000000",
+  imageSource: "",
+  title: "",
+  price: "",
+  quantity: 0,
+  isAvailable: true,
+  isAdvertised: false,
+}
 
 export default function AddProduct() {
-  const { products, setProducts } = useContext(MainContext)
+  //state
+  const { handleAdd } = useContext(OrderContext)
+  const [isSubmited, setIsSubmited] = useState(false)
+  const [product, setProduct] = useState(EMPTY_PRODUCT)
 
-  const initstate = {
-    id: 100000000,
-    imageSource: "",
-    title: "",
-    price: "",
-    quantity: 0,
-    isAvailable: true,
-    isAdvertised: false,
-  }
-  const [product, setProduct] = useState(initstate)
-
+  //comportements
   const handleSubmit = (event) => {
     event.preventDefault()
-    const cpProduct = {
+    const newProductToAdd = {
       ...product,
-      id: parseInt(new Date().getTime()),
+      id: new Date().getTime(),
       imageSource: isEmpty(product.imageSource) ? "/images/coming-soon.png" : product.imageSource,
-      price: isEmpty(product.price) ? "NaN" : parseFloat(product.price),
+      price: isEmpty(product.price) ? "" : parseFloat(product.price),
     }
-    setProducts([cpProduct, ...products])
-    setProduct(initstate)
+    handleAdd(newProductToAdd)
+    setProduct(EMPTY_PRODUCT)
+
+    displaySubmitMessage()
   }
 
+  const displaySubmitMessage = () => {
+    setIsSubmited(true)
+    setTimeout(() => {
+      setIsSubmited(false)
+    }, 2000)
+  }
+
+  const handleChange = (event) => {
+    const { name, value } = event.target
+    setProduct({ ...product, [name]: value })
+  }
+
+  //Affichage
   return (
-    //
     <AddProductStyled onSubmit={handleSubmit}>
       <div className="img-add-product">
         {product.imageSource ? (
@@ -45,31 +62,39 @@ export default function AddProduct() {
         )}
       </div>
       <TextInput
+        name="title"
+        key="1"
         Icon={<FaHamburger className="icon" />}
         value={product.title}
-        onChange={(e) => setProduct({ ...product, title: e.target.value })}
+        onChange={handleChange}
         placeholder="Nom du produit (ex: Super Burger)"
         className="input-title"
       />
       <TextInput
+        name="imageSource"
+        key="2"
         Icon={<BsFillCameraFill className="icon" />}
         value={product.imageSource}
-        onChange={(e) => setProduct({ ...product, imageSource: e.target.value })}
+        onChange={handleChange}
         placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
         className="input-imageSource"
       />
       <TextInput
+        name="price"
+        key="3"
         Icon={<MdOutlineEuro className="icon" />}
         value={product.price}
-        onChange={(e) => setProduct({ ...product, price: e.target.value })}
+        onChange={handleChange}
         placeholder="Prix"
         className="input-price"
       />
       <button type="submit">Ajouter un nouveau produit au menu</button>
-      <div>
-        <FiCheck />
-        Ajouté avec succès !
-      </div>
+      {isSubmited && (
+        <div className="submit-message">
+          <FiCheck />
+          Ajouté avec succès !
+        </div>
+      )}
     </AddProductStyled>
   )
 }
@@ -78,8 +103,8 @@ const AddProductStyled = styled.form`
   margin-left: 71px;
   width: 680px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 35px 35px 35px 35px;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: repeat(4, 35px);
   gap: 8px 20px;
   grid-auto-flow: row;
   justify-content: space-around;
@@ -87,8 +112,11 @@ const AddProductStyled = styled.form`
     "image input1 input1 "
     "image input2 input2 "
     "image input3 input3 "
-    ". button .";
+    ". button submit-message";
 
+  .submit-message {
+    grid-area: submit-message;
+  }
   button {
     grid-area: button;
     width: 275px;

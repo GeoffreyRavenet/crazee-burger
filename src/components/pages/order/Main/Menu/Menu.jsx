@@ -1,18 +1,12 @@
 import { useContext } from "react"
 import styled from "styled-components"
-import MainContext from "../../../../context/MainContext.jsx"
-import OrderContext from "../../../../context/OrderContext.jsx"
-import { formatPrice } from "../../../../utils/maths.js"
-import Card from "../../../reusable-ui/Card"
+import OrderContext from "../../../../../context/OrderContext.jsx"
+import { formatPrice } from "../../../../../utils/maths.js"
+import Card from "../../../../reusable-ui/Card.jsx"
 
 export default function Menu() {
-  const { products, setProducts } = useContext(MainContext)
-  const { isAdmin } = useContext(OrderContext)
+  const { isAdmin, products, handleDelete } = useContext(OrderContext)
 
-  const handleDeleteItem = (id) => {
-    const filteredState = products.filter((item) => item.id !== id)
-    setProducts(filteredState)
-  }
   return (
     <MenuStyled>
       {products.map(({ id, imageSource, title, price }) => (
@@ -21,7 +15,7 @@ export default function Menu() {
           imageSource={imageSource}
           title={title}
           price={formatPrice(price)}
-          handleDeleteItem={() => handleDeleteItem(id)}
+          onDelete={() => handleDelete(id)}
           hasDeleteButton={isAdmin}
         />
       ))}

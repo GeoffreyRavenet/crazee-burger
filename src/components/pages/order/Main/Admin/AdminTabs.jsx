@@ -1,8 +1,6 @@
 import React, { useContext } from "react"
 import styled from "styled-components"
 import Tab from "../../../../reusable-ui/Tab"
-import { MdModeEditOutline } from "react-icons/md"
-import { AiOutlinePlus } from "react-icons/ai"
 import { FiChevronDown, FiChevronUp } from "react-icons/fi"
 import { theme } from "../../../../../theme/index.js"
 import OrderContext from "../../../../../context/OrderContext"
@@ -26,6 +24,7 @@ export default function AdminTabs() {
       />
       {tabsButtons.map((item) => (
         <Tab
+          key={item.label}
           label={item.label}
           Icon={item.icon}
           onClick={() => handleClick(item.index)}
