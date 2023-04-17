@@ -22,7 +22,7 @@ export default function Menu() {
           title={title}
           price={formatPrice(price)}
           handleDeleteItem={() => handleDeleteItem(id)}
-          isAdmin={isAdmin}
+          hasDeleteButton={isAdmin}
         />
       ))}
     </MenuStyled>
