@@ -37,6 +37,7 @@ function LoginForm() {
         placeholder="Entrer votre prénom"
         required
         Icon={<BsPersonCircle className="icon" />}
+        version="normal"
       />
 
       <PrimaryButton
@@ -58,32 +59,25 @@ const LoginFormStyled = styled.form`
   padding: 2.5rem 2rem;
   border-radius: ${theme.borderRadius.round};
   font-family: "Amatic SC", cursive;
+  div {
+    margin-bottom: 18px;
+    h1 {
+      color: ${theme.colors.white};
+      font-size: ${theme.fonts.size.P5};
+    }
 
-  h1 {
-    color: ${theme.colors.white};
-    font-size: ${theme.fonts.size.P5};
-  }
+    hr {
+      background-color: ${theme.colors.primary};
+      border: 1.5px solid ${theme.colors.primary};
+      border-radius: ${theme.borderRadius.round};
+      margin-bottom: 40px;
+    }
 
-  hr {
-    background-color: ${theme.colors.primary};
-    border: 1.5px solid ${theme.colors.primary};
-    border-radius: ${theme.borderRadius.round};
-    margin-bottom: 40px;
-  }
-
-  h2 {
-    color: ${theme.colors.white};
-    margin: 20px 10px 10px;
-    font-size: ${theme.fonts.size.P4};
-  }
-
-  .icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 15px;
-    margin-left: 10px;
-    padding-top: 2px;
+    h2 {
+      color: ${theme.colors.white};
+      margin: 20px 10px 10px;
+      font-size: ${theme.fonts.size.P4};
+    }
   }
 
   .button-login {

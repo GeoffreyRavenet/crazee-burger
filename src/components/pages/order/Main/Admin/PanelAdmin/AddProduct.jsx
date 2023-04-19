@@ -61,6 +61,7 @@ export default function AddProduct() {
           onChange={handleChange}
           placeholder={item.placeholder}
           className={item.className}
+          version="normalgray"
         />
       ))}
       <div className="footerForm">
@@ -92,17 +93,6 @@ const AddProductStyled = styled.form`
   }
   .input-price {
     grid-area: input3;
-  }
-  div:has(input) {
-    margin: 0;
-    background-color: #f5f5f7;
-    input {
-      border-radius: 5px;
-      background-color: #f5f5f7;
-      ::placeholder {
-        background-color: #f5f5f7;
-      }
-    }
   }
 
   .footerForm {
