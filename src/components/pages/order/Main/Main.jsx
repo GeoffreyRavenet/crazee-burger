@@ -5,11 +5,10 @@ import OrderContext from "../../../../context/OrderContext"
 import { theme } from "../../../../theme/index"
 import Admin from "./Admin/Admin"
 import Menu from "./Menu/Menu"
-import EmptyMenu from "./Menu/EmptyMenu.jsx"
 
 export default function Main() {
   //state
-  const { isAdmin, products } = useContext(OrderContext)
+  const { isAdmin } = useContext(OrderContext)
 
   //comportement
 
@@ -19,7 +18,6 @@ export default function Main() {
       <div className="basket">Basket</div>
       <div className="menu-and-admin">
         <Menu />
-        {isAdmin && products.length <= 0 && <EmptyMenu />}
         {isAdmin && <Admin />}
       </div>
     </MainStyled>

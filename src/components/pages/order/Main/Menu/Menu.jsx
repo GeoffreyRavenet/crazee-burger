@@ -3,9 +3,18 @@ import styled from "styled-components"
 import OrderContext from "../../../../../context/OrderContext.jsx"
 import { formatPrice } from "../../../../../utils/maths.js"
 import Card from "../../../../reusable-ui/Card.jsx"
+import EmptyMenuAdmin from "./EmptyMenuAdmin.jsx"
+import EmptyMenuClient from "./EmptyMenuClient.jsx"
 
 export default function Menu() {
-  const { isAdmin, products, handleDelete } = useContext(OrderContext)
+  //State
+  const { isAdmin, products, handleDelete, resetMenu } = useContext(OrderContext)
+  //Comportements
+  //Affichage
+  if (products.length === 0) {
+    if (!isAdmin) return <EmptyMenuClient />
+    return <EmptyMenuAdmin onReset={resetMenu} />
+  }
 
   return (
     <MenuStyled>

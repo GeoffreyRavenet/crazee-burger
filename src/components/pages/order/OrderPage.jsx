@@ -4,7 +4,17 @@ import { theme } from "../../../theme/index"
 import Main from "./Main/Main"
 import Navbar from "./Navbar/Navbar"
 import OrderContext from "../../../context/OrderContext.jsx"
-import { fakeMenu2 } from "../../../fakeData/fakeMenu.js"
+import { fakeMenu1, fakeMenu2 } from "../../../fakeData/fakeMenu.js"
+
+const EMPTY_PRODUCT = {
+  id: "100000000",
+  imageSource: "",
+  title: "",
+  price: "",
+  quantity: 0,
+  isAvailable: true,
+  isAdvertised: false,
+}
 
 export default function OrderPage() {
   //state
@@ -12,6 +22,7 @@ export default function OrderPage() {
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
   const [products, setProducts] = useState(fakeMenu2)
+  const [product, setProduct] = useState(EMPTY_PRODUCT)
   //comportements
   const handleAdd = (newProductToAdd) => {
     // 1 . copie du tableau
@@ -30,7 +41,9 @@ export default function OrderPage() {
     // 3 . update du state
     setProducts(menuUpdated)
   }
-
+  const resetMenu = () => {
+    setProducts(fakeMenu1)
+  }
   const orderContextValue = {
     isAdmin,
     setIsAdmin,
@@ -42,6 +55,9 @@ export default function OrderPage() {
     setProducts,
     handleAdd,
     handleDelete,
+    resetMenu,
+    product,
+    setProduct,
   }
 
   return (
