@@ -44,6 +44,9 @@ const CardStyled = styled.div`
     height: 30px;
     cursor: pointer;
     animation: 500ms ease-out 0s 1 normal none running irVrYc;
+    :active {
+      color: #e25549;
+    }
   }
   .card-img {
     display: flex;
