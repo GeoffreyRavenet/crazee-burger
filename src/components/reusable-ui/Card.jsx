@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { theme } from "../../theme/index.js"
-import PrimaryButton from "./PrimaryButton"
+import Button from "./Button.jsx"
 import { TiDelete } from "react-icons/ti"
 
 export default function Card({ imageSource, title, price, onDelete, hasDeleteButton }) {
@@ -12,9 +12,9 @@ export default function Card({ imageSource, title, price, onDelete, hasDeleteBut
         <img src={imageSource} alt="{title}" />
       </div>
       <h3>{title}</h3>
-      <div className="bottom-card">
+      <div className="footer-card">
         <span>{price}</span>
-        <PrimaryButton label="Ajouter" className="button-card" />
+        <Button label="Ajouter" version="normal" />
       </div>
     </CardStyled>
   )
@@ -70,25 +70,13 @@ const CardStyled = styled.div`
     margin-top: 20px;
   }
 
-  .bottom-card {
+  .footer-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 200px;
-    color: ${theme.colors.primary};
     font-family: "Open Sans", cursive;
+    color: ${theme.colors.primary};
     margin-bottom: 20px;
-
-    .button-card {
-      padding-top: 12px;
-      padding-bottom: 12px;
-      font-size: ${theme.fonts.size.XS};
-      font-weight: ${theme.fonts.weights.semiBold};
-    }
-
-    .button-card:active {
-      background: ${theme.colors.primary};
-      color: ${theme.colors.white};
-    }
   }
 `

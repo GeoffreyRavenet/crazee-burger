@@ -5,7 +5,7 @@ import { theme } from "../../../theme/index.js"
 import { IoChevronForward } from "react-icons/io5"
 import { BsPersonCircle } from "react-icons/bs"
 import Input from "../../reusable-ui/TextInput"
-import PrimaryButton from "../../reusable-ui/PrimaryButton.jsx"
+import Button from "../../reusable-ui/Button.jsx"
 
 function LoginForm() {
   //state (etat, données)
@@ -36,14 +36,14 @@ function LoginForm() {
         onChange={handleChange}
         placeholder="Entrer votre prénom"
         required
-        Icon={<BsPersonCircle className="icon" />}
+        Icon={<BsPersonCircle />}
         version="normal"
       />
 
-      <PrimaryButton
-        className="button-login"
+      <Button
+        version="large"
         label="Accéder à mon espace"
-        Icon={<IoChevronForward className="icon" />}
+        Icon={<IoChevronForward className="chevron" />}
       />
     </LoginFormStyled>
   )
@@ -79,8 +79,7 @@ const LoginFormStyled = styled.form`
       font-size: ${theme.fonts.size.P4};
     }
   }
-
-  .button-login {
-    width: 100%;
+  .chevron {
+    margin-left: 9px;
   }
 `

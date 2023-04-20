@@ -1,16 +1,12 @@
 import styled from "styled-components"
-import PrimaryButton from "../../../../reusable-ui/PrimaryButton.jsx"
+import Button from "../../../../reusable-ui/Button.jsx"
 
 export default function EmptyMenuAdmin({ onReset }) {
   return (
     <EmptyMenuAdminStyled>
       <div className="EmptyMenuTitle">Le menu est vide ?</div>
       <div>Cliquez ci-dessous pour le réinitialiser</div>
-      <PrimaryButton
-        onClick={onReset}
-        label="Générer de nouveaux produits"
-        className="button-emptyAdmin"
-      />
+      <Button onClick={onReset} label="Générer de nouveaux produits" version="medium" />
     </EmptyMenuAdminStyled>
   )
 }
@@ -33,15 +29,5 @@ const EmptyMenuAdminStyled = styled.div`
   }
   .EmptyMenuTitle {
     font-weight: 700;
-  }
-  .button-emptyAdmin {
-    padding: 19px 25px 19px 25px;
-    height: 50px;
-
-    font-family: "Arial";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 12px;
   }
 `

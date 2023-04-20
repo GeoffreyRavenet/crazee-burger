@@ -23,7 +23,7 @@ const TextInputStyled = styled.div`
   align-items: center;
   padding: 18px 24px;
 
-  .icon {
+  svg {
     color: ${theme.colors.greySemiDark};
     font-size: ${theme.fonts.size.SM};
     margin: 0 13px 0 0;
