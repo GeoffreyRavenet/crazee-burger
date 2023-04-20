@@ -17,6 +17,7 @@ const ButtonStyled = styled.button`
   position: relative; //is used in case you want to create interactive icons where an icon replaces the text label.
   white-space: nowrap; //prevents the text label from wrapping to the next line.
   line-height: 1;
+  cursor: pointer;
 
   padding: 18px 24px;
   border-radius: ${theme.borderRadius.round};

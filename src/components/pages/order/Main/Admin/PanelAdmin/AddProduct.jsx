@@ -61,6 +61,7 @@ export default function AddProduct() {
           onChange={handleChange}
           placeholder={item.placeholder}
           className={item.className}
+          type={item.type}
           version="normalgray"
         />
       ))}

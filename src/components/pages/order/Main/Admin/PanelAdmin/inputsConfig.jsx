@@ -9,6 +9,7 @@ export const inputsConfig = [
     Icon: <FaHamburger />,
     placeholder: "Nom du produit (ex: Super Burger)",
     className: "input-title",
+    type: "text",
   },
   {
     name: "imageSource",
@@ -16,6 +17,7 @@ export const inputsConfig = [
     Icon: <BsFillCameraFill />,
     placeholder: "Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)",
     className: "input-imageSource",
+    type: "url",
   },
   {
     name: "price",
@@ -23,5 +25,6 @@ export const inputsConfig = [
     Icon: <MdOutlineEuro />,
     placeholder: "Prix",
     className: "input-price",
+    type: "text",
   },
 ]

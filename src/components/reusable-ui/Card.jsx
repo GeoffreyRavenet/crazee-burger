@@ -44,7 +44,8 @@ const CardStyled = styled.div`
     height: 30px;
     cursor: pointer;
     animation: 500ms ease-out 0s 1 normal none running irVrYc;
-    :active {
+    :active,
+    :hover {
       color: #e25549;
     }
   }
@@ -62,6 +63,7 @@ const CardStyled = styled.div`
 
   h3 {
     width: 200px;
+    height: 45.6px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
