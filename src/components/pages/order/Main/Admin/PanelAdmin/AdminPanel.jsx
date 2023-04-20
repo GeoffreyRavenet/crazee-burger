@@ -20,4 +20,7 @@ const AdminPanelStyled = styled.div`
   height: 250px;
   border: 1px solid ${theme.colors.greyLight};
   box-shadow: ${theme.shadows.subtle};
+  padding-left: 71px;
+  display: flex;
+  align-items: center;
 `

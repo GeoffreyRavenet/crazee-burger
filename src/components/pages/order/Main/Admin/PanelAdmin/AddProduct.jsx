@@ -73,8 +73,6 @@ export default function AddProduct() {
   )
 }
 const AddProductStyled = styled.form`
-  margin-top: 31px;
-  margin-left: 71px;
   width: 680px;
   display: grid;
   grid-template-columns: 1fr 3fr;
