@@ -3,10 +3,18 @@ import { theme } from "../../theme/index.js"
 import Button from "./Button.jsx"
 import { TiDelete } from "react-icons/ti"
 
-export default function Card({ imageSource, title, price, onDelete, hasDeleteButton }) {
+export default function Card({
+  imageSource,
+  title,
+  price,
+  onDelete,
+  hasDeleteButton,
+  handleSelect,
+}) {
   return (
     <CardStyled>
-      {hasDeleteButton && <TiDelete onClick={onDelete} className="card-delete" />}
+      {hasDeleteButton && <div className="selected-card-inAdmin" onClick={handleSelect} />}
+      {hasDeleteButton && <TiDelete onClick={onDelete} className="button-delete" />}
 
       <div className="card-img">
         <img src={imageSource} alt="{title}" />
@@ -35,7 +43,13 @@ const CardStyled = styled.div`
   border-radius: 15px;
   box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
 
-  .card-delete {
+  .selected-card-inAdmin {
+    position: absolute;
+    width: 100%;
+    height: 330px;
+    cursor: pointer;
+  }
+  .button-delete {
     position: absolute;
     right: 15px;
     top: 15px;

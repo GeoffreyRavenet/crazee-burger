@@ -23,6 +23,7 @@ export default function OrderPage() {
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
   const [products, setProducts] = useState(fakeMenu2)
   const [product, setProduct] = useState(EMPTY_PRODUCT)
+  const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
   //comportements
   const handleAdd = (newProductToAdd) => {
     // 1 . copie du tableau
@@ -41,6 +42,16 @@ export default function OrderPage() {
     // 3 . update du state
     setProducts(menuUpdated)
   }
+
+  const handleSelect = (productIdSelected) => {
+    // 1 . copie du tableau
+    const productsCopy = [...products]
+    // 2 . manip de la copie du tableau
+    const selectedProductUpdated = productsCopy.filter((item) => item.id === productIdSelected)
+    // 3 . update du state
+    setSelectedProduct(...selectedProductUpdated)
+  }
+
   const resetMenu = () => {
     setProducts(fakeMenu1)
   }
@@ -58,6 +69,9 @@ export default function OrderPage() {
     resetMenu,
     product,
     setProduct,
+    selectedProduct,
+    setSelectedProduct,
+    handleSelect,
   }
 
   return (

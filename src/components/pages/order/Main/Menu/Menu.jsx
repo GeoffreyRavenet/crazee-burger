@@ -8,7 +8,7 @@ import EmptyMenuClient from "./EmptyMenuClient.jsx"
 
 export default function Menu() {
   //State
-  const { isAdmin, products, handleDelete, resetMenu } = useContext(OrderContext)
+  const { isAdmin, products, handleDelete, resetMenu, handleSelect } = useContext(OrderContext)
   //Comportements
   //Affichage
   if (products.length === 0) {
@@ -26,6 +26,7 @@ export default function Menu() {
           price={formatPrice(price)}
           onDelete={() => handleDelete(id)}
           hasDeleteButton={isAdmin}
+          handleSelect={() => handleSelect(id)}
         />
       ))}
     </MenuStyled>
