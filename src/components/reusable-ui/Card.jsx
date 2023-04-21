@@ -44,6 +44,11 @@ const CardStyled = styled.div`
   border-radius: 15px;
   box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
 
+  :hover:has(.button-delete) {
+    transition: transform 0.5s ease-in-out 0s, box-shadow 0.5s ease-in-out 0s;
+    transform: scale(1.05);
+    box-shadow: 0px 0px 8px #ff9a23;
+  }
   .selected-card-inAdmin {
     position: absolute;
     width: 100%;
@@ -59,9 +64,12 @@ const CardStyled = styled.div`
     height: 30px;
     cursor: pointer;
     animation: 500ms ease-out 0s 1 normal none running irVrYc;
-    :active,
+
     :hover {
       color: #e25549;
+    }
+    :active {
+      color: #ffa01b;
     }
   }
   .card-img {
