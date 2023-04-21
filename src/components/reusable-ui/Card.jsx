@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { theme } from "../../theme/index.js"
 import Button from "./Button.jsx"
 import { TiDelete } from "react-icons/ti"
@@ -9,11 +9,12 @@ export default function Card({
   price,
   onDelete,
   hasDeleteButton,
-  handleSelect,
+  handleSelectedCard,
+  version = "",
 }) {
   return (
-    <CardStyled>
-      {hasDeleteButton && <div className="selected-card-inAdmin" onClick={handleSelect} />}
+    <CardStyled version={version}>
+      {hasDeleteButton && <div className="selected-card-inAdmin" onClick={handleSelectedCard} />}
       {hasDeleteButton && <TiDelete onClick={onDelete} className="button-delete" />}
 
       <div className="card-img">
@@ -21,8 +22,8 @@ export default function Card({
       </div>
       <h3>{title}</h3>
       <div className="footer-card">
-        <span>{price}</span>
-        <Button label="Ajouter" version="normal" />
+        <span className="price">{price}</span>
+        <Button label="Ajouter" version="normal" onClick={() => console.log("test")} />
       </div>
     </CardStyled>
   )
@@ -94,5 +95,34 @@ const CardStyled = styled.div`
     font-family: "Open Sans", cursive;
     color: ${theme.colors.primary};
     margin-bottom: 20px;
+  }
+
+  ${({ version }) => version === "SelectedCard" && SelectedCard};
+`
+
+const SelectedCard = css`
+  background: ${theme.colors.primary};
+  .button-delete {
+    color: ${theme.colors.white};
+  }
+  .footer-card {
+    .price {
+      color: ${theme.colors.white};
+    }
+
+    button {
+      background: ${theme.colors.white};
+      color: ${theme.colors.primary};
+
+      &:hover {
+        background-color: ${theme.colors.primary};
+        color: ${theme.colors.white};
+        border-color: ${theme.colors.white};
+      }
+      &:active {
+        background-color: ${theme.colors.white};
+        color: ${theme.colors.primary};
+      }
+    }
   }
 `

@@ -31,7 +31,7 @@ const ButtonStyled = styled.button`
   color: ${theme.colors.white};
   text-decoration: none;
 
-  &:hover:not(:disabled) {
+  &:hover {
     background-color: ${theme.colors.white};
     color: ${theme.colors.primary};
     border: 1px solid ${theme.colors.primary};

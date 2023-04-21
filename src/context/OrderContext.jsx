@@ -23,5 +23,5 @@ export default createContext({
   //partie  produit select
   selectedProduct: [],
   setSelectedProduct: () => {},
-  handleSelect: () => {},
+  titleEditRef: {},
 })

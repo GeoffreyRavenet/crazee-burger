@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useRef, useState } from "react"
 import styled from "styled-components"
 import { theme } from "../../../theme/index"
 import Main from "./Main/Main"
@@ -20,10 +20,12 @@ export default function OrderPage() {
   //state
   const [isAdmin, setIsAdmin] = useState(true)
   const [isCollapsed, setIsCollapsed] = useState(false)
-  const [currentTabSelected, setCurrentTabSelected] = useState("add")
+  const [currentTabSelected, setCurrentTabSelected] = useState("edit")
   const [products, setProducts] = useState(fakeMenu2)
   const [product, setProduct] = useState(EMPTY_PRODUCT)
   const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
+  const titleEditRef = useRef()
+
   //comportements
   const handleAdd = (newProductToAdd) => {
     // 1 . copie du tableau
@@ -41,15 +43,6 @@ export default function OrderPage() {
     const menuUpdated = productsCopy.filter((item) => item.id !== productId)
     // 3 . update du state
     setProducts(menuUpdated)
-  }
-
-  const handleSelect = (productIdSelected) => {
-    // 1 . copie du tableau
-    const productsCopy = [...products]
-    // 2 . manip de la copie du tableau
-    const selectedProductUpdated = productsCopy.filter((item) => item.id === productIdSelected)
-    // 3 . update du state
-    setSelectedProduct(...selectedProductUpdated)
   }
 
   const resetMenu = () => {
@@ -71,7 +64,7 @@ export default function OrderPage() {
     setProduct,
     selectedProduct,
     setSelectedProduct,
-    handleSelect,
+    titleEditRef,
   }
 
   return (
