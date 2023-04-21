@@ -52,6 +52,7 @@ const ButtonStyled = styled.button`
   ${({ version }) => version === "normal" && normal}
   ${({ version }) => version === "medium" && medium}
   ${({ version }) => version === "large" && large}
+  ${({ version }) => version === "form" && form}
 `
 
 const normal = css`
@@ -69,3 +70,47 @@ const medium = css`
   width: 224px;
   padding: 19px 0;
 `
+
+const form = css`
+  width: 275px;
+  height: 34px;
+  padding: 0;
+  background: #60bd4f;
+  border: 1px solid #60bd4f;
+  color: #ffffff;
+  :hover {
+    background: #fff;
+    color: #60bd4f;
+    border: 1px solid #60bd4f;
+  }
+  :active {
+    background: #60bd4f;
+    color: #fff;
+    border: 1px solid #60bd4f;
+  }
+`
+
+/*
+
+ button {
+      cursor: pointer;
+      width: 275px;
+      height: 34px;
+      background: #60bd4f;
+      border: 1px solid #60bd4f;
+      border-radius: 5px;
+
+      font-family: "Arial";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 14px;
+      text-align: center;
+
+      color: #ffffff;
+      :active {
+        background: #fff;
+        color: #60bd4f;
+      }
+    }
+*/

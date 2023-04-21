@@ -49,7 +49,7 @@ export default function Menu() {
           onDelete={() => handleDelete(id)}
           hasDeleteButton={isAdmin}
           handleSelectedCard={() => handleSelectedCard(id)}
-          version={isSelected === id && isAdmin && "SelectedCard"}
+          version={isSelected === id && isAdmin ? "SelectedCard" : "normal"}
         />
       ))}
     </MenuStyled>
