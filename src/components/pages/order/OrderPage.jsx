@@ -4,7 +4,7 @@ import { theme } from "../../../theme/index"
 import Main from "./Main/Main"
 import Navbar from "./Navbar/Navbar"
 import OrderContext from "../../../context/OrderContext.jsx"
-import { fakeMenu1, fakeMenu2 } from "../../../fakeData/fakeMenu.js"
+import { useMenu } from "../../../hooks/useMenu.js"
 
 const EMPTY_PRODUCT = {
   id: "100000000",
@@ -21,33 +21,13 @@ export default function OrderPage() {
   const [isAdmin, setIsAdmin] = useState(true)
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [currentTabSelected, setCurrentTabSelected] = useState("edit")
-  const [products, setProducts] = useState(fakeMenu2)
-  const [product, setProduct] = useState(EMPTY_PRODUCT)
   const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
+  const [product, setProduct] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
+  const { handleAdd, handleDelete, resetMenu, products, setProducts } = useMenu()
 
   //comportements
-  const handleAdd = (newProductToAdd) => {
-    // 1 . copie du tableau
-    const productsCopy = [...products]
-    // 2 . manip de la copie du tableau
-    const menuUpdated = [newProductToAdd, ...productsCopy]
-    // 3 . update du state
-    setProducts(menuUpdated)
-  }
 
-  const handleDelete = (productId) => {
-    // 1 . copie du tableau
-    const productsCopy = [...products]
-    // 2 . manip de la copie du tableau
-    const menuUpdated = productsCopy.filter((item) => item.id !== productId)
-    // 3 . update du state
-    setProducts(menuUpdated)
-  }
-
-  const resetMenu = () => {
-    setProducts(fakeMenu1)
-  }
   const orderContextValue = {
     isAdmin,
     setIsAdmin,
