@@ -14,18 +14,21 @@ export default function EditProduct() {
     handleEdit(event, selectedProduct)
   }
 
-  //<span>Cliquer sur un produit pour le modifier</span>
+  /*if (selectedProduct.title === "") {
+    return <EditProductStyled className="toto"></EditProductStyled>
+  }*/
   return (
-    <Form
-      product={selectedProduct}
-      inputRef={titleEditRef}
-      inputsConfig={inputsConfig}
-      handleChange={handleChange}
-    >
-      <EditProductStyled>
-        Cliquer sur un produit du menu pour le modifier en temps réel
-      </EditProductStyled>
-    </Form>
+    <EditProductStyled>
+      <Form
+        product={selectedProduct}
+        inputRef={titleEditRef}
+        inputsConfig={inputsConfig}
+        handleChange={handleChange}
+      >
+        Cliquer sur un produit du menu pour le modifier{" "}
+        <span className="underline">en temps réel</span>
+      </Form>
+    </EditProductStyled>
   )
 }
 
@@ -33,4 +36,7 @@ const EditProductStyled = styled.span`
   font-family: "Open Sans";
   font-size: 15px;
   color: #ffa01b;
+  .underline {
+    text-decoration: underline;
+  }
 `
