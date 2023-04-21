@@ -36,9 +36,20 @@ export default function AddProduct() {
     displaySubmitMessage()
   }
 
+  const handleChange = (event) => {
+    const { name, value } = event.target
+    setProduct({ ...setProduct, [name]: value })
+    console.log(setProduct.imageSource)
+  }
+
   //Affichage
   return (
-    <Form product={product} inputRef={titleEditRef} inputsConfig={inputsConfig}>
+    <Form
+      product={product}
+      inputRef={titleEditRef}
+      inputsConfig={inputsConfig}
+      handleChange={handleChange}
+    >
       <Button
         type="submit"
         label="Ajouter un nouveau produit au menu"

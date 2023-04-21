@@ -24,7 +24,7 @@ export default function OrderPage() {
   const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
   const [product, setProduct] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
-  const { handleAdd, handleDelete, resetMenu, products, setProducts } = useMenu()
+  const { handleAdd, handleDelete, resetMenu, products, setProducts, handleEdit } = useMenu()
 
   //comportements
 
@@ -45,6 +45,7 @@ export default function OrderPage() {
     selectedProduct,
     setSelectedProduct,
     titleEditRef,
+    handleEdit,
   }
 
   return (

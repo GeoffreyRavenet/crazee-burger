@@ -3,7 +3,7 @@ import TextInput from "../../../../../reusable-ui/TextInput.jsx"
 import styled from "styled-components"
 import ImagePreview from "./ImagePreview.jsx"
 
-export default function Form({ product, inputRef, inputsConfig, children }) {
+export default function Form({ product, inputRef, inputsConfig, handleChange, children }) {
   return (
     <FormStyled>
       <ImagePreview imageSource={product.imageSource} />
@@ -13,9 +13,11 @@ export default function Form({ product, inputRef, inputsConfig, children }) {
           name={item.name}
           key={index}
           Icon={item.Icon}
+          value={item.value}
           placeholder={item.placeholder}
           className={item.className}
           version="normalgray"
+          onChange={handleChange}
           ref={item.name === "title" ? inputRef : null}
         />
       ))}

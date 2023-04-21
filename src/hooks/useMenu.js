@@ -22,8 +22,20 @@ export const useMenu = () => {
     setProducts(menuUpdated)
   }
 
+  const handleEdit = (event, selectedProduct) => {
+    const { name, value } = event.target
+    const cpProducts = products
+    const editProducts = cpProducts.map((item) => {
+      if (item.id === selectedProduct.id) {
+        return { ...item, [name]: value }
+      }
+      return item
+    })
+    setProducts(editProducts)
+  }
+
   const resetMenu = () => {
     setProducts(fakeMenu1)
   }
-  return { handleAdd, handleDelete, resetMenu, products, setProducts }
+  return { handleAdd, handleDelete, resetMenu, products, setProducts, handleEdit }
 }
