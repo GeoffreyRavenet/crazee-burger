@@ -1,10 +1,11 @@
-import React, { useContext, useState } from "react"
+import React, { useContext } from "react"
 import { isEmpty } from "lodash"
 import OrderContext from "../../../../../../context/OrderContext.jsx"
 import SubmitMessage from "../../Menu/SubmitMessage.jsx"
 import { getInputsConfig } from "./inputsConfig.jsx"
 import Form from "./Form.jsx"
 import Button from "../../../../../reusable-ui/Button.jsx"
+import { useSuccessMessage } from "../../../../../../hooks/useDisplaySubmitMessage.js"
 
 const EMPTY_PRODUCT = {
   id: "100000000",
@@ -18,9 +19,8 @@ const EMPTY_PRODUCT = {
 export default function AddProduct() {
   //state
   const { handleAdd, product, setProduct, titleEditRef } = useContext(OrderContext)
-  const [isSubmited, setIsSubmited] = useState(false)
   const inputsConfig = getInputsConfig(product)
-
+  const { isSubmited, displaySubmitMessage } = useSuccessMessage()
   //comportements
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -34,13 +34,6 @@ export default function AddProduct() {
     setProduct(EMPTY_PRODUCT)
 
     displaySubmitMessage()
-  }
-
-  const displaySubmitMessage = () => {
-    setIsSubmited(true)
-    setTimeout(() => {
-      setIsSubmited(false)
-    }, 2000)
   }
 
   //Affichage
