@@ -2,13 +2,14 @@ import { FaHamburger } from "react-icons/fa"
 import { MdOutlineEuro } from "react-icons/md"
 import { BsFillCameraFill } from "react-icons/bs"
 
-export const inputsConfig = [
+export const getInputsConfig = (productValue) => [
   {
     name: "title",
     key: "1",
     Icon: <FaHamburger />,
     placeholder: "Nom du produit (ex: Super Burger)",
     className: "input-title",
+    value: productValue.title,
     type: "text",
   },
   {
@@ -17,6 +18,7 @@ export const inputsConfig = [
     Icon: <BsFillCameraFill />,
     placeholder: "Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)",
     className: "input-imageSource",
+    value: productValue.imageSource,
     type: "url",
   },
   {
@@ -25,6 +27,7 @@ export const inputsConfig = [
     Icon: <MdOutlineEuro />,
     placeholder: "Prix",
     className: "input-price",
+    value: productValue.price,
     type: "text",
   },
 ]

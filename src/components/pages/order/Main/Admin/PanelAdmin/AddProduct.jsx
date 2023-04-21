@@ -4,8 +4,8 @@ import TextInput from "../../../../../reusable-ui/TextInput.jsx"
 import { isEmpty } from "lodash"
 import OrderContext from "../../../../../../context/OrderContext.jsx"
 import ImagePreview from "./ImagePreview.jsx"
-import { inputsConfig } from "./inputsConfig.jsx"
 import SubmitMessage from "../../Menu/SubmitMessage.jsx"
+import { getInputsConfig } from "./inputsConfig.jsx"
 
 const EMPTY_PRODUCT = {
   id: "100000000",
@@ -20,6 +20,7 @@ export default function AddProduct() {
   //state
   const { handleAdd, product, setProduct } = useContext(OrderContext)
   const [isSubmited, setIsSubmited] = useState(false)
+  const inputsConfig = getInputsConfig(product)
 
   //comportements
   const handleSubmit = (event) => {
@@ -57,7 +58,7 @@ export default function AddProduct() {
           name={item.name}
           key={index}
           Icon={item.Icon}
-          value={product[item.name]}
+          value={item.value}
           onChange={handleChange}
           placeholder={item.placeholder}
           className={item.className}
@@ -99,6 +100,7 @@ const AddProductStyled = styled.form`
     display: flex;
     align-items: center;
     button {
+      cursor: pointer;
       width: 275px;
       height: 34px;
       background: #60bd4f;
@@ -113,6 +115,10 @@ const AddProductStyled = styled.form`
       text-align: center;
 
       color: #ffffff;
+      :active {
+        background: #fff;
+        color: #60bd4f;
+      }
     }
   }
 `

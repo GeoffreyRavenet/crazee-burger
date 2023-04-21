@@ -1,18 +1,18 @@
 import styled from "styled-components"
 
 export default function ImagePreview({ imageSource }) {
-  const isURL = (value) => {
+  /*const isURL = (value) => {
     try {
       new URL(value)
       return true
     } catch (error) {
       return false
     }
-  }
+  }*/
 
   return (
     <ImagePreviewStyled>
-      {isURL(imageSource) ? (
+      {imageSource ? (
         <img src={imageSource} alt="newproduct" />
       ) : (
         <span className="no-image">Aucune image</span>

@@ -3,48 +3,75 @@ import styled from "styled-components"
 import OrderContext from "../../../../../../context/OrderContext.jsx"
 import ImagePreview from "./ImagePreview.jsx"
 import TextInput from "../../../../../reusable-ui/TextInput.jsx"
-import { inputsConfig } from "./inputsConfig.jsx"
+import { getInputsConfig } from "./inputsConfig.jsx"
 
 export default function EditProduct() {
-  const { selectedProduct, setSelectedProduct, isAdmin } = useContext(OrderContext)
+  const { selectedProduct, setSelectedProduct, titleEditRef } = useContext(OrderContext)
+  const inputsConfig = getInputsConfig(selectedProduct)
 
   const handleChange = (event) => {
     const { name, value } = event.target
     setSelectedProduct({ ...selectedProduct, [name]: value })
+    console.log(selectedProduct.imageSource)
   }
+
   //<span>Cliquer sur un produit pour le modifier</span>
   return (
     <EditProductStyled>
       <ImagePreview imageSource={selectedProduct.imageSource} />
+
       {inputsConfig.map((item, index) => (
         <TextInput
           name={item.name}
           key={index}
           Icon={item.Icon}
-          value={selectedProduct[item.name]}
+          value={item.value}
           onChange={handleChange}
           placeholder={item.placeholder}
           className={item.className}
           version="normalgray"
+          ref={item.name === "title" ? titleEditRef : null}
         />
       ))}
       <div className="footerForm">
-        <button type="submit">Ajouter un nouveau produit au menu</button>
+        Cliquer sur un produit du menu pour le modifier en temps réel
       </div>
     </EditProductStyled>
   )
 }
 
 const EditProductStyled = styled.div`
-  span {
-    font-family: "Amatic SC";
+  width: 680px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: repeat(4, 35px);
+  gap: 8px 20px;
+  grid-template-areas:
+    "image input1 "
+    "image input2  "
+    "image input3 "
+    ". button";
+
+  .input-title {
+    grid-area: input1;
+  }
+  .input-imageSource {
+    grid-area: input2;
+  }
+  .input-price {
+    grid-area: input3;
+  }
+
+  .footerForm {
+    grid-area: button;
+    font-family: "Open Sans";
     font-style: normal;
     font-weight: 400;
-    font-size: 24px;
-    line-height: 30px;
+    font-size: 15px;
+    line-height: 20px;
     display: flex;
     align-items: center;
 
-    color: #747b91;
+    color: #ffa01b;
   }
 `
