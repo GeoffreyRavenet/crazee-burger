@@ -9,7 +9,7 @@ import { EMPTY_PRODUCT } from "../../../enums/product.js"
 
 export default function OrderPage() {
   //state
-  const [isAdmin, setIsAdmin] = useState(true)
+  const [isAdmin, setIsAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [currentTabSelected, setCurrentTabSelected] = useState("edit")
   const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)

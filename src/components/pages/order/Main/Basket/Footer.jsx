@@ -14,6 +14,7 @@ const FooterStyled = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
+  font-family: "Amatic SC";
   font-weight: 700;
   font-size: 20px;
   line-height: 25px;
