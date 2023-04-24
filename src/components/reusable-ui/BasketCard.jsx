@@ -60,10 +60,11 @@ const BasketCardStyled = styled.div`
     .left-info {
       width: 107px;
       display: grid;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+
       .title {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
         font-family: "Amatic SC";
         font-style: normal;
         font-weight: ${theme.fonts.weights.bold};
