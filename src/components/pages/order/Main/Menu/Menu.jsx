@@ -19,8 +19,27 @@ export default function Menu() {
     setSelectedProduct,
     titleEditRef,
     setCurrentTabSelected,
+    setBasket,
+    basket,
   } = useContext(OrderContext)
   //Comportements
+  const handleAddToCart = (productId) => {
+    const cpProduct = [...products]
+    const cpBasket = [...basket]
+    const ProductToAdd = cpProduct.filter((item) => item.id === productId)
+    ProductToAdd[0].quantity = 1
+    const newProductToBasket = cpBasket.concat(ProductToAdd)
+
+    const completList = Object.values(
+      newProductToBasket.reduce((acc, article) => {
+        acc[article.id] ? (acc[article.id].quantity += 1) : (acc[article.id] = { ...article })
+        return acc
+      }, {})
+    )
+
+    setBasket(completList)
+  }
+
   const handleSelectedCard = async (productIdSelected) => {
     /* // 1 . copie du tableau
     const productsCopy = [...products]
@@ -60,6 +79,7 @@ export default function Menu() {
           onDelete={() => handleDelete(id)}
           hasDeleteButton={isAdmin}
           handleSelectedCard={() => handleSelectedCard(id)}
+          onAddToCart={() => handleAddToCart(id)}
           version={isSelected === id && isAdmin ? "SelectedCard" : "normal"}
         />
       ))}

@@ -10,6 +10,7 @@ export default function Card({
   onDelete,
   hasDeleteButton,
   handleSelectedCard,
+  onAddToCart,
   version = "",
 }) {
   return (
@@ -23,7 +24,7 @@ export default function Card({
       <h3>{title}</h3>
       <div className="footer-card">
         <span className="price">{price}</span>
-        <Button label="Ajouter" version="normal" onClick={() => console.log("test")} />
+        <Button label="Ajouter" version="normal" onClick={onAddToCart} />
       </div>
     </CardStyled>
   )
