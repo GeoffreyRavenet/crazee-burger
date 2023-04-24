@@ -57,7 +57,8 @@ const OrderPageStyled = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
-
+  background-image: url("/images/pattern-burger.png");
+  background-size: 200px 150px;
   .container {
     width: 100%;
     max-width: 1400px;

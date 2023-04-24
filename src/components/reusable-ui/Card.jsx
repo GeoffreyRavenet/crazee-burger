@@ -42,7 +42,7 @@ const CardStyled = styled.div`
 
   font-family: "Amatic SC", cursive;
   border-radius: ${theme.borderRadius.extraRound};
-  ${theme.shadows.medium};
+  box-shadow: ${theme.shadows.medium};
 
   :hover:has(.button-delete) {
     transition: transform 0.5s ease-in-out 0s, box-shadow 0.5s ease-in-out 0s;
