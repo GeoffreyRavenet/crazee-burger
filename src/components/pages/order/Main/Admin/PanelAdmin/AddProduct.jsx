@@ -1,21 +1,12 @@
 import React, { useContext } from "react"
-import { isEmpty } from "lodash"
 import OrderContext from "../../../../../../context/OrderContext.jsx"
 import SubmitMessage from "../../Menu/SubmitMessage.jsx"
 import { getInputsConfig } from "./inputsConfig.jsx"
 import Form from "./Form.jsx"
 import Button from "../../../../../reusable-ui/Button.jsx"
 import { useSuccessMessage } from "../../../../../../hooks/useDisplaySubmitMessage.js"
+import { EMPTY_PRODUCT } from "../../../../../../enums/product.js"
 
-const EMPTY_PRODUCT = {
-  id: "100000000",
-  imageSource: "",
-  title: "",
-  price: "",
-  quantity: 0,
-  isAvailable: true,
-  isAdvertised: false,
-}
 export default function AddProduct() {
   //state
   const { handleAdd, product, setProduct, titleEditRef } = useContext(OrderContext)
@@ -27,8 +18,8 @@ export default function AddProduct() {
     const newProductToAdd = {
       ...product,
       id: new Date().getTime(),
-      imageSource: isEmpty(product.imageSource) ? "/images/coming-soon.png" : product.imageSource,
-      price: isEmpty(product.price) ? "" : parseFloat(product.price),
+      imageSource: product.imageSource,
+      price: parseFloat(product.price),
     }
     handleAdd(newProductToAdd)
     setProduct(EMPTY_PRODUCT)

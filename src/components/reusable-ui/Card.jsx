@@ -18,7 +18,7 @@ export default function Card({
       {hasDeleteButton && <TiDelete onClick={onDelete} className="button-delete" />}
 
       <div className="card-img">
-        <img src={imageSource} alt="{title}" />
+        <img src={imageSource ? imageSource : "/images/coming-soon.png"} alt="{title}" />
       </div>
       <h3>{title}</h3>
       <div className="footer-card">
