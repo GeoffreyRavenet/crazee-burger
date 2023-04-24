@@ -1,11 +1,11 @@
 import React from "react"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { MdDeleteForever } from "react-icons/md"
 import { theme } from "../../theme/index.js"
 
-export default function BasketCard({ title, img, price, quantity, onDelete }) {
+export default function BasketCard({ title, img, price, quantity, onDelete, version = "" }) {
   return (
-    <BasketCardStyled>
+    <BasketCardStyled version={version}>
       <div className="image">
         <img src={img ? img : "/images/coming-soon.png"} alt={title} />
       </div>
@@ -129,5 +129,14 @@ const BasketCardStyled = styled.div`
     :active {
       color: ${theme.colors.white};
     }
+  }
+  ${({ version }) => version === "SelectedCardBasket" && SelectedCard};
+`
+const SelectedCard = css`
+  background: ${theme.colors.primary};
+
+  .infoProduct .left-info .price,
+  .infoProduct .quantity {
+    color: ${theme.colors.white};
   }
 `
