@@ -45,11 +45,11 @@ const normal = css`
   }
 `
 const normalgray = css`
-  background-color: #f5f5f7;
+  background-color: ${theme.colors.background_white};
   input {
-    background-color: #f5f5f7;
+    background-color: ${theme.colors.background_white};
     ::placeholder {
-      background-color: #f5f5f7;
+      background-color: ${theme.colors.background_white};
     }
   }
 `

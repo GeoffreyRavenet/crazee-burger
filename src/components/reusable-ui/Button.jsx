@@ -75,42 +75,17 @@ const form = css`
   width: 275px;
   height: 34px;
   padding: 0;
-  background: #60bd4f;
-  border: 1px solid #60bd4f;
-  color: #ffffff;
+  background: ${theme.colors.success};
+  border: 1px solid ${theme.colors.success};
+  color: ${theme.colors.white};
   :hover {
-    background: #fff;
-    color: #60bd4f;
-    border: 1px solid #60bd4f;
+    background: ${theme.colors.white};
+    color: ${theme.colors.success};
+    border: 1px solid ${theme.colors.success};
   }
   :active {
-    background: #60bd4f;
-    color: #fff;
-    border: 1px solid #60bd4f;
+    background: ${theme.colors.success};
+    color: ${theme.colors.white};
+    border: 1px solid ${theme.colors.success};
   }
 `
-
-/*
-
- button {
-      cursor: pointer;
-      width: 275px;
-      height: 34px;
-      background: #60bd4f;
-      border: 1px solid #60bd4f;
-      border-radius: 5px;
-
-      font-family: "Arial";
-      font-style: normal;
-      font-weight: 700;
-      font-size: 12px;
-      line-height: 14px;
-      text-align: center;
-
-      color: #ffffff;
-      :active {
-        background: #fff;
-        color: #60bd4f;
-      }
-    }
-*/

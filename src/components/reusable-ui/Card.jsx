@@ -41,8 +41,8 @@ const CardStyled = styled.div`
   background: ${theme.colors.white};
 
   font-family: "Amatic SC", cursive;
-  border-radius: 15px;
-  box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
+  border-radius: ${theme.borderRadius.extraRound};
+  ${theme.shadows.medium};
 
   :hover:has(.button-delete) {
     transition: transform 0.5s ease-in-out 0s, box-shadow 0.5s ease-in-out 0s;
@@ -55,21 +55,24 @@ const CardStyled = styled.div`
     height: 330px;
     cursor: pointer;
   }
+  :has(.selected-card-inAdmin) .button-delete:active {
+    color: ${theme.colors.white};
+  }
   .button-delete {
     position: absolute;
     right: 15px;
     top: 15px;
-    color: #ffa01b;
+    color: ${theme.colors.primary};
     width: 30px;
     height: 30px;
     cursor: pointer;
     animation: 500ms ease-out 0s 1 normal none running irVrYc;
 
     :hover {
-      color: #e25549;
+      color: ${theme.colors.red};
     }
     :active {
-      color: #ffa01b;
+      color: ${theme.colors.primary};
     }
   }
   .card-img {
@@ -90,7 +93,7 @@ const CardStyled = styled.div`
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    font-size: 36px;
+    font-size: ${theme.fonts.size.P4};
     margin-bottom: 10px;
     margin-top: 20px;
   }

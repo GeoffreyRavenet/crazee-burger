@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { HiCursorClick } from "react-icons/hi"
+import { theme } from "../../../../../../theme/index.js"
 
 export default function HintMessage() {
   return (
@@ -13,9 +14,9 @@ export default function HintMessage() {
 
 const HintMessageStyled = styled.div`
   font-family: "Amatic SC";
-  font-size: 24px;
+  font-size: ${theme.fonts.size.P3};
   line-height: 30px;
-  color: #747b91;
+  color: ${theme.colors.greyBlue};
   span {
     padding-right: 9px;
   }

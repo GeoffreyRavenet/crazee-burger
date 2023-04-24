@@ -3,6 +3,7 @@ import styled from "styled-components"
 import OrderContext from "../../../../../../context/OrderContext.jsx"
 import { getInputsConfig } from "./inputsConfig.jsx"
 import Form from "./Form.jsx"
+import { theme } from "../../../../../../theme/index.js"
 
 export default function EditProduct() {
   const { selectedProduct, setSelectedProduct, titleEditRef, handleEdit } = useContext(OrderContext)
@@ -34,8 +35,8 @@ export default function EditProduct() {
 
 const EditProductStyled = styled.span`
   font-family: "Open Sans";
-  font-size: 15px;
-  color: #ffa01b;
+  font-size: ${theme.fonts.size.SM};
+  color: ${theme.colors.primary};
   .underline {
     text-decoration: underline;
   }
