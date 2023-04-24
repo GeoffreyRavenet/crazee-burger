@@ -1,15 +1,15 @@
 import React from "react"
 import styled from "styled-components"
+import Total from "./Total.jsx"
+import { formatPrice } from "../../../../../utils/maths.js"
+import Footer from "./Footer.jsx"
 
 export default function Basket() {
   return (
     <BasketStyled>
-      <div className="header">
-        <span>Total</span>
-        <span>0,00€</span>
-      </div>
+      <Total totalPrice={formatPrice()} />
       <div className="body">Votre commande est vide.</div>
-      <div className="footer">Codé avec ❤️ et React.JS</div>
+      <Footer />
     </BasketStyled>
   )
 }
@@ -19,22 +19,7 @@ const BasketStyled = styled.div`
   flex-direction: column;
   font-family: "Amatic SC";
   font-style: normal;
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 16px;
-    background: #292729;
-    height: 70px;
 
-    font-weight: 700;
-    font-size: 36px;
-    line-height: 45px;
-
-    letter-spacing: 2px;
-
-    color: #ffa01b;
-  }
   .body {
     display: flex;
     align-items: center;
@@ -47,17 +32,5 @@ const BasketStyled = styled.div`
     font-size: 36px;
     line-height: 72px;
     color: #747b91;
-  }
-  .footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #292729;
-    height: 70px;
-
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 25px;
-    color: #ffffff;
   }
 `
