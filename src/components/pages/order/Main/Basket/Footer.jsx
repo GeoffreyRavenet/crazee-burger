@@ -16,7 +16,7 @@ const FooterStyled = styled.div`
   align-items: center;
   height: 100%;
   font-family: "Amatic SC";
-  font-size: ${theme.fonts.weights.bold};
+  font-weight: ${theme.fonts.weights.bold};
   font-size: ${theme.fonts.size.P2};
   line-height: 25px;
   color: ${theme.colors.white};

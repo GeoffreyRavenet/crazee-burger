@@ -38,7 +38,7 @@ export default function Menu() {
       }, {})
     )
 
-    setBasket(completList)
+    setBasket(completList.reverse())
   }
 
   const handleSelectedCard = async (productIdSelected) => {

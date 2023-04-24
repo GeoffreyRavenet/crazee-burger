@@ -20,7 +20,7 @@ const TotalStyled = styled.div`
   align-items: center;
 
   font-family: "Amatic SC";
-  font-size: ${theme.fonts.weights.bold};
+  font-weight: ${theme.fonts.weights.bold};
   font-size: ${theme.fonts.size.P4};
   line-height: 45px;
   letter-spacing: 2px;

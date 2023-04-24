@@ -16,7 +16,7 @@ export default function BasketCard({ title, img, price, quantity, onDelete }) {
         </div>
 
         <div className="right-info ">
-          <span className="quantity">x{quantity}</span>
+          <span className="quantity">x {quantity}</span>
         </div>
       </div>
 
@@ -66,7 +66,7 @@ const BasketCardStyled = styled.div`
       .title {
         font-family: "Amatic SC";
         font-style: normal;
-        font-size: ${theme.fonts.weights.bold};
+        font-weight: ${theme.fonts.weights.bold};
         font-size: ${theme.fonts.size.P3};
         line-height: 32px;
 
