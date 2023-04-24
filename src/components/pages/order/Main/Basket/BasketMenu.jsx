@@ -1,15 +1,23 @@
-import React from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
 import BasketCard from "../../../../reusable-ui/BasketCard.jsx"
 import { formatPrice } from "../../../../../utils/maths.js"
+import OrderContext from "../../../../../context/OrderContext.jsx"
 
 export default function BasketMenu() {
+  const { basket } = useContext(OrderContext)
+
   return (
     <BasketMenuStyled>
-      <BasketCard title="test" price={formatPrice()} quantity="2" img="/images/wedges1.png" />
+      {basket.map(({ title, price, quantity, imageSource }) => (
+        <BasketCard
+          title={title}
+          price={formatPrice(price)}
+          quantity={quantity}
+          img={imageSource}
+        />
+      ))}
     </BasketMenuStyled>
   )
 }
-const BasketMenuStyled = styled.div`
-  margin: 20px 16px;
-`
+const BasketMenuStyled = styled.div``

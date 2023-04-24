@@ -21,12 +21,13 @@ export default function BasketCard({ title, img, price, quantity }) {
   )
 }
 const BasketCardStyled = styled.div`
+  margin: 20px 16px;
   background: #ffffff;
   box-shadow: -4px 4px 15px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   display: grid;
   grid-template-columns: 30% 1fr;
-  padding: 0.5em 0.5em 0.5em 1em;
+  padding: 8px 0.5em 18px 16px;
   .image {
     height: 60px;
     img {
