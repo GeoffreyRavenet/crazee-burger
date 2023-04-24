@@ -1,18 +1,17 @@
 import React, { useContext } from "react"
 import styled from "styled-components"
 import OrderContext from "../../../../../../context/OrderContext"
-import AddProduct from "./AddProduct"
-import EditProduct from "./EditProduct"
-import { theme } from "../../../../../../theme/index.js"
+import { theme } from "../../../../../../theme/index"
+import { getTabsConfig, getTabSelected } from "../tabsConfig"
+import { EMPTY_PRODUCT } from "../../../../../../enums/product"
 
 export default function AdminPanel() {
-  const { currentTabSelected } = useContext(OrderContext)
+  const { currentTabSelected, selectedProduct } = useContext(OrderContext)
+  const hasAlreadyBeenClicked = selectedProduct !== EMPTY_PRODUCT
+  const tabs = getTabsConfig(hasAlreadyBeenClicked)
+  const tabSelected = getTabSelected(tabs, currentTabSelected)
 
-  return (
-    <AdminPanelStyled>
-      {currentTabSelected.includes("add") ? <AddProduct /> : <EditProduct />}
-    </AdminPanelStyled>
-  )
+  return <AdminPanelStyled>{tabSelected && tabSelected.Content}</AdminPanelStyled>
 }
 
 const AdminPanelStyled = styled.div`

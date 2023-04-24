@@ -4,12 +4,13 @@ import Tab from "../../../../reusable-ui/Tab"
 import { FiChevronDown, FiChevronUp } from "react-icons/fi"
 import { theme } from "../../../../../theme/index.js"
 import OrderContext from "../../../../../context/OrderContext"
-import { tabsButtons } from "./tabsConfig .jsx"
+import { getTabsConfig } from "./tabsConfig"
 
 export default function AdminTabs() {
   const { isCollapsed, setIsCollapsed, currentTabSelected, setCurrentTabSelected } =
     useContext(OrderContext)
 
+  const tabs = getTabsConfig()
   const handleClick = (index) => {
     setCurrentTabSelected(index)
     setIsCollapsed(false)
@@ -22,7 +23,7 @@ export default function AdminTabs() {
         onClick={() => setIsCollapsed(!isCollapsed)}
         className={isCollapsed ? "is-active-Chevron" : ""}
       />
-      {tabsButtons.map((item) => (
+      {tabs.map((item) => (
         <Tab
           key={item.label}
           label={item.label}
@@ -37,7 +38,7 @@ export default function AdminTabs() {
 
 const AdminTabsStyled = styled.div`
   display: flex;
-  padding: 0 22px;
+  padding: 0 71px;
 
   .is-active,
   .is-active-chevron {

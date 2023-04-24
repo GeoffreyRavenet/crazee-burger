@@ -5,16 +5,7 @@ import Main from "./Main/Main"
 import Navbar from "./Navbar/Navbar"
 import OrderContext from "../../../context/OrderContext.jsx"
 import { useMenu } from "../../../hooks/useMenu.js"
-
-const EMPTY_PRODUCT = {
-  id: "100000000",
-  imageSource: "",
-  title: "",
-  price: "",
-  quantity: 0,
-  isAvailable: true,
-  isAdvertised: false,
-}
+import { EMPTY_PRODUCT } from "../../../enums/product.js"
 
 export default function OrderPage() {
   //state

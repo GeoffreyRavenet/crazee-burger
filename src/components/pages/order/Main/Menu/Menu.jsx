@@ -15,21 +15,32 @@ export default function Menu() {
     products,
     handleDelete,
     resetMenu,
+    setIsCollapsed,
     setSelectedProduct,
     titleEditRef,
     setCurrentTabSelected,
   } = useContext(OrderContext)
   //Comportements
-  const handleSelectedCard = (productIdSelected) => {
-    // 1 . copie du tableau
+  const handleSelectedCard = async (productIdSelected) => {
+    /* // 1 . copie du tableau
     const productsCopy = [...products]
     // 2 . manip de la copie du tableau
     const selectedProductUpdated = productsCopy.filter((item) => item.id === productIdSelected)
     // 3 . update du state
     setSelectedProduct(...selectedProductUpdated)
     setCurrentTabSelected("edit")
-    titleEditRef.current.focus()
+
     setIsSelected(productIdSelected)
+    titleEditRef.current.focus()*/
+
+    if (!isAdmin) return
+
+    await setIsCollapsed(false)
+    await setCurrentTabSelected("edit")
+    const productClickedOn = products.find((product) => product.id === productIdSelected)
+    await setSelectedProduct(productClickedOn)
+    await setIsSelected(productIdSelected)
+    titleEditRef.current.focus()
   }
 
   //Affichage
