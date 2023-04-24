@@ -5,13 +5,8 @@ import { formatPrice } from "../../../../../utils/maths.js"
 import OrderContext from "../../../../../context/OrderContext.jsx"
 
 export default function BasketMenu() {
-  const { basket, setBasket } = useContext(OrderContext)
+  const { basket, handleBasketDelete } = useContext(OrderContext)
 
-  const handleDelete = (idBasketProduct) => {
-    const cpBasketProduct = basket
-    const updateBasket = cpBasketProduct.filter((item) => item.id !== idBasketProduct)
-    setBasket(updateBasket)
-  }
   return (
     <BasketMenuStyled>
       {basket.map(({ id, title, price, quantity, imageSource }) => (
@@ -21,7 +16,7 @@ export default function BasketMenu() {
           price={formatPrice(price)}
           quantity={quantity}
           img={imageSource}
-          onDelete={() => handleDelete(id)}
+          onDelete={() => handleBasketDelete(id)}
         />
       ))}
     </BasketMenuStyled>

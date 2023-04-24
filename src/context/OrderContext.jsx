@@ -28,4 +28,5 @@ export default createContext({
   //Partie panier
   basket: [],
   setBasket: () => {},
+  handleBasketDelete: () => {},
 })

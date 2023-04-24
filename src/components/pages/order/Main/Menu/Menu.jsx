@@ -21,6 +21,7 @@ export default function Menu() {
     setCurrentTabSelected,
     setBasket,
     basket,
+    handleBasketDelete,
   } = useContext(OrderContext)
   //Comportements
   const handleAddToCart = (productId) => {
@@ -76,7 +77,10 @@ export default function Menu() {
           imageSource={imageSource}
           title={title}
           price={formatPrice(price)}
-          onDelete={() => handleDelete(id)}
+          onDelete={() => {
+            handleDelete(id)
+            handleBasketDelete(id)
+          }}
           hasDeleteButton={isAdmin}
           handleSelectedCard={() => handleSelectedCard(id)}
           onAddToCart={() => handleAddToCart(id)}
