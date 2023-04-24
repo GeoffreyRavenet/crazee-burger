@@ -7,7 +7,11 @@ import { theme } from "../../../../../theme/index.js"
 
 export default function BasketBody() {
   const { basket } = useContext(OrderContext)
-  return <BasketBodyStyled>{basket ? <BasketMenu /> : <BasketEmptyMessage />}</BasketBodyStyled>
+  return (
+    <BasketBodyStyled>
+      {basket.length > 0 ? <BasketMenu /> : <BasketEmptyMessage />}
+    </BasketBodyStyled>
+  )
 }
 const BasketBodyStyled = styled.div`
   height: calc(((85vh - 70px) - 50px) - 20px);

@@ -15,7 +15,7 @@ export default function BasketCard({ title, img, price, quantity, onDelete }) {
           <span className="price">{price}</span>
         </div>
 
-        <div className="right-info ">
+        <div className="right-info">
           <span className="quantity">x {quantity}</span>
         </div>
       </div>
@@ -55,7 +55,8 @@ const BasketCardStyled = styled.div`
   .infoProduct {
     margin-left: 14px;
     display: grid;
-    grid-template-columns: 70% 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
     align-items: center;
     .left-info {
       width: 107px;
@@ -73,6 +74,7 @@ const BasketCardStyled = styled.div`
 
         color: ${theme.colors.dark};
       }
+
       .price {
         font-family: "Open Sans";
         font-style: normal;
@@ -82,15 +84,19 @@ const BasketCardStyled = styled.div`
         color: ${theme.colors.primary};
       }
     }
+
+    .right-info {
+      grid-column: span 1;
+      text-align: right;
+    }
     .quantity {
-      margin-left: 19px;
       font-family: "Open Sans";
       font-style: normal;
       font-size: ${theme.fonts.weights.regular};
       font-size: ${theme.fonts.size.P0};
       line-height: 22px;
-
       color: ${theme.colors.primary};
+      text-align: right;
     }
   }
 
