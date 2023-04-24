@@ -1,7 +1,8 @@
 import React from "react"
 import styled from "styled-components"
+import { MdDeleteForever } from "react-icons/md"
 
-export default function BasketCard({ title, img, price, quantity }) {
+export default function BasketCard({ title, img, price, quantity, onDelete }) {
   return (
     <BasketCardStyled>
       <div className="image">
@@ -17,10 +18,15 @@ export default function BasketCard({ title, img, price, quantity }) {
           <span className="quantity">x{quantity}</span>
         </div>
       </div>
+
+      <div className="delete-product" onClick={onDelete}>
+        <MdDeleteForever />
+      </div>
     </BasketCardStyled>
   )
 }
 const BasketCardStyled = styled.div`
+  position: relative;
   margin: 20px 16px;
   background: #ffffff;
   box-shadow: -4px 4px 15px rgba(0, 0, 0, 0.2);
@@ -28,6 +34,14 @@ const BasketCardStyled = styled.div`
   display: grid;
   grid-template-columns: 30% 1fr;
   padding: 8px 0.5em 18px 16px;
+  overflow: hidden;
+
+  :hover {
+    .delete-product {
+      visibility: visible;
+    }
+  }
+
   .image {
     height: 60px;
     img {
@@ -42,8 +56,11 @@ const BasketCardStyled = styled.div`
     grid-template-columns: 70% 1fr;
     align-items: center;
     .left-info {
+      width: 107px;
       display: grid;
       white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       .title {
         font-family: "Amatic SC";
         font-style: normal;
@@ -63,6 +80,7 @@ const BasketCardStyled = styled.div`
       }
     }
     .quantity {
+      margin-left: 19px;
       font-family: "Open Sans";
       font-style: normal;
       font-weight: 400;
@@ -71,5 +89,19 @@ const BasketCardStyled = styled.div`
 
       color: #ffa01b;
     }
+  }
+
+  .delete-product {
+    visibility: hidden;
+    background: #e25549;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    padding: 30.5px 21.5px;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-size: 20px;
   }
 `
