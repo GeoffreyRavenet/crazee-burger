@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import styled from "styled-components"
 import OrderContext from "../../../../context/OrderContext"
-
+import Basket from "./Basket/Basket"
 import { theme } from "../../../../theme/index"
 import Admin from "./Admin/Admin"
 import Menu from "./Menu/Menu"
@@ -16,6 +16,7 @@ export default function Main() {
   //<div className="basket">Basket</div>
   return (
     <MainStyled>
+      <Basket />
       <div className="menu-and-admin">
         <Menu />
         {isAdmin && <Admin />}
@@ -32,13 +33,10 @@ const MainStyled = styled.div`
 
   display: grid;
   overflow-y: hidden;
-  grid-template-columns: 1fr;
-  /*grid-template-columns: 25% 1fr;*/
+  grid-template-columns: 25% 1fr;
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
-  .basket {
-    background: pink;
-  }
+
   .menu-and-admin {
     position: relative;
     display: grid;
