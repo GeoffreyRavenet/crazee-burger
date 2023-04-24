@@ -24,4 +24,8 @@ export default createContext({
   selectedProduct: [],
   setSelectedProduct: () => {},
   titleEditRef: {},
+
+  //Partie panier
+  basket: [],
+  setBasket: () => {},
 })

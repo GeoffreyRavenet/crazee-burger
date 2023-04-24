@@ -6,6 +6,7 @@ import Navbar from "./Navbar/Navbar"
 import OrderContext from "../../../context/OrderContext.jsx"
 import { useMenu } from "../../../hooks/useMenu.js"
 import { EMPTY_PRODUCT } from "../../../enums/product.js"
+import { useBasket } from "../../../hooks/useBasket.js"
 
 export default function OrderPage() {
   //state
@@ -14,9 +15,10 @@ export default function OrderPage() {
   const [currentTabSelected, setCurrentTabSelected] = useState("edit")
   const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
   const [product, setProduct] = useState(EMPTY_PRODUCT)
+
   const titleEditRef = useRef()
   const { handleAdd, handleDelete, resetMenu, products, setProducts, handleEdit } = useMenu()
-
+  const { basket, setBasket } = useBasket()
   //comportements
 
   const orderContextValue = {
@@ -37,6 +39,8 @@ export default function OrderPage() {
     setSelectedProduct,
     titleEditRef,
     handleEdit,
+    basket,
+    setBasket,
   }
 
   return (
