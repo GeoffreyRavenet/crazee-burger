@@ -9,7 +9,11 @@ export default function BasketBody() {
   return <BasketBodyStyled>{basket ? <BasketMenu /> : <BasketEmptyMessage />}</BasketBodyStyled>
 }
 const BasketBodyStyled = styled.div`
-  flex: 1;
+  height: calc(((85vh - 70px) - 50px) - 20px);
   background: #f5f5f7;
   box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.2);
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
 `

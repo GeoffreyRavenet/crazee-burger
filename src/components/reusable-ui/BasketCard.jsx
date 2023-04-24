@@ -6,7 +6,7 @@ export default function BasketCard({ title, img, price, quantity, onDelete }) {
   return (
     <BasketCardStyled>
       <div className="image">
-        <img src={img} alt={title} />
+        <img src={img ? img : "/images/coming-soon.png"} alt={title} />
       </div>
       <div className="infoProduct">
         <div className="left-info">
@@ -33,7 +33,7 @@ const BasketCardStyled = styled.div`
   border-radius: 5px;
   display: grid;
   grid-template-columns: 30% 1fr;
-  padding: 8px 0.5em 18px 16px;
+  padding: 8px 0.5em 8px 16px;
   overflow: hidden;
 
   :hover {
@@ -43,7 +43,7 @@ const BasketCardStyled = styled.div`
   }
 
   .image {
-    height: 60px;
+    height: 70px;
     img {
       height: 100%;
       width: 100%;
@@ -103,5 +103,11 @@ const BasketCardStyled = styled.div`
     align-items: center;
     color: #ffffff;
     font-size: 20px;
+    :hover {
+      color: black;
+    }
+    :active {
+      color: #ffffff;
+    }
   }
 `
