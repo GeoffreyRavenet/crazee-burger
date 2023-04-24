@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import Header from "../../../../reusable-ui/Header.jsx"
+import { theme } from "../../../../../theme/index.js"
 
 export default function Total({ totalPrice }) {
   return (
@@ -19,10 +20,10 @@ const TotalStyled = styled.div`
   align-items: center;
 
   font-family: "Amatic SC";
-  font-weight: 700;
-  font-size: 36px;
+  font-size: ${theme.fonts.weights.bold};
+  font-size: ${theme.fonts.size.P4};
   line-height: 45px;
   letter-spacing: 2px;
 
-  color: #ffa01b;
+  color: ${theme.colors.primary};
 `

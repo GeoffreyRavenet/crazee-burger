@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import Header from "../../../../reusable-ui/Header.jsx"
+import { theme } from "../../../../../theme/index.js"
 
 export default function Footer() {
   return (
@@ -15,8 +16,8 @@ const FooterStyled = styled.div`
   align-items: center;
   height: 100%;
   font-family: "Amatic SC";
-  font-weight: 700;
-  font-size: 20px;
+  font-size: ${theme.fonts.weights.bold};
+  font-size: ${theme.fonts.size.P2};
   line-height: 25px;
-  color: #ffffff;
+  color: ${theme.colors.white};
 `
