@@ -9,5 +9,17 @@ export const useBasket = () => {
     setBasket(updateBasket)
   }
 
-  return { basket, setBasket, handleBasketDelete }
+  const handleBasketEdit = (event, selectedProduct) => {
+    const { name, value } = event.target
+    const cpBaskets = basket
+    const editBaskets = cpBaskets.map((item) => {
+      if (item.id === selectedProduct.id) {
+        return { ...item, [name]: value }
+      }
+      return item
+    })
+    setBasket(editBaskets)
+  }
+
+  return { basket, setBasket, handleBasketDelete, handleBasketEdit }
 }

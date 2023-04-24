@@ -6,13 +6,15 @@ import Form from "./Form.jsx"
 import { theme } from "../../../../../../theme/index.js"
 
 export default function EditProduct() {
-  const { selectedProduct, setSelectedProduct, titleEditRef, handleEdit } = useContext(OrderContext)
+  const { selectedProduct, setSelectedProduct, titleEditRef, handleEdit, handleBasketEdit } =
+    useContext(OrderContext)
   const inputsConfig = getInputsConfig(selectedProduct)
 
   const handleChange = (event) => {
     const { name, value } = event.target
     setSelectedProduct({ ...selectedProduct, [name]: value })
     handleEdit(event, selectedProduct)
+    handleBasketEdit(event, selectedProduct)
   }
 
   /*if (selectedProduct.title === "") {
