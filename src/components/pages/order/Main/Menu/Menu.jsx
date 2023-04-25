@@ -24,21 +24,25 @@ export default function Menu() {
     handleBasketDelete,
   } = useContext(OrderContext)
   //Comportements
+  const addItemToCart = (cartItems, itemToAdd) => {
+    const existingItem = cartItems.find(item => item.id === itemToAdd.id);
+
+    if (existingItem) {
+      existingItem.quantity += 1;
+      return [...cartItems];
+    }
+
+    return [{ ...itemToAdd, quantity: 1 }, ...cartItems ];
+  }
+
   const handleAddToCart = (productId) => {
     const cpProduct = [...products]
     const cpBasket = [...basket]
     const ProductToAdd = cpProduct.filter((item) => item.id === productId)
-    ProductToAdd[0].quantity = 1
-    const newProductToBasket = cpBasket.concat(ProductToAdd)
 
-    const completList = Object.values(
-      newProductToBasket.reduce((acc, article) => {
-        acc[article.id] ? (acc[article.id].quantity += 1) : (acc[article.id] = { ...article })
-        return acc
-      }, {})
-    )
+    const updatedCartItems = ProductToAdd.reduce((cart, itemToAdd) => addItemToCart(cart, itemToAdd), cpBasket)
 
-    setBasket(completList.reverse())
+    setBasket(updatedCartItems)
   }
 
   const handleSelectedCard = async (productIdSelected) => {
