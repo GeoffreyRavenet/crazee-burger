@@ -41,6 +41,14 @@ const BasketCardStyled = styled.div`
   :hover {
     .delete-product {
       visibility: visible;
+    /*transition: width 1s;*/
+    width: 76px;
+
+     /*svg{
+      transform: rotateY(360deg);
+    transition: .5s;
+    transition-delay: .3s;
+     } */
     }
   }
 
@@ -104,10 +112,12 @@ const BasketCardStyled = styled.div`
     visibility: hidden;
     background: ${theme.colors.red};
     position: absolute;
+    /*width: 76px;*/
+    width: 0px;
+    right: 0;
     top: 0;
     bottom: 0;
-    right: 0;
-    padding: 30.5px 21.5px;
+    display:flex;
     justify-content: center;
     align-items: center;
     color: ${theme.colors.white};
