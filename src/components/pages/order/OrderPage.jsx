@@ -19,6 +19,16 @@ export default function OrderPage() {
   const titleEditRef = useRef()
   const { handleAdd, handleDelete, resetMenu, products, setProducts, handleEdit } = useMenu()
   const { basket, setBasket, handleBasketDelete, handleBasketEdit } = useBasket()
+  const [isSelected, setIsSelected] = useState()
+  const handleSelectedCard = async (productIdSelected) => {
+    await setIsCollapsed(false)
+    await setCurrentTabSelected("edit")
+    const productClickedOn = products.find((product) => product.id === productIdSelected)
+    await setSelectedProduct(productClickedOn)
+    await setIsSelected(productIdSelected)
+
+    titleEditRef.current.focus()
+  }
   //comportements
 
   const orderContextValue = {
@@ -43,6 +53,9 @@ export default function OrderPage() {
     setBasket,
     handleBasketDelete,
     handleBasketEdit,
+    isSelected,
+    setIsSelected,
+    handleSelectedCard,
   }
 
   return (

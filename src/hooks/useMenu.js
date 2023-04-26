@@ -37,5 +37,6 @@ export const useMenu = () => {
   const resetMenu = () => {
     setProducts(fakeMenu1)
   }
+
   return { handleAdd, handleDelete, resetMenu, products, setProducts, handleEdit }
 }

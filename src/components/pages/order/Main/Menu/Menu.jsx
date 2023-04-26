@@ -5,34 +5,30 @@ import { formatPrice } from "../../../../../utils/maths.js"
 import Card from "../../../../reusable-ui/Card.jsx"
 import EmptyMenuAdmin from "./EmptyMenuAdmin.jsx"
 import EmptyMenuClient from "./EmptyMenuClient.jsx"
-import { useState } from "react"
 
 export default function Menu() {
   //State
-  const [isSelected, setIsSelected] = useState()
   const {
     isAdmin,
     products,
     handleDelete,
     resetMenu,
-    setIsCollapsed,
-    setSelectedProduct,
-    titleEditRef,
-    setCurrentTabSelected,
     setBasket,
     basket,
     handleBasketDelete,
+    isSelected,
+    handleSelectedCard,
   } = useContext(OrderContext)
   //Comportements
   const addItemToCart = (cartItems, itemToAdd) => {
-    const existingItem = cartItems.find(item => item.id === itemToAdd.id);
+    const existingItem = cartItems.find((item) => item.id === itemToAdd.id)
 
     if (existingItem) {
-      existingItem.quantity += 1;
-      return [...cartItems];
+      existingItem.quantity += 1
+      return [...cartItems]
     }
 
-    return [{ ...itemToAdd, quantity: 1 }, ...cartItems ];
+    return [{ ...itemToAdd, quantity: 1 }, ...cartItems]
   }
 
   const handleAddToCart = (productId) => {
@@ -40,19 +36,12 @@ export default function Menu() {
     const cpBasket = [...basket]
     const ProductToAdd = cpProduct.filter((item) => item.id === productId)
 
-    const updatedCartItems = ProductToAdd.reduce((cart, itemToAdd) => addItemToCart(cart, itemToAdd), cpBasket)
+    const updatedCartItems = ProductToAdd.reduce(
+      (cart, itemToAdd) => addItemToCart(cart, itemToAdd),
+      cpBasket
+    )
 
     setBasket(updatedCartItems)
-  }
-
-  const handleSelectedCard = async (productIdSelected) => {
-    await setIsCollapsed(false)
-    await setCurrentTabSelected("edit")
-    const productClickedOn = products.find((product) => product.id === productIdSelected)
-    await setSelectedProduct(productClickedOn)
-    await setIsSelected(productIdSelected)
-
-    titleEditRef.current.focus()
   }
 
   //Affichage

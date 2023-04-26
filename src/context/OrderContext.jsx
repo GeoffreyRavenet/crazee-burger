@@ -24,7 +24,9 @@ export default createContext({
   selectedProduct: [],
   setSelectedProduct: () => {},
   titleEditRef: {},
-
+  isSelected: "-1",
+  setIsSelected: () => {},
+  handleSelectedCard: () => {},
   //Partie panier
   basket: [],
   setBasket: () => {},

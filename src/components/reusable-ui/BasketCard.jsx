@@ -3,9 +3,19 @@ import styled, { css } from "styled-components"
 import { MdDeleteForever } from "react-icons/md"
 import { theme } from "../../theme/index.js"
 
-export default function BasketCard({ title, img, price, quantity, onDelete, version = "" }) {
+export default function BasketCard({
+  title,
+  img,
+  price,
+  quantity,
+  onDelete,
+  isModeAdmin,
+  handleSelectedCard,
+  version = "",
+}) {
   return (
     <BasketCardStyled version={version}>
+      {isModeAdmin && <div className="selected-card-inAdmin" onClick={handleSelectedCard} />}
       <div className="image">
         <img src={img ? img : "/images/coming-soon.png"} alt={title} />
       </div>
@@ -41,15 +51,22 @@ const BasketCardStyled = styled.div`
   :hover {
     .delete-product {
       visibility: visible;
-    /*transition: width 1s;*/
-    width: 76px;
+      /*transition: width 1s;*/
+      width: 76px;
 
-     /*svg{
+      /*svg{
       transform: rotateY(360deg);
     transition: .5s;
     transition-delay: .3s;
      } */
     }
+  }
+
+  .selected-card-inAdmin {
+    position: absolute;
+    width: 100%;
+    height: 330px;
+    cursor: pointer;
   }
 
   .image {
@@ -117,7 +134,7 @@ const BasketCardStyled = styled.div`
     right: 0;
     top: 0;
     bottom: 0;
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     color: ${theme.colors.white};
