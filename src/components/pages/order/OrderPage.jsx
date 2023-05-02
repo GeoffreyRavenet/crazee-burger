@@ -4,14 +4,46 @@ import { theme } from "../../../theme/index"
 import Main from "./Main/Main"
 import Navbar from "./Navbar/Navbar"
 import OrderContext from "../../../context/OrderContext.jsx"
+import { fakeMenu1, fakeMenu2 } from "../../../fakeData/fakeMenu.js"
+
+const EMPTY_PRODUCT = {
+  id: "100000000",
+  imageSource: "",
+  title: "",
+  price: "",
+  quantity: 0,
+  isAvailable: true,
+  isAdvertised: false,
+}
 
 export default function OrderPage() {
   //state
-  const [isAdmin, setIsAdmin] = useState(false)
-  const [isCollapsed, setIsCollapsed] = useState(true)
+  const [isAdmin, setIsAdmin] = useState(true)
+  const [isCollapsed, setIsCollapsed] = useState(false)
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
-
+  const [products, setProducts] = useState(fakeMenu2)
+  const [product, setProduct] = useState(EMPTY_PRODUCT)
   //comportements
+  const handleAdd = (newProductToAdd) => {
+    // 1 . copie du tableau
+    const productsCopy = [...products]
+    // 2 . manip de la copie du tableau
+    const menuUpdated = [newProductToAdd, ...productsCopy]
+    // 3 . update du state
+    setProducts(menuUpdated)
+  }
+
+  const handleDelete = (productId) => {
+    // 1 . copie du tableau
+    const productsCopy = [...products]
+    // 2 . manip de la copie du tableau
+    const menuUpdated = productsCopy.filter((item) => item.id !== productId)
+    // 3 . update du state
+    setProducts(menuUpdated)
+  }
+  const resetMenu = () => {
+    setProducts(fakeMenu1)
+  }
   const orderContextValue = {
     isAdmin,
     setIsAdmin,
@@ -19,6 +51,13 @@ export default function OrderPage() {
     setIsCollapsed,
     currentTabSelected,
     setCurrentTabSelected,
+    products,
+    setProducts,
+    handleAdd,
+    handleDelete,
+    resetMenu,
+    product,
+    setProduct,
   }
 
   return (

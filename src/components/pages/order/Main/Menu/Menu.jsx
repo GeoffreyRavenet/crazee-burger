@@ -1,16 +1,32 @@
-import { useState } from "react"
+import { useContext } from "react"
 import styled from "styled-components"
-import { fakeMenu2 } from "../../../../fakeData/fakeMenu"
-import { formatPrice } from "../../../../utils/maths.js"
-import Card from "../../../reusable-ui/Card"
+import OrderContext from "../../../../../context/OrderContext.jsx"
+import { formatPrice } from "../../../../../utils/maths.js"
+import Card from "../../../../reusable-ui/Card.jsx"
+import EmptyMenuAdmin from "./EmptyMenuAdmin.jsx"
+import EmptyMenuClient from "./EmptyMenuClient.jsx"
 
 export default function Menu() {
-  const [products, setProducts] = useState(fakeMenu2)
+  //State
+  const { isAdmin, products, handleDelete, resetMenu } = useContext(OrderContext)
+  //Comportements
+  //Affichage
+  if (products.length === 0) {
+    if (!isAdmin) return <EmptyMenuClient />
+    return <EmptyMenuAdmin onReset={resetMenu} />
+  }
 
   return (
     <MenuStyled>
       {products.map(({ id, imageSource, title, price }) => (
-        <Card key={id} imageSource={imageSource} title={title} price={formatPrice(price)} />
+        <Card
+          key={id}
+          imageSource={imageSource}
+          title={title}
+          price={formatPrice(price)}
+          onDelete={() => handleDelete(id)}
+          hasDeleteButton={isAdmin}
+        />
       ))}
     </MenuStyled>
   )

@@ -1,23 +1,27 @@
 import styled from "styled-components"
 import { theme } from "../../theme/index.js"
-import PrimaryButton from "./PrimaryButton"
+import Button from "./Button.jsx"
+import { TiDelete } from "react-icons/ti"
 
-export default function Card({ imageSource, title, price }) {
+export default function Card({ imageSource, title, price, onDelete, hasDeleteButton }) {
   return (
     <CardStyled>
+      {hasDeleteButton && <TiDelete onClick={onDelete} className="card-delete" />}
+
       <div className="card-img">
         <img src={imageSource} alt="{title}" />
       </div>
       <h3>{title}</h3>
-      <div className="bottom-card">
+      <div className="footer-card">
         <span>{price}</span>
-        <PrimaryButton label="Ajouter" className="button-card" />
+        <Button label="Ajouter" version="normal" />
       </div>
     </CardStyled>
   )
 }
 
 const CardStyled = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,6 +35,20 @@ const CardStyled = styled.div`
   border-radius: 15px;
   box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
 
+  .card-delete {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: #ffa01b;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    animation: 500ms ease-out 0s 1 normal none running irVrYc;
+    :active,
+    :hover {
+      color: #e25549;
+    }
+  }
   .card-img {
     display: flex;
     justify-content: center;
@@ -45,6 +63,7 @@ const CardStyled = styled.div`
 
   h3 {
     width: 200px;
+    height: 45.6px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -53,25 +72,13 @@ const CardStyled = styled.div`
     margin-top: 20px;
   }
 
-  .bottom-card {
+  .footer-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 200px;
-    color: ${theme.colors.primary};
     font-family: "Open Sans", cursive;
+    color: ${theme.colors.primary};
     margin-bottom: 20px;
-
-    .button-card {
-      padding-top: 12px;
-      padding-bottom: 12px;
-      font-size: ${theme.fonts.size.XS};
-      font-weight: ${theme.fonts.weights.semiBold};
-    }
-
-    .button-card:active {
-      background: ${theme.colors.primary};
-      color: ${theme.colors.white};
-    }
   }
 `

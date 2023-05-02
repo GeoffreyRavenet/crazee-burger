@@ -8,4 +8,15 @@ export default createContext({
   setIsCollapsed: () => {},
   currentTabSelected: "add",
   setCurrentTabSelected: () => {},
+  // partie avec mes produits
+  products: [],
+  setProducts: () => {},
+  handleAdd: () => {},
+  handleDelete: () => {},
+  resetMenu: () => {},
+
+  //partie init produit
+  product: [],
+  setProduct: () => {},
+  EMPTY_PRODUCT: {},
 })

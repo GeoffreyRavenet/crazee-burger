@@ -5,7 +5,7 @@ import { theme } from "../../../theme/index.js"
 import { IoChevronForward } from "react-icons/io5"
 import { BsPersonCircle } from "react-icons/bs"
 import Input from "../../reusable-ui/TextInput"
-import PrimaryButton from "../../reusable-ui/PrimaryButton.jsx"
+import Button from "../../reusable-ui/Button.jsx"
 
 function LoginForm() {
   //state (etat, données)
@@ -36,13 +36,14 @@ function LoginForm() {
         onChange={handleChange}
         placeholder="Entrer votre prénom"
         required
-        Icon={<BsPersonCircle className="icon" />}
+        Icon={<BsPersonCircle />}
+        version="normal"
       />
 
-      <PrimaryButton
-        className="button-login"
+      <Button
+        version="large"
         label="Accéder à mon espace"
-        Icon={<IoChevronForward className="icon" />}
+        Icon={<IoChevronForward className="chevron" />}
       />
     </LoginFormStyled>
   )
@@ -58,35 +59,27 @@ const LoginFormStyled = styled.form`
   padding: 2.5rem 2rem;
   border-radius: ${theme.borderRadius.round};
   font-family: "Amatic SC", cursive;
+  div {
+    margin-bottom: 18px;
+    h1 {
+      color: ${theme.colors.white};
+      font-size: ${theme.fonts.size.P5};
+    }
 
-  h1 {
-    color: ${theme.colors.white};
-    font-size: ${theme.fonts.size.P5};
+    hr {
+      background-color: ${theme.colors.primary};
+      border: 1.5px solid ${theme.colors.primary};
+      border-radius: ${theme.borderRadius.round};
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      color: ${theme.colors.white};
+      margin: 20px 10px 10px;
+      font-size: ${theme.fonts.size.P4};
+    }
   }
-
-  hr {
-    background-color: ${theme.colors.primary};
-    border: 1.5px solid ${theme.colors.primary};
-    border-radius: ${theme.borderRadius.round};
-    margin-bottom: 40px;
-  }
-
-  h2 {
-    color: ${theme.colors.white};
-    margin: 20px 10px 10px;
-    font-size: ${theme.fonts.size.P4};
-  }
-
-  .icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 15px;
-    margin-left: 10px;
-    padding-top: 2px;
-  }
-
-  .button-login {
-    width: 100%;
+  .chevron {
+    margin-left: 9px;
   }
 `
