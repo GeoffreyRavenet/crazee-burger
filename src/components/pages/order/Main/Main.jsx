@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import styled from "styled-components"
 import OrderContext from "../../../../context/OrderContext"
-import Basket from "./Basket/Basket"
+import Basket from "./Basket/Basket.jsx"
 import { theme } from "../../../../theme/index"
 import Admin from "./Admin/Admin"
 import Menu from "./Menu/Menu"
@@ -33,7 +33,7 @@ const MainStyled = styled.div`
 
   display: grid;
   overflow-y: hidden;
-  grid-template-columns: 25% 1fr;
+  grid-template-columns: 350px 1fr;
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
 

@@ -1,28 +1,24 @@
-import React from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
+import BasketEmptyMessage from "./BasketEmptyMessage.jsx"
+import OrderContext from "../../../../../context/OrderContext.jsx"
+import BasketMenu from "./BasketMenu.jsx"
+import { theme } from "../../../../../theme/index.js"
 
 export default function BasketBody() {
+  const { basket } = useContext(OrderContext)
   return (
     <BasketBodyStyled>
-      <span className="EmptyMessage">Votre commande est vide.</span>{" "}
+      {basket.length > 0 ? <BasketMenu /> : <BasketEmptyMessage />}
     </BasketBodyStyled>
   )
 }
 const BasketBodyStyled = styled.div`
-  flex: 1;
-  background: #f5f5f7;
+  height: calc(((85vh - 70px) - 50px) - 20px);
+  background: ${theme.colors.background_white};
   box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.2);
-  .EmptyMessage {
-    display: flex;
-    flex: 1;
-    height: 100%;
-    align-items: center;
-    align-self: center;
-    justify-content: center;
-    font-family: "Amatic SC";
-    font-weight: 400;
-    font-size: 36px;
-    line-height: 2;
-    color: #747b91;
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    width: 0px;
   }
 `

@@ -19,8 +19,32 @@ export default function Menu() {
     setSelectedProduct,
     titleEditRef,
     setCurrentTabSelected,
+    setBasket,
+    basket,
+    handleBasketDelete,
   } = useContext(OrderContext)
   //Comportements
+  const addItemToCart = (cartItems, itemToAdd) => {
+    const existingItem = cartItems.find(item => item.id === itemToAdd.id);
+
+    if (existingItem) {
+      existingItem.quantity += 1;
+      return [...cartItems];
+    }
+
+    return [{ ...itemToAdd, quantity: 1 }, ...cartItems ];
+  }
+
+  const handleAddToCart = (productId) => {
+    const cpProduct = [...products]
+    const cpBasket = [...basket]
+    const ProductToAdd = cpProduct.filter((item) => item.id === productId)
+
+    const updatedCartItems = ProductToAdd.reduce((cart, itemToAdd) => addItemToCart(cart, itemToAdd), cpBasket)
+
+    setBasket(updatedCartItems)
+  }
+
   const handleSelectedCard = async (productIdSelected) => {
     /* // 1 . copie du tableau
     const productsCopy = [...products]
@@ -57,9 +81,13 @@ export default function Menu() {
           imageSource={imageSource}
           title={title}
           price={formatPrice(price)}
-          onDelete={() => handleDelete(id)}
+          onDelete={() => {
+            handleDelete(id)
+            handleBasketDelete(id)
+          }}
           hasDeleteButton={isAdmin}
           handleSelectedCard={() => handleSelectedCard(id)}
+          onAddToCart={() => handleAddToCart(id)}
           version={isSelected === id && isAdmin ? "SelectedCard" : "normal"}
         />
       ))}
