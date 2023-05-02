@@ -5,11 +5,44 @@ import { formatPrice } from "../../../../../utils/maths.js"
 import Card from "../../../../reusable-ui/Card.jsx"
 import EmptyMenuAdmin from "./EmptyMenuAdmin.jsx"
 import EmptyMenuClient from "./EmptyMenuClient.jsx"
+import { useState } from "react"
 
 export default function Menu() {
   //State
-  const { isAdmin, products, handleDelete, resetMenu } = useContext(OrderContext)
+  const [isSelected, setIsSelected] = useState()
+  const {
+    isAdmin,
+    products,
+    handleDelete,
+    resetMenu,
+    setIsCollapsed,
+    setSelectedProduct,
+    titleEditRef,
+    setCurrentTabSelected,
+  } = useContext(OrderContext)
   //Comportements
+  const handleSelectedCard = async (productIdSelected) => {
+    /* // 1 . copie du tableau
+    const productsCopy = [...products]
+    // 2 . manip de la copie du tableau
+    const selectedProductUpdated = productsCopy.filter((item) => item.id === productIdSelected)
+    // 3 . update du state
+    setSelectedProduct(...selectedProductUpdated)
+    setCurrentTabSelected("edit")
+
+    setIsSelected(productIdSelected)
+    titleEditRef.current.focus()*/
+
+    if (!isAdmin) return
+
+    await setIsCollapsed(false)
+    await setCurrentTabSelected("edit")
+    const productClickedOn = products.find((product) => product.id === productIdSelected)
+    await setSelectedProduct(productClickedOn)
+    await setIsSelected(productIdSelected)
+    titleEditRef.current.focus()
+  }
+
   //Affichage
   if (products.length === 0) {
     if (!isAdmin) return <EmptyMenuClient />
@@ -26,6 +59,8 @@ export default function Menu() {
           price={formatPrice(price)}
           onDelete={() => handleDelete(id)}
           hasDeleteButton={isAdmin}
+          handleSelectedCard={() => handleSelectedCard(id)}
+          version={isSelected === id && isAdmin ? "SelectedCard" : "normal"}
         />
       ))}
     </MenuStyled>

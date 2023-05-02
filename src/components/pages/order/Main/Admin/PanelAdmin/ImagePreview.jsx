@@ -1,18 +1,19 @@
 import styled from "styled-components"
+import { theme } from "../../../../../../theme/index.js"
 
 export default function ImagePreview({ imageSource }) {
-  const isURL = (value) => {
+  /*const isURL = (value) => {
     try {
       new URL(value)
       return true
     } catch (error) {
       return false
     }
-  }
+  }*/
 
   return (
     <ImagePreviewStyled>
-      {isURL(imageSource) ? (
+      {imageSource ? (
         <img src={imageSource} alt="newproduct" />
       ) : (
         <span className="no-image">Aucune image</span>
@@ -23,24 +24,25 @@ export default function ImagePreview({ imageSource }) {
 
 const ImagePreviewStyled = styled.div`
   grid-area: image;
+  display: flex;
   justify-content: center;
   align-items: center;
   img {
-    max-width: 200px;
-    max-height: 145px;
+    max-width: 100px;
+    max-height: 100px;
   }
 
   :has(.no-image) {
-    border: 1px solid #e4e5e9;
-    border-radius: 5px;
+    border: 1px solid ${theme.colors.greyLight};
+    border-radius: ${theme.borderRadius.round};
 
     font-family: "Open Sans";
     font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
+    font-weight: ${theme.fonts.weights.regular};
+    font-size: ${theme.fonts.size.P0};
     line-height: 24px;
 
-    color: #93a2b1;
+    color: ${theme.colors.greySemiDark};
     text-align: center;
     display: flex;
     align-items: center;

@@ -31,7 +31,7 @@ const ButtonStyled = styled.button`
   color: ${theme.colors.white};
   text-decoration: none;
 
-  &:hover:not(:disabled) {
+  &:hover {
     background-color: ${theme.colors.white};
     color: ${theme.colors.primary};
     border: 1px solid ${theme.colors.primary};
@@ -52,6 +52,7 @@ const ButtonStyled = styled.button`
   ${({ version }) => version === "normal" && normal}
   ${({ version }) => version === "medium" && medium}
   ${({ version }) => version === "large" && large}
+  ${({ version }) => version === "form" && form}
 `
 
 const normal = css`
@@ -68,4 +69,23 @@ const large = css`
 const medium = css`
   width: 224px;
   padding: 19px 0;
+`
+
+const form = css`
+  width: 275px;
+  height: 34px;
+  padding: 0;
+  background: ${theme.colors.success};
+  border: 1px solid ${theme.colors.success};
+  color: ${theme.colors.white};
+  :hover {
+    background: ${theme.colors.white};
+    color: ${theme.colors.success};
+    border: 1px solid ${theme.colors.success};
+  }
+  :active {
+    background: ${theme.colors.success};
+    color: ${theme.colors.white};
+    border: 1px solid ${theme.colors.success};
+  }
 `

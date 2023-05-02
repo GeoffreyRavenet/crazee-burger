@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { theme } from "../../../../../theme/index.js"
 
 export default function EmptyMenuClient() {
   return (
@@ -18,15 +19,15 @@ const EmptyMenuStyled = styled.div`
 
   font-family: "Amatic SC";
   font-style: normal;
-  font-weight: 400;
-  font-size: 36px;
+  font-weight: ${theme.fonts.weights.regular};
+  font-size: ${theme.fonts.size.P4};
   line-height: 45px;
 
-  color: #747b91;
+  color: ${theme.colors.greyBlue};
   div {
     margin-bottom: 21px;
   }
   .EmptyMenuTitle {
-    font-weight: 700;
+    font-weight: ${theme.fonts.weights.bold};
   }
 `

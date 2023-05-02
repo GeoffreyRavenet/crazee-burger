@@ -19,4 +19,9 @@ export default createContext({
   product: [],
   setProduct: () => {},
   EMPTY_PRODUCT: {},
+
+  //partie  produit select
+  selectedProduct: [],
+  setSelectedProduct: () => {},
+  titleEditRef: {},
 })

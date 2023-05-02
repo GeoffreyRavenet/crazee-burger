@@ -1,20 +1,29 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { theme } from "../../theme/index.js"
 import Button from "./Button.jsx"
 import { TiDelete } from "react-icons/ti"
 
-export default function Card({ imageSource, title, price, onDelete, hasDeleteButton }) {
+export default function Card({
+  imageSource,
+  title,
+  price,
+  onDelete,
+  hasDeleteButton,
+  handleSelectedCard,
+  version = "",
+}) {
   return (
-    <CardStyled>
-      {hasDeleteButton && <TiDelete onClick={onDelete} className="card-delete" />}
+    <CardStyled version={version}>
+      {hasDeleteButton && <div className="selected-card-inAdmin" onClick={handleSelectedCard} />}
+      {hasDeleteButton && <TiDelete onClick={onDelete} className="button-delete" />}
 
       <div className="card-img">
-        <img src={imageSource} alt="{title}" />
+        <img src={imageSource ? imageSource : "/images/coming-soon.png"} alt="{title}" />
       </div>
       <h3>{title}</h3>
       <div className="footer-card">
-        <span>{price}</span>
-        <Button label="Ajouter" version="normal" />
+        <span className="price">{price}</span>
+        <Button label="Ajouter" version="normal" onClick={() => console.log("test")} />
       </div>
     </CardStyled>
   )
@@ -32,21 +41,38 @@ const CardStyled = styled.div`
   background: ${theme.colors.white};
 
   font-family: "Amatic SC", cursive;
-  border-radius: 15px;
-  box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
+  border-radius: ${theme.borderRadius.extraRound};
+  box-shadow: ${theme.shadows.medium};
 
-  .card-delete {
+  :hover:has(.button-delete) {
+    transition: transform 0.5s ease-in-out 0s, box-shadow 0.5s ease-in-out 0s;
+    transform: scale(1.05);
+    box-shadow: 0px 0px 8px #ff9a23;
+  }
+  .selected-card-inAdmin {
+    position: absolute;
+    width: 100%;
+    height: 330px;
+    cursor: pointer;
+  }
+  :has(.selected-card-inAdmin) .button-delete:active {
+    color: ${theme.colors.white};
+  }
+  .button-delete {
     position: absolute;
     right: 15px;
     top: 15px;
-    color: #ffa01b;
+    color: ${theme.colors.primary};
     width: 30px;
     height: 30px;
     cursor: pointer;
     animation: 500ms ease-out 0s 1 normal none running irVrYc;
-    :active,
+
     :hover {
-      color: #e25549;
+      color: ${theme.colors.red};
+    }
+    :active {
+      color: ${theme.colors.primary};
     }
   }
   .card-img {
@@ -67,7 +93,7 @@ const CardStyled = styled.div`
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    font-size: 36px;
+    font-size: ${theme.fonts.size.P4};
     margin-bottom: 10px;
     margin-top: 20px;
   }
@@ -80,5 +106,34 @@ const CardStyled = styled.div`
     font-family: "Open Sans", cursive;
     color: ${theme.colors.primary};
     margin-bottom: 20px;
+  }
+
+  ${({ version }) => version === "SelectedCard" && SelectedCard};
+`
+
+const SelectedCard = css`
+  background: ${theme.colors.primary};
+  .button-delete {
+    color: ${theme.colors.white};
+  }
+  .footer-card {
+    .price {
+      color: ${theme.colors.white};
+    }
+
+    button {
+      background: ${theme.colors.white};
+      color: ${theme.colors.primary};
+
+      &:hover {
+        background-color: ${theme.colors.primary};
+        color: ${theme.colors.white};
+        border-color: ${theme.colors.white};
+      }
+      &:active {
+        background-color: ${theme.colors.white};
+        color: ${theme.colors.primary};
+      }
+    }
   }
 `

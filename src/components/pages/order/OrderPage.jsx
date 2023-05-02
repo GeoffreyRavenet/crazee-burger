@@ -1,49 +1,24 @@
-import React, { useState } from "react"
+import React, { useRef, useState } from "react"
 import styled from "styled-components"
 import { theme } from "../../../theme/index"
 import Main from "./Main/Main"
 import Navbar from "./Navbar/Navbar"
 import OrderContext from "../../../context/OrderContext.jsx"
-import { fakeMenu1, fakeMenu2 } from "../../../fakeData/fakeMenu.js"
-
-const EMPTY_PRODUCT = {
-  id: "100000000",
-  imageSource: "",
-  title: "",
-  price: "",
-  quantity: 0,
-  isAvailable: true,
-  isAdvertised: false,
-}
+import { useMenu } from "../../../hooks/useMenu.js"
+import { EMPTY_PRODUCT } from "../../../enums/product.js"
 
 export default function OrderPage() {
   //state
   const [isAdmin, setIsAdmin] = useState(true)
   const [isCollapsed, setIsCollapsed] = useState(false)
-  const [currentTabSelected, setCurrentTabSelected] = useState("add")
-  const [products, setProducts] = useState(fakeMenu2)
+  const [currentTabSelected, setCurrentTabSelected] = useState("edit")
+  const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
   const [product, setProduct] = useState(EMPTY_PRODUCT)
-  //comportements
-  const handleAdd = (newProductToAdd) => {
-    // 1 . copie du tableau
-    const productsCopy = [...products]
-    // 2 . manip de la copie du tableau
-    const menuUpdated = [newProductToAdd, ...productsCopy]
-    // 3 . update du state
-    setProducts(menuUpdated)
-  }
+  const titleEditRef = useRef()
+  const { handleAdd, handleDelete, resetMenu, products, setProducts, handleEdit } = useMenu()
 
-  const handleDelete = (productId) => {
-    // 1 . copie du tableau
-    const productsCopy = [...products]
-    // 2 . manip de la copie du tableau
-    const menuUpdated = productsCopy.filter((item) => item.id !== productId)
-    // 3 . update du state
-    setProducts(menuUpdated)
-  }
-  const resetMenu = () => {
-    setProducts(fakeMenu1)
-  }
+  //comportements
+
   const orderContextValue = {
     isAdmin,
     setIsAdmin,
@@ -58,6 +33,10 @@ export default function OrderPage() {
     resetMenu,
     product,
     setProduct,
+    selectedProduct,
+    setSelectedProduct,
+    titleEditRef,
+    handleEdit,
   }
 
   return (
@@ -78,7 +57,8 @@ const OrderPageStyled = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
-
+  background-image: url("/images/pattern-burger.png");
+  background-size: 200px 150px;
   .container {
     width: 100%;
     max-width: 1400px;
