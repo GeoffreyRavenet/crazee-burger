@@ -50,15 +50,17 @@ const CardStyled = styled.div`
     transform: scale(1.05);
     box-shadow: 0px 0px 8px #ff9a23;
   }
+
   .selected-card-inAdmin {
     position: absolute;
     width: 100%;
     height: 330px;
     cursor: pointer;
+    :has(.button-delete) {
+      color: ${theme.colors.white};
+    }
   }
-  :has(.selected-card-inAdmin) .button-delete:active {
-    color: ${theme.colors.white};
-  }
+
   .button-delete {
     position: absolute;
     right: 15px;
@@ -115,6 +117,9 @@ const CardStyled = styled.div`
 const SelectedCard = css`
   background: ${theme.colors.primary};
   .button-delete {
+    color: ${theme.colors.white};
+  }
+  :has(.selected-card-inAdmin) .button-delete:active {
     color: ${theme.colors.white};
   }
   .footer-card {

@@ -19,6 +19,7 @@ export default function EditProduct() {
 
   /*if (selectedProduct.title === "") {
     return <EditProductStyled className="toto"></EditProductStyled>
+  
   }*/
   return (
     <EditProductStyled>
@@ -28,8 +29,10 @@ export default function EditProduct() {
         inputsConfig={inputsConfig}
         handleChange={handleChange}
       >
-        Cliquer sur un produit du menu pour le modifier{" "}
-        <span className="underline">en temps réel</span>
+        <div className="footer">
+          Cliquer sur un produit du menu pour le modifier{" "}
+          <span className="underline">en temps réel</span>
+        </div>
       </Form>
     </EditProductStyled>
   )
@@ -39,6 +42,10 @@ const EditProductStyled = styled.span`
   font-family: "Open Sans";
   font-size: ${theme.fonts.size.SM};
   color: ${theme.colors.primary};
+  .footer {
+    line-height: 1;
+    height: 35px;
+  }
   .underline {
     text-decoration: underline;
   }

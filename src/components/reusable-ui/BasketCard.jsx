@@ -46,7 +46,6 @@ const BasketCardStyled = styled.div`
   grid-template-columns: 30% 1fr;
   padding: 8px 0.5em 8px 16px;
   overflow: hidden;
-  cursor: pointer;
 
   :hover {
     .delete-product {
@@ -65,7 +64,7 @@ const BasketCardStyled = styled.div`
   .selected-card-inAdmin {
     position: absolute;
     width: 100%;
-    height: 330px;
+    height: 86px;
     cursor: pointer;
   }
 
@@ -80,13 +79,13 @@ const BasketCardStyled = styled.div`
   .infoProduct {
     margin-left: 14px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
     align-items: center;
     .left-info {
       width: 107px;
       display: grid;
-
+      grid-gap: 5px;
       .title {
         overflow: hidden;
         white-space: nowrap;
@@ -113,6 +112,7 @@ const BasketCardStyled = styled.div`
     .right-info {
       grid-column: span 1;
       text-align: right;
+      padding-right: 36px;
     }
     .quantity {
       font-family: "Open Sans";
@@ -151,7 +151,6 @@ const BasketCardStyled = styled.div`
 `
 const SelectedCard = css`
   background: ${theme.colors.primary};
-
   .infoProduct .left-info .price,
   .infoProduct .quantity {
     color: ${theme.colors.white};
