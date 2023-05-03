@@ -19,7 +19,7 @@ export default function AddProduct() {
       ...product,
       id: new Date().getTime(),
       imageSource: product.imageSource,
-      price: parseFloat(product.price),
+      price: product.price,
     }
     handleAdd(newProductToAdd)
     setProduct(EMPTY_PRODUCT)
@@ -29,8 +29,7 @@ export default function AddProduct() {
 
   const handleChange = (event) => {
     const { name, value } = event.target
-    setProduct({ ...setProduct, [name]: value })
-    console.log(setProduct.imageSource)
+    setProduct({ ...product, [name]: value })
   }
 
   //Affichage
