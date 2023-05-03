@@ -13,11 +13,20 @@ export default function OrderPage() {
   const [isAdmin, setIsAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [currentTabSelected, setCurrentTabSelected] = useState("edit")
-  const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
+
   const [product, setProduct] = useState(EMPTY_PRODUCT)
 
   const titleEditRef = useRef()
-  const { handleAdd, handleDelete, resetMenu, products, setProducts, handleEdit } = useMenu()
+  const {
+    handleAdd,
+    handleDelete,
+    resetMenu,
+    products,
+    setProducts,
+    handleEdit,
+    selectedProduct,
+    setSelectedProduct,
+  } = useMenu()
   const { basket, setBasket, handleBasketDelete, handleBasketEdit } = useBasket()
   const [isSelected, setIsSelected] = useState()
   const handleSelectedCard = async (productIdSelected) => {

@@ -1,8 +1,10 @@
 import { useState } from "react"
 import { fakeMenu1, fakeMenu2 } from "../fakeData/fakeMenu.js"
+import { EMPTY_PRODUCT } from "../enums/product.js"
 
 export const useMenu = () => {
   const [products, setProducts] = useState(fakeMenu2)
+  const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
 
   const handleAdd = (newProductToAdd) => {
     // 1 . copie du tableau
@@ -20,6 +22,7 @@ export const useMenu = () => {
     const menuUpdated = productsCopy.filter((item) => item.id !== productId)
     // 3 . update du state
     setProducts(menuUpdated)
+    setSelectedProduct(EMPTY_PRODUCT)
   }
 
   const handleEdit = (event, selectedProduct) => {
@@ -38,5 +41,14 @@ export const useMenu = () => {
     setProducts(fakeMenu1)
   }
 
-  return { handleAdd, handleDelete, resetMenu, products, setProducts, handleEdit }
+  return {
+    handleAdd,
+    handleDelete,
+    resetMenu,
+    products,
+    setProducts,
+    handleEdit,
+    selectedProduct,
+    setSelectedProduct,
+  }
 }
