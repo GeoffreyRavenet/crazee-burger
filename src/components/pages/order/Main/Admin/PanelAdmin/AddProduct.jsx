@@ -19,7 +19,7 @@ export default function AddProduct() {
       ...product,
       id: new Date().getTime(),
       imageSource: product.imageSource,
-      price: product.price,
+      price: product.price.replace(",", "."),
     }
     handleAdd(newProductToAdd)
     setProduct(EMPTY_PRODUCT)
@@ -39,13 +39,9 @@ export default function AddProduct() {
       inputRef={titleEditRef}
       inputsConfig={inputsConfig}
       handleChange={handleChange}
+      handleSubmit={handleSubmit}
     >
-      <Button
-        type="submit"
-        label="Ajouter un nouveau produit au menu"
-        onClick={handleSubmit}
-        version="form"
-      />
+      <Button type="submit" label="Ajouter un nouveau produit au menu" version="form" />
       {isSubmited && <SubmitMessage />}
     </Form>
   )

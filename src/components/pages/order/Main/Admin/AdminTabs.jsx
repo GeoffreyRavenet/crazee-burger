@@ -21,13 +21,13 @@ export default function AdminTabs() {
         label=""
         Icon={isCollapsed ? <FiChevronUp /> : <FiChevronDown />}
         onClick={() => setIsCollapsed(!isCollapsed)}
-        className={isCollapsed ? "is-active-Chevron" : ""}
+        className={isCollapsed ? "is-active-chevron" : ""}
       />
       {tabs.map((item) => (
         <Tab
           key={item.label}
           label={item.label}
-          Icon={item.icon}
+          Icon={item.Icon}
           onClick={() => handleClick(item.index)}
           className={currentTabSelected.includes(item.index) ? "is-active" : ""}
         />
@@ -38,17 +38,17 @@ export default function AdminTabs() {
 
 const AdminTabsStyled = styled.div`
   display: flex;
-  padding: 0 71px;
-
+  //padding: 0 71px;
+  position: absolute;
+  left: 71px;
+  top: -43px;
   .is-active,
   .is-active-chevron {
     background: ${theme.colors.background_dark};
     border: 2px solid ${theme.colors.background_dark};
     color: ${theme.colors.white};
   }
-  :has(.is-active-Chevron) button:not(.is-active) {
-    border: 2px solid ${theme.colors.white};
-  }
+
   button {
     margin-left: 1px;
   }
