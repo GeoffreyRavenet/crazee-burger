@@ -45,6 +45,12 @@ const CardStyled = styled.div`
   border-radius: ${theme.borderRadius.extraRound};
   box-shadow: ${theme.shadows.medium};
 
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+
   :hover:has(.button-delete) {
     transition: transform 0.5s ease-in-out 0s, box-shadow 0.5s ease-in-out 0s;
     transform: scale(1.05);

@@ -38,6 +38,7 @@ const MainStyled = styled.div`
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
 
   .menu-and-admin {
+    box-shadow: inset 0px 8px 20px 8px rgba(0, 0, 0, 0.2);
     position: relative;
     display: grid;
     overflow-y: hidden;

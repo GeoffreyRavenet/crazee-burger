@@ -46,6 +46,11 @@ const BasketCardStyled = styled.div`
   grid-template-columns: 30% 1fr;
   padding: 8px 0.5em 8px 16px;
   overflow: hidden;
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
 
   :hover {
     .delete-product {
@@ -95,7 +100,7 @@ const BasketCardStyled = styled.div`
         font-weight: ${theme.fonts.weights.bold};
         font-size: ${theme.fonts.size.P3};
         line-height: 32px;
-
+        min-height: 32px;
         color: ${theme.colors.dark};
       }
 

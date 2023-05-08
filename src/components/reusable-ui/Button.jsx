@@ -73,8 +73,11 @@ const medium = css`
 
 const form = css`
   width: 275px;
-  height: 34px;
+  height: 38px;
   padding: 0;
+  font-weight: 600;
+  line-height: 15px;
+
   background: ${theme.colors.success};
   border: 1px solid ${theme.colors.success};
   color: ${theme.colors.white};
