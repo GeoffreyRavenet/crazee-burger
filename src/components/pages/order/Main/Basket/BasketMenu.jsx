@@ -21,7 +21,7 @@ export default function BasketMenu() {
           onDelete={() => handleBasketDelete(id)}
           isModeAdmin={isAdmin}
           handleSelectedCard={() => handleSelectedCard(id)}
-          version={idSelectedProduct === id ? "SelectedCardBasket" : "normal"}
+          version={idSelectedProduct === id && isAdmin ? "SelectedCardBasket" : "normal"}
         />
       ))}
     </BasketMenuStyled>
