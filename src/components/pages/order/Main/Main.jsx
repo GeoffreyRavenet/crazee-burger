@@ -29,7 +29,7 @@ const MainStyled = styled.div`
   flex: 1;
   height: calc(95vh - 10vh);
   background: ${theme.colors.background_white};
-  box-shadow: ${theme.shadows.strong};
+  //  box-shadow: ${theme.shadows.strong};
 
   display: grid;
   overflow-y: hidden;

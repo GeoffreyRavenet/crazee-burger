@@ -36,8 +36,8 @@ export default function Form({
 const FormStyled = styled.form`
   width: 680px;
   display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: repeat(3, 35px) 41px;
+  grid-template-columns: 160px 3fr;
+  grid-template-rows: repeat(4, 38px);
   gap: 8px 20px;
   grid-template-areas:
     "image input1 "

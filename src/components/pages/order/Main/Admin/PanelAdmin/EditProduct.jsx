@@ -44,7 +44,7 @@ const EditProductStyled = styled.span`
   color: ${theme.colors.primary};
   .footer {
     line-height: 1;
-    height: 35px;
+    //height: 35px;
   }
   .underline {
     text-decoration: underline;
