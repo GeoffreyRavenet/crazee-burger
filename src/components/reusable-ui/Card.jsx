@@ -54,7 +54,7 @@ const CardStyled = styled.div`
   :hover:has(.button-delete) {
     transition: transform 0.5s ease-in-out 0s, box-shadow 0.5s ease-in-out 0s;
     transform: scale(1.05);
-    box-shadow: 0px 0px 8px #ff9a23;
+    box-shadow: ${theme.shadows.medium}, 0px 0px 8px #ff9a23;
   }
 
   .selected-card-inAdmin {
