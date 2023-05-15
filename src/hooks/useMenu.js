@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { fakeMenu1, fakeMenu2 } from "../fakeData/fakeMenu.js"
 import { EMPTY_PRODUCT } from "../enums/product.js"
+import { deepClone } from "../utils/array.js"
 
 export const useMenu = () => {
   const [products, setProducts] = useState(fakeMenu2)
@@ -8,7 +9,7 @@ export const useMenu = () => {
 
   const handleAdd = (newProductToAdd) => {
     // 1 . copie du tableau
-    const productsCopy = [...products]
+    const productsCopy = deepClone(products)
     // 2 . manip de la copie du tableau
     const menuUpdated = [newProductToAdd, ...productsCopy]
     // 3 . update du state
@@ -17,7 +18,7 @@ export const useMenu = () => {
 
   const handleDelete = (productId) => {
     // 1 . copie du tableau
-    const productsCopy = [...products]
+    const productsCopy = deepClone(products)
     // 2 . manip de la copie du tableau
     const menuUpdated = productsCopy.filter((item) => item.id !== productId)
     // 3 . update du state

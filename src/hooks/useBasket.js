@@ -1,17 +1,18 @@
 import { useState } from "react"
+import { deepClone } from "../utils/array.js"
 
 export const useBasket = () => {
   const [basket, setBasket] = useState([])
 
   const handleDeleteBasket = (idBasketProduct) => {
-    const copyBasket = [...basket]
+    const copyBasket = deepClone(basket)
     const updatedBasket = copyBasket.filter((item) => item.id !== idBasketProduct)
     setBasket(updatedBasket)
   }
 
   const handleEditBasket = (event, selectedProduct) => {
     const { name, value } = event.target
-    const copyBaskets = [...basket]
+    const copyBaskets = deepClone(basket)
     const editedBasket = copyBaskets.map((item) => {
       if (item.id === selectedProduct.id) {
         return { ...item, [name]: value }
@@ -22,8 +23,8 @@ export const useBasket = () => {
   }
 
   const handleAddToBasket = (productId, products) => {
-    const copyProducts = [...products]
-    const copyBaskets = [...basket]
+    const copyProducts = deepClone(products)
+    const copyBaskets = deepClone(basket)
     const productToAddInBascket = copyProducts.find((item) => item.id === productId)
 
     const updatedCartItems = addItemToBasket(copyBaskets, productToAddInBascket)
