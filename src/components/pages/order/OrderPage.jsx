@@ -27,7 +27,7 @@ export default function OrderPage() {
     selectedProduct,
     setSelectedProduct,
   } = useMenu()
-  const { basket, setBasket, handleBasketDelete, handleBasketEdit } = useBasket()
+  const { basket, handleDeleteBasket, handleEditBasket, handleAddToBasket } = useBasket()
   const [isSelected, setIsSelected] = useState()
   const handleSelectedCard = async (productIdSelected) => {
     await setIsCollapsed(false)
@@ -59,9 +59,9 @@ export default function OrderPage() {
     titleEditRef,
     handleEdit,
     basket,
-    setBasket,
-    handleBasketDelete,
-    handleBasketEdit,
+    handleDeleteBasket,
+    handleEditBasket,
+    handleAddToBasket,
     isSelected,
     setIsSelected,
     handleSelectedCard,

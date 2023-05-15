@@ -29,7 +29,7 @@ export default createContext({
   handleSelectedCard: () => {},
   //Partie panier
   basket: [],
-  setBasket: () => {},
-  handleBasketDelete: () => {},
-  handleBasketEdit: () => {},
+  handleDeleteBasket: () => {},
+  handleEditBasket: () => {},
+  handleAddToBasket: () => {},
 })

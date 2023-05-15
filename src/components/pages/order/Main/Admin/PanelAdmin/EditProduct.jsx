@@ -6,7 +6,7 @@ import Form from "./Form.jsx"
 import { theme } from "../../../../../../theme/index.js"
 
 export default function EditProduct() {
-  const { selectedProduct, setSelectedProduct, titleEditRef, handleEdit, handleBasketEdit } =
+  const { selectedProduct, setSelectedProduct, titleEditRef, handleEdit, handleEditBasket } =
     useContext(OrderContext)
   const inputsConfig = getInputsConfig(selectedProduct)
 
@@ -14,7 +14,7 @@ export default function EditProduct() {
     const { name, value } = event.target
     setSelectedProduct({ ...selectedProduct, [name]: value })
     handleEdit(event, selectedProduct)
-    handleBasketEdit(event, selectedProduct)
+    handleEditBasket(event, selectedProduct)
   }
 
   /*if (selectedProduct.title === "") {

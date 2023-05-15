@@ -5,7 +5,7 @@ import { formatPrice } from "../../../../../utils/maths.js"
 import OrderContext from "../../../../../context/OrderContext.jsx"
 
 export default function BasketMenu() {
-  const { basket, handleBasketDelete, selectedProduct, isAdmin, handleSelectedCard } =
+  const { basket, handleDeleteBasket, selectedProduct, isAdmin, handleSelectedCard } =
     useContext(OrderContext)
   const idSelectedProduct = selectedProduct.id
 
@@ -18,7 +18,7 @@ export default function BasketMenu() {
           price={formatPrice(price)}
           quantity={quantity}
           img={imageSource}
-          onDelete={() => handleBasketDelete(id)}
+          onDelete={() => handleDeleteBasket(id)}
           isModeAdmin={isAdmin}
           handleSelectedCard={() => handleSelectedCard(id)}
           version={idSelectedProduct === id && isAdmin ? "SelectedCardBasket" : "normal"}

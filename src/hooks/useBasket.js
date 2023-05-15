@@ -3,23 +3,42 @@ import { useState } from "react"
 export const useBasket = () => {
   const [basket, setBasket] = useState([])
 
-  const handleBasketDelete = (idBasketProduct) => {
-    const cpBasketProduct = basket
-    const updateBasket = cpBasketProduct.filter((item) => item.id !== idBasketProduct)
-    setBasket(updateBasket)
+  const handleDeleteBasket = (idBasketProduct) => {
+    const copyBasket = [...basket]
+    const updatedBasket = copyBasket.filter((item) => item.id !== idBasketProduct)
+    setBasket(updatedBasket)
   }
 
-  const handleBasketEdit = (event, selectedProduct) => {
+  const handleEditBasket = (event, selectedProduct) => {
     const { name, value } = event.target
-    const cpBaskets = basket
-    const editBaskets = cpBaskets.map((item) => {
+    const copyBaskets = [...basket]
+    const editedBasket = copyBaskets.map((item) => {
       if (item.id === selectedProduct.id) {
         return { ...item, [name]: value }
       }
       return item
     })
-    setBasket(editBaskets)
+    setBasket(editedBasket)
   }
 
-  return { basket, setBasket, handleBasketDelete, handleBasketEdit }
+  const handleAddToBasket = (productId, products) => {
+    const copyProducts = [...products]
+    const copyBaskets = [...basket]
+    const productToAddInBascket = copyProducts.find((item) => item.id === productId)
+
+    const updatedCartItems = addItemToBasket(copyBaskets, productToAddInBascket)
+
+    setBasket(updatedCartItems)
+  }
+  const addItemToBasket = (basketItems, itemToAdd) => {
+    const existingItemInBasket = basketItems.find((item) => item.id === itemToAdd.id)
+    if (existingItemInBasket) {
+      existingItemInBasket.quantity += 1
+      return [...basketItems]
+    }
+
+    return [{ ...itemToAdd, quantity: 1 }, ...basketItems]
+  }
+
+  return { basket, handleDeleteBasket, handleEditBasket, handleAddToBasket }
 }

@@ -13,35 +13,16 @@ export default function Menu() {
     products,
     handleDelete,
     resetMenu,
-    setBasket,
-    basket,
-    handleBasketDelete,
+    handleDeleteBasket,
     isSelected,
     handleSelectedCard,
+    handleAddToBasket,
   } = useContext(OrderContext)
   //Comportements
-  const addItemToCart = (cartItems, itemToAdd) => {
-    const existingItem = cartItems.find((item) => item.id === itemToAdd.id)
 
-    if (existingItem) {
-      existingItem.quantity += 1
-      return [...cartItems]
-    }
-
-    return [{ ...itemToAdd, quantity: 1 }, ...cartItems]
-  }
-
-  const handleAddToCart = (productId) => {
-    const cpProduct = [...products]
-    const cpBasket = [...basket]
-    const ProductToAdd = cpProduct.filter((item) => item.id === productId)
-
-    const updatedCartItems = ProductToAdd.reduce(
-      (cart, itemToAdd) => addItemToCart(cart, itemToAdd),
-      cpBasket
-    )
-
-    setBasket(updatedCartItems)
+  const handleAddToCart = (event, productId) => {
+    event.stopPropagation()
+    handleAddToBasket(productId, products)
   }
 
   //Affichage
@@ -58,13 +39,13 @@ export default function Menu() {
           imageSource={imageSource}
           title={title}
           price={formatPrice(price)}
-          onDelete={() => {
+          onDelete={(event) => {
             handleDelete(id)
-            handleBasketDelete(id)
+            handleDeleteBasket(id)
           }}
           hasDeleteButton={isAdmin}
           handleSelectedCard={() => handleSelectedCard(id)}
-          onAddToCart={() => handleAddToCart(id)}
+          onAddToCart={(event) => handleAddToCart(event, id)}
           version={isSelected === id && isAdmin ? "SelectedCard" : "normal"}
         />
       ))}
