@@ -1,10 +1,10 @@
 import { useState } from "react"
-import { fakeMenu1, fakeMenu2 } from "../fakeData/fakeMenu.js"
+import { fakeMenu } from "../fakeData/fakeMenu"
 import { EMPTY_PRODUCT } from "../enums/product.js"
 import { deepClone } from "../utils/array.js"
 
 export const useMenu = () => {
-  const [products, setProducts] = useState(fakeMenu2)
+  const [products, setProducts] = useState(fakeMenu.LARGE)
   const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
 
   const handleAdd = (newProductToAdd) => {
@@ -39,7 +39,7 @@ export const useMenu = () => {
   }
 
   const resetMenu = () => {
-    setProducts(fakeMenu1)
+    setProducts(fakeMenu.MEDIUM)
   }
 
   return {

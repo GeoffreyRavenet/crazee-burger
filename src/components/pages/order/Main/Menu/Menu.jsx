@@ -6,6 +6,8 @@ import Card from "../../../../reusable-ui/Card.jsx"
 import EmptyMenuAdmin from "./EmptyMenuAdmin.jsx"
 import EmptyMenuClient from "./EmptyMenuClient.jsx"
 
+const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
+
 export default function Menu() {
   //State
   const {
@@ -36,7 +38,7 @@ export default function Menu() {
       {products.map(({ id, imageSource, title, price }) => (
         <Card
           key={id}
-          imageSource={imageSource}
+          imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
           title={title}
           price={formatPrice(price)}
           onDelete={(event) => {
@@ -61,7 +63,7 @@ const MenuStyled = styled.div`
   grid-template-columns: repeat(3, minmax(300px, 1fr));
   grid-row-gap: 60px;
   padding: 50px 50px 150px;
-  box-shadow: inset 0px 8px 20px 8px rgba(0, 0, 0, 0.2);
+  // box-shadow: inset 0px 8px 20px 8px rgba(0, 0, 0, 0.2);
 
   ::-webkit-scrollbar {
     width: 6px;

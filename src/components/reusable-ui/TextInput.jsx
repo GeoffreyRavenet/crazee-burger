@@ -35,6 +35,7 @@ const TextInputStyled = styled.div`
       color: ${theme.colors.greyMedium};
     }
   }
+
   ${({ version }) => version === "normalgray" && normalgray};
   ${({ version }) => version === "normal" && normal};
 `
@@ -50,6 +51,13 @@ const normalgray = css`
     background-color: ${theme.colors.background_white};
     ::placeholder {
       background-color: ${theme.colors.background_white};
+    }
+
+    :-webkit-autofill,
+    :-webkit-autofill:hover,
+    :-webkit-autofill:focus,
+    :-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 30px ${theme.colors.background_white} inset !important;
     }
   }
 `

@@ -17,8 +17,7 @@ export default function AddProduct() {
     event.preventDefault()
     const newProductToAdd = {
       ...product,
-      id: new Date().getTime(),
-      imageSource: product.imageSource,
+      id: crypto.randomUUID(), // new Date().getTime()
       price: product.price.replace(",", "."),
     }
     handleAdd(newProductToAdd)
