@@ -6,6 +6,7 @@ import { IoChevronForward } from "react-icons/io5"
 import { BsPersonCircle } from "react-icons/bs"
 import Input from "../../reusable-ui/TextInput"
 import Button from "../../reusable-ui/Button.jsx"
+import { createUser } from "../../../api/users.js"
 
 function LoginForm() {
   //state (etat, données)
@@ -15,6 +16,7 @@ function LoginForm() {
   //comportements
   const handleSubmit = (event) => {
     event.preventDefault()
+    createUser(name)
     setName("")
     navigate(`/order/${name}`)
   }

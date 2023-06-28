@@ -7,6 +7,7 @@ import OrderContext from "../../../context/OrderContext.jsx"
 import { useMenu } from "../../../hooks/useMenu.js"
 import { EMPTY_PRODUCT } from "../../../enums/product.js"
 import { useBasket } from "../../../hooks/useBasket.js"
+import { getUser } from "../../../api/users.js"
 
 export default function OrderPage() {
   //state
@@ -66,6 +67,9 @@ export default function OrderPage() {
     setIsSelected,
     handleSelectedCard,
   }
+
+  // Requete API
+  getUser("geoffrey")
 
   return (
     <OrderContext.Provider value={orderContextValue}>
