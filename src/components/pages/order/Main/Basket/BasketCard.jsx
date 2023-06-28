@@ -1,7 +1,7 @@
 import React from "react"
 import styled, { css } from "styled-components"
 import { MdDeleteForever } from "react-icons/md"
-import { theme } from "../../theme/index.js"
+import { theme } from "../../../../../theme/index.js"
 
 export default function BasketCard({
   title,
@@ -9,13 +9,12 @@ export default function BasketCard({
   price,
   quantity,
   onDelete,
-  isModeAdmin,
-  handleSelectedCard,
-  version = "",
+  isHoverable,
+  isSelected,
+  onClick,
 }) {
   return (
-    <BasketCardStyled version={version}>
-      {isModeAdmin && <div className="selected-card-inAdmin" onClick={handleSelectedCard} />}
+    <BasketCardStyled onClick={onClick} isHoverable={isHoverable} isSelected={isSelected}>
       <div className="image">
         <img src={img ? img : "/images/coming-soon.png"} alt={title} />
       </div>
@@ -152,7 +151,7 @@ const BasketCardStyled = styled.div`
       color: ${theme.colors.white};
     }
   }
-  ${({ version }) => version === "SelectedCardBasket" && SelectedCard};
+  ${({ isHoverable, isSelected }) => isHoverable && isSelected && SelectedCard}
 `
 const SelectedCard = css`
   background: ${theme.colors.primary};

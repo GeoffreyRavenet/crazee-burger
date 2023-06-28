@@ -5,6 +5,7 @@ import { formatPrice } from "../../../../../utils/maths.js"
 import Card from "../../../../reusable-ui/Card.jsx"
 import EmptyMenuAdmin from "./EmptyMenuAdmin.jsx"
 import EmptyMenuClient from "./EmptyMenuClient.jsx"
+import { checkIfProductIsClicked } from "./helper.js"
 
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
@@ -16,7 +17,7 @@ export default function Menu() {
     handleDelete,
     resetMenu,
     handleDeleteBasket,
-    isSelected,
+    selectedProduct,
     handleSelectedCard,
     handleAddToBasket,
   } = useContext(OrderContext)
@@ -46,9 +47,10 @@ export default function Menu() {
             handleDeleteBasket(id)
           }}
           hasDeleteButton={isAdmin}
-          handleSelectedCard={() => handleSelectedCard(id)}
+          onclick={isAdmin ? () => handleSelectedCard(id) : null}
+          isHoverable={isAdmin}
+          isSelected={checkIfProductIsClicked(id, selectedProduct.id)}
           onAddToCart={(event) => handleAddToCart(event, id)}
-          version={isSelected === id && isAdmin ? "SelectedCard" : "normal"}
         />
       ))}
     </MenuStyled>

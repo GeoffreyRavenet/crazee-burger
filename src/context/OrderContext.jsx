@@ -21,7 +21,7 @@ export default createContext({
   EMPTY_PRODUCT: {},
 
   //partie  produit select
-  selectedProduct: [],
+  selectedProduct: {},
   setSelectedProduct: () => {},
   titleEditRef: {},
   isSelected: "-1",

@@ -9,13 +9,18 @@ export default function Card({
   price,
   onDelete,
   hasDeleteButton,
-  handleSelectedCard,
+  onclick,
   onAddToCart,
-  version = "",
+  isHoverable,
+  isSelected,
 }) {
   return (
-    <CardStyled version={version}>
-      {hasDeleteButton && <div className="selected-card-inAdmin" onClick={handleSelectedCard} />}
+    <CardStyled
+      className="produit"
+      onClick={onclick}
+      isHoverable={isHoverable}
+      isSelected={isSelected}
+    >
       {hasDeleteButton && <TiDelete onClick={onDelete} className="button-delete" />}
 
       <div className="card-img">
@@ -117,10 +122,10 @@ const CardStyled = styled.div`
     margin-bottom: 20px;
   }
 
-  ${({ version }) => version === "SelectedCard" && SelectedCard};
+  ${({ isHoverable, isSelected }) => isHoverable && isSelected && selectedStyle}
 `
 
-const SelectedCard = css`
+const selectedStyle = css`
   background: ${theme.colors.primary};
   .button-delete {
     color: ${theme.colors.white};
