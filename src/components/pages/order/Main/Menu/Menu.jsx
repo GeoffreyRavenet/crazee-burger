@@ -5,66 +5,27 @@ import { formatPrice } from "../../../../../utils/maths.js"
 import Card from "../../../../reusable-ui/Card.jsx"
 import EmptyMenuAdmin from "./EmptyMenuAdmin.jsx"
 import EmptyMenuClient from "./EmptyMenuClient.jsx"
-import { useState } from "react"
+import { checkIfProductIsClicked } from "./helper.js"
+
+const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
 export default function Menu() {
   //State
-  const [isSelected, setIsSelected] = useState()
   const {
     isAdmin,
     products,
     handleDelete,
     resetMenu,
-    setIsCollapsed,
-    setSelectedProduct,
-    titleEditRef,
-    setCurrentTabSelected,
-    setBasket,
-    basket,
-    handleBasketDelete,
+    handleDeleteBasket,
+    selectedProduct,
+    handleSelectedCard,
+    handleAddToBasket,
   } = useContext(OrderContext)
   //Comportements
-  const addItemToCart = (cartItems, itemToAdd) => {
-    const existingItem = cartItems.find(item => item.id === itemToAdd.id);
 
-    if (existingItem) {
-      existingItem.quantity += 1;
-      return [...cartItems];
-    }
-
-    return [{ ...itemToAdd, quantity: 1 }, ...cartItems ];
-  }
-
-  const handleAddToCart = (productId) => {
-    const cpProduct = [...products]
-    const cpBasket = [...basket]
-    const ProductToAdd = cpProduct.filter((item) => item.id === productId)
-
-    const updatedCartItems = ProductToAdd.reduce((cart, itemToAdd) => addItemToCart(cart, itemToAdd), cpBasket)
-
-    setBasket(updatedCartItems)
-  }
-
-  const handleSelectedCard = async (productIdSelected) => {
-    /* // 1 . copie du tableau
-    const productsCopy = [...products]
-    // 2 . manip de la copie du tableau
-    const selectedProductUpdated = productsCopy.filter((item) => item.id === productIdSelected)
-    // 3 . update du state
-    setSelectedProduct(...selectedProductUpdated)
-    setCurrentTabSelected("edit")
-
-    setIsSelected(productIdSelected)
-    titleEditRef.current.focus()*/
-
-    if (!isAdmin) return
-
-    await setIsCollapsed(false)
-    await setCurrentTabSelected("edit")
-    const productClickedOn = products.find((product) => product.id === productIdSelected)
-    await setSelectedProduct(productClickedOn)
-    await setIsSelected(productIdSelected)
-    titleEditRef.current.focus()
+  const handleAddToCart = (event, productId) => {
+    event.stopPropagation()
+    handleAddToBasket(productId, products)
   }
 
   //Affichage
@@ -78,17 +39,18 @@ export default function Menu() {
       {products.map(({ id, imageSource, title, price }) => (
         <Card
           key={id}
-          imageSource={imageSource}
+          imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
           title={title}
           price={formatPrice(price)}
-          onDelete={() => {
+          onDelete={(event) => {
             handleDelete(id)
-            handleBasketDelete(id)
+            handleDeleteBasket(id)
           }}
           hasDeleteButton={isAdmin}
-          handleSelectedCard={() => handleSelectedCard(id)}
-          onAddToCart={() => handleAddToCart(id)}
-          version={isSelected === id && isAdmin ? "SelectedCard" : "normal"}
+          onclick={isAdmin ? () => handleSelectedCard(id) : null}
+          isHoverable={isAdmin}
+          isSelected={checkIfProductIsClicked(id, selectedProduct.id)}
+          onAddToCart={(event) => handleAddToCart(event, id)}
         />
       ))}
     </MenuStyled>
@@ -97,12 +59,13 @@ export default function Menu() {
 const MenuStyled = styled.div`
   display: grid;
   justify-items: center;
-  align-items: center;
+  //align-items: center;
   overflow-y: scroll;
 
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
   grid-row-gap: 60px;
   padding: 50px 50px 150px;
+  // box-shadow: inset 0px 8px 20px 8px rgba(0, 0, 0, 0.2);
 
   ::-webkit-scrollbar {
     width: 6px;

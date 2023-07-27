@@ -1,11 +1,13 @@
 import React, { useContext } from "react"
 import styled from "styled-components"
-import BasketCard from "../../../../reusable-ui/BasketCard.jsx"
+import BasketCard from "./BasketCard.jsx"
 import { formatPrice } from "../../../../../utils/maths.js"
 import OrderContext from "../../../../../context/OrderContext.jsx"
+import { checkIfProductIsClicked } from "../Menu/helper.js"
 
 export default function BasketMenu() {
-  const { basket, handleBasketDelete } = useContext(OrderContext)
+  const { basket, handleDeleteBasket, selectedProduct, isAdmin, handleSelectedCard } =
+    useContext(OrderContext)
 
   return (
     <BasketMenuStyled>
@@ -16,7 +18,10 @@ export default function BasketMenu() {
           price={formatPrice(price)}
           quantity={quantity}
           img={imageSource}
-          onDelete={() => handleBasketDelete(id)}
+          onDelete={() => handleDeleteBasket(id)}
+          isHoverable={isAdmin}
+          isSelected={checkIfProductIsClicked(id, selectedProduct.id)}
+          onClick={isAdmin ? () => handleSelectedCard(id) : null}
         />
       ))}
     </BasketMenuStyled>

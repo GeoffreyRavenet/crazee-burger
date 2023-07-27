@@ -12,13 +12,32 @@ export default function OrderPage() {
   //state
   const [isAdmin, setIsAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
-  const [currentTabSelected, setCurrentTabSelected] = useState("edit")
-  const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT)
+  const [currentTabSelected, setCurrentTabSelected] = useState("add")
+
   const [product, setProduct] = useState(EMPTY_PRODUCT)
 
   const titleEditRef = useRef()
-  const { handleAdd, handleDelete, resetMenu, products, setProducts, handleEdit } = useMenu()
-  const { basket, setBasket, handleBasketDelete } = useBasket()
+  const {
+    handleAdd,
+    handleDelete,
+    resetMenu,
+    products,
+    setProducts,
+    handleEdit,
+    selectedProduct,
+    setSelectedProduct,
+  } = useMenu()
+  const { basket, handleDeleteBasket, handleEditBasket, handleAddToBasket } = useBasket()
+
+  const handleSelectedCard = async (productIdSelected) => {
+    await setIsCollapsed(false)
+    await setCurrentTabSelected("edit")
+    const productClickedOn = products.find((product) => product.id === productIdSelected)
+    await setSelectedProduct(productClickedOn)
+    //await setIsSelected(productIdSelected)
+
+    titleEditRef.current.focus()
+  }
   //comportements
 
   const orderContextValue = {
@@ -40,8 +59,10 @@ export default function OrderPage() {
     titleEditRef,
     handleEdit,
     basket,
-    setBasket,
-    handleBasketDelete,
+    handleDeleteBasket,
+    handleEditBasket,
+    handleAddToBasket,
+    handleSelectedCard,
   }
 
   return (

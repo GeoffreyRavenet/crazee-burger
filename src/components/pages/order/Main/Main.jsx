@@ -17,7 +17,9 @@ export default function Main() {
   return (
     <MainStyled>
       <Basket />
+
       <div className="menu-and-admin">
+        <div className="box-shadow"></div>
         <Menu />
         {isAdmin && <Admin />}
       </div>
@@ -29,7 +31,7 @@ const MainStyled = styled.div`
   flex: 1;
   height: calc(95vh - 10vh);
   background: ${theme.colors.background_white};
-  box-shadow: ${theme.shadows.strong};
+  //  box-shadow: ${theme.shadows.strong};
 
   display: grid;
   overflow-y: hidden;
@@ -41,5 +43,15 @@ const MainStyled = styled.div`
     position: relative;
     display: grid;
     overflow-y: hidden;
+    .box-shadow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      box-shadow: inset 0px 8px 20px 8px rgba(0, 0, 0, 0.4);
+      z-index: 1;
+      pointer-events: none;
+    }
   }
 `

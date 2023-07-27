@@ -17,9 +17,8 @@ export default function AddProduct() {
     event.preventDefault()
     const newProductToAdd = {
       ...product,
-      id: new Date().getTime(),
-      imageSource: product.imageSource,
-      price: parseFloat(product.price),
+      id: crypto.randomUUID(), // new Date().getTime()
+      price: product.price.replace(",", "."),
     }
     handleAdd(newProductToAdd)
     setProduct(EMPTY_PRODUCT)
@@ -29,8 +28,7 @@ export default function AddProduct() {
 
   const handleChange = (event) => {
     const { name, value } = event.target
-    setProduct({ ...setProduct, [name]: value })
-    console.log(setProduct.imageSource)
+    setProduct({ ...product, [name]: value })
   }
 
   //Affichage
@@ -40,13 +38,9 @@ export default function AddProduct() {
       inputRef={titleEditRef}
       inputsConfig={inputsConfig}
       handleChange={handleChange}
+      handleSubmit={handleSubmit}
     >
-      <Button
-        type="submit"
-        label="Ajouter un nouveau produit au menu"
-        onClick={handleSubmit}
-        version="form"
-      />
+      <Button type="submit" label="Ajouter un nouveau produit au menu" version="form" />
       {isSubmited && <SubmitMessage />}
     </Form>
   )

@@ -9,17 +9,22 @@ export default function Card({
   price,
   onDelete,
   hasDeleteButton,
-  handleSelectedCard,
+  onclick,
   onAddToCart,
-  version = "",
+  isHoverable,
+  isSelected,
 }) {
   return (
-    <CardStyled version={version}>
-      {hasDeleteButton && <div className="selected-card-inAdmin" onClick={handleSelectedCard} />}
+    <CardStyled
+      className="produit"
+      onClick={onclick}
+      isHoverable={isHoverable}
+      isSelected={isSelected}
+    >
       {hasDeleteButton && <TiDelete onClick={onDelete} className="button-delete" />}
 
       <div className="card-img">
-        <img src={imageSource ? imageSource : "/images/coming-soon.png"} alt="{title}" />
+        <img src={imageSource} alt="{title}" />
       </div>
       <h3>{title}</h3>
       <div className="footer-card">
@@ -45,20 +50,28 @@ const CardStyled = styled.div`
   border-radius: ${theme.borderRadius.extraRound};
   box-shadow: ${theme.shadows.medium};
 
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+
   :hover:has(.button-delete) {
     transition: transform 0.5s ease-in-out 0s, box-shadow 0.5s ease-in-out 0s;
     transform: scale(1.05);
-    box-shadow: 0px 0px 8px #ff9a23;
+    box-shadow: ${theme.shadows.medium}, 0px 0px 8px #ff9a23;
   }
+
   .selected-card-inAdmin {
     position: absolute;
     width: 100%;
     height: 330px;
     cursor: pointer;
+    :has(.button-delete) {
+      color: ${theme.colors.white};
+    }
   }
-  :has(.selected-card-inAdmin) .button-delete:active {
-    color: ${theme.colors.white};
-  }
+
   .button-delete {
     position: absolute;
     right: 15px;
@@ -109,12 +122,15 @@ const CardStyled = styled.div`
     margin-bottom: 20px;
   }
 
-  ${({ version }) => version === "SelectedCard" && SelectedCard};
+  ${({ isHoverable, isSelected }) => isHoverable && isSelected && selectedStyle}
 `
 
-const SelectedCard = css`
+const selectedStyle = css`
   background: ${theme.colors.primary};
   .button-delete {
+    color: ${theme.colors.white};
+  }
+  :has(.selected-card-inAdmin) .button-delete:active {
     color: ${theme.colors.white};
   }
   .footer-card {

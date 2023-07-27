@@ -9,9 +9,9 @@ import Total from "./Total"
 
 export default function Basket() {
   const { basket } = useContext(OrderContext)
-  const commandFilterNotNull = basket.filter((item) => item.price > 0)
-  const totalPrice = commandFilterNotNull.reduce(
-    (accumulator, currentValue) => accumulator + currentValue.price * currentValue.quantity,
+  const totalPrice = basket.reduce(
+    (accumulator, currentValue) =>
+      accumulator + (currentValue.price > 0 ? currentValue.price * currentValue.quantity : 0),
     0
   )
 

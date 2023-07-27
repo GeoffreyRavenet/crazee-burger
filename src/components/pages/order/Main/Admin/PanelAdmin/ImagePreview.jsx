@@ -1,5 +1,7 @@
 import styled from "styled-components"
 import { theme } from "../../../../../../theme/index.js"
+import { useEffect, useState } from "react"
+import { checkImageExistsPromise } from "../../../../../../utils/isImage.js"
 
 export default function ImagePreview({ imageSource }) {
   /*const isURL = (value) => {
@@ -10,10 +12,15 @@ export default function ImagePreview({ imageSource }) {
       return false
     }
   }*/
-
+  const [imageExists, setImageExists] = useState(false)
+  useEffect(() => {
+    checkImageExistsPromise(imageSource).then((result) => {
+      setImageExists(result)
+    })
+  }, [imageSource])
   return (
     <ImagePreviewStyled>
-      {imageSource ? (
+      {imageExists && imageSource ? (
         <img src={imageSource} alt="newproduct" />
       ) : (
         <span className="no-image">Aucune image</span>

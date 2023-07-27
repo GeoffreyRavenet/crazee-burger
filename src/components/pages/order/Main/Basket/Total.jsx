@@ -7,8 +7,8 @@ export default function Total({ totalPrice }) {
   return (
     <Header>
       <TotalStyled>
-        <span>Total</span>
-        <span>{totalPrice}</span>
+        <span className="total">Total</span>
+        <span className="price">{totalPrice}</span>
       </TotalStyled>
     </Header>
   )
@@ -20,10 +20,13 @@ const TotalStyled = styled.div`
   align-items: center;
 
   font-family: "Amatic SC";
-  font-weight: ${theme.fonts.weights.bold};
+  font-weight: ${theme.fonts.weights.regular};
   font-size: ${theme.fonts.size.P4};
   line-height: 45px;
   letter-spacing: 2px;
 
   color: ${theme.colors.primary};
+  .price {
+    font-weight: ${theme.fonts.weights.bold};
+  }
 `

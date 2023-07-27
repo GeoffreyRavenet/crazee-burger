@@ -9,7 +9,7 @@ import Button from "../../reusable-ui/Button.jsx"
 
 function LoginForm() {
   //state (etat, données)
-  const [name, setName] = useState("")
+  const [name, setName] = useState("Geoffrey")
   const navigate = useNavigate()
 
   //comportements

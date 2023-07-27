@@ -3,9 +3,16 @@ import TextInput from "../../../../../reusable-ui/TextInput.jsx"
 import styled from "styled-components"
 import ImagePreview from "./ImagePreview.jsx"
 
-export default function Form({ product, inputRef, inputsConfig, handleChange, children }) {
+export default function Form({
+  product,
+  inputRef,
+  inputsConfig,
+  handleChange,
+  handleSubmit,
+  children,
+}) {
   return (
-    <FormStyled>
+    <FormStyled onSubmit={handleSubmit}>
       <ImagePreview imageSource={product.imageSource} />
 
       {inputsConfig.map((item, index) => (
@@ -26,11 +33,11 @@ export default function Form({ product, inputRef, inputsConfig, handleChange, ch
   )
 }
 
-const FormStyled = styled.div`
+const FormStyled = styled.form`
   width: 680px;
   display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: repeat(3, 35px);
+  grid-template-columns: 160px 3fr;
+  grid-template-rows: repeat(4, 38px);
   gap: 8px 20px;
   grid-template-areas:
     "image input1 "
@@ -48,6 +55,7 @@ const FormStyled = styled.div`
     grid-area: input3;
   }
   .footerForm {
+    gap: 11px;
     grid-area: footer;
     display: flex;
     align-items: center;

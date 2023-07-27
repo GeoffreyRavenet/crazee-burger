@@ -1,11 +1,20 @@
 import React from "react"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { MdDeleteForever } from "react-icons/md"
-import { theme } from "../../theme/index.js"
+import { theme } from "../../../../../theme/index.js"
 
-export default function BasketCard({ title, img, price, quantity, onDelete }) {
+export default function BasketCard({
+  title,
+  img,
+  price,
+  quantity,
+  onDelete,
+  isHoverable,
+  isSelected,
+  onClick,
+}) {
   return (
-    <BasketCardStyled>
+    <BasketCardStyled onClick={onClick} isHoverable={isHoverable} isSelected={isSelected}>
       <div className="image">
         <img src={img ? img : "/images/coming-soon.png"} alt={title} />
       </div>
@@ -36,20 +45,31 @@ const BasketCardStyled = styled.div`
   grid-template-columns: 30% 1fr;
   padding: 8px 0.5em 8px 16px;
   overflow: hidden;
-  cursor: pointer;
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
 
   :hover {
     .delete-product {
       visibility: visible;
-    /*transition: width 1s;*/
-    width: 76px;
+      /*transition: width 1s;*/
+      width: 76px;
 
-     /*svg{
+      /*svg{
       transform: rotateY(360deg);
     transition: .5s;
     transition-delay: .3s;
      } */
     }
+  }
+
+  .selected-card-inAdmin {
+    position: absolute;
+    width: 100%;
+    height: 86px;
+    cursor: pointer;
   }
 
   .image {
@@ -63,13 +83,13 @@ const BasketCardStyled = styled.div`
   .infoProduct {
     margin-left: 14px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
     align-items: center;
     .left-info {
       width: 107px;
       display: grid;
-
+      grid-gap: 5px;
       .title {
         overflow: hidden;
         white-space: nowrap;
@@ -79,7 +99,7 @@ const BasketCardStyled = styled.div`
         font-weight: ${theme.fonts.weights.bold};
         font-size: ${theme.fonts.size.P3};
         line-height: 32px;
-
+        min-height: 32px;
         color: ${theme.colors.dark};
       }
 
@@ -96,6 +116,7 @@ const BasketCardStyled = styled.div`
     .right-info {
       grid-column: span 1;
       text-align: right;
+      padding-right: 36px;
     }
     .quantity {
       font-family: "Open Sans";
@@ -117,7 +138,7 @@ const BasketCardStyled = styled.div`
     right: 0;
     top: 0;
     bottom: 0;
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     color: ${theme.colors.white};
@@ -129,5 +150,13 @@ const BasketCardStyled = styled.div`
     :active {
       color: ${theme.colors.white};
     }
+  }
+  ${({ isHoverable, isSelected }) => isHoverable && isSelected && SelectedCard}
+`
+const SelectedCard = css`
+  background: ${theme.colors.primary};
+  .infoProduct .left-info .price,
+  .infoProduct .quantity {
+    color: ${theme.colors.white};
   }
 `
