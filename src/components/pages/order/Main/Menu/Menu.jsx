@@ -6,6 +6,7 @@ import Card from "../../../../reusable-ui/Card.jsx"
 import EmptyMenuAdmin from "./EmptyMenuAdmin.jsx"
 import EmptyMenuClient from "./EmptyMenuClient.jsx"
 import { checkIfProductIsClicked } from "./helper.js"
+import { isEmpty } from "../../../../../utils/array.js"
 
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
@@ -29,7 +30,7 @@ export default function Menu() {
   }
 
   //Affichage
-  if (products.length === 0) {
+  if (isEmpty(products)) {
     if (!isAdmin) return <EmptyMenuClient />
     return <EmptyMenuAdmin onReset={resetMenu} />
   }

@@ -4,12 +4,13 @@ import BasketEmptyMessage from "./BasketEmptyMessage.jsx"
 import OrderContext from "../../../../../context/OrderContext.jsx"
 import BasketMenu from "./BasketMenu.jsx"
 import { theme } from "../../../../../theme/index.js"
+import { isEmpty } from "../../../../../utils/array.js"
 
 export default function BasketBody() {
   const { basket } = useContext(OrderContext)
   return (
     <BasketBodyStyled>
-      {basket.length > 0 ? <BasketMenu /> : <BasketEmptyMessage />}
+      {!isEmpty(basket) ? <BasketMenu /> : <BasketEmptyMessage />}
     </BasketBodyStyled>
   )
 }
