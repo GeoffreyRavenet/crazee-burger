@@ -2,6 +2,7 @@ import React from "react"
 import styled, { css } from "styled-components"
 import { MdDeleteForever } from "react-icons/md"
 import { theme } from "../../../../../theme/index.js"
+import { formatPrice } from "../../../../../utils/maths.js"
 
 export default function BasketCard({
   title,
@@ -16,12 +17,12 @@ export default function BasketCard({
   return (
     <BasketCardStyled onClick={onClick} isHoverable={isHoverable} isSelected={isSelected}>
       <div className="image">
-        <img src={img ? img : "/images/coming-soon.png"} alt={title} />
+        <img src={img} alt={title} />
       </div>
       <div className="infoProduct">
         <div className="left-info">
           <span className="title">{title}</span>
-          <span className="price">{price}</span>
+          <span className="price">{formatPrice(price)}</span>
         </div>
 
         <div className="right-info">

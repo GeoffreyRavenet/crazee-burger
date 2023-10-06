@@ -1,29 +1,32 @@
 import React, { useContext } from "react"
 import styled from "styled-components"
 import BasketCard from "./BasketCard.jsx"
-import { formatPrice } from "../../../../../utils/maths.js"
 import OrderContext from "../../../../../context/OrderContext.jsx"
 import { checkIfProductIsClicked } from "../Menu/helper.js"
+import { findObjectById } from "../../../../../utils/array.js"
 
 export default function BasketMenu() {
-  const { basket, handleDeleteBasket, selectedProduct, isAdmin, handleSelectedCard } =
+  const { products, basket, handleDeleteBasket, selectedProduct, isAdmin, handleSelectedCard } =
     useContext(OrderContext)
 
   return (
     <BasketMenuStyled>
-      {basket.map(({ id, title, price, quantity, imageSource }) => (
-        <BasketCard
-          key={id}
-          title={title}
-          price={formatPrice(price)}
-          quantity={quantity}
-          img={imageSource}
-          onDelete={() => handleDeleteBasket(id)}
-          isHoverable={isAdmin}
-          isSelected={checkIfProductIsClicked(id, selectedProduct.id)}
-          onClick={isAdmin ? () => handleSelectedCard(id) : null}
-        />
-      ))}
+      {basket.map((basketProduct) => {
+        const menuProduct = findObjectById(basketProduct.id, products)
+
+        return (
+          <BasketCard
+            {...menuProduct}
+            key={menuProduct.id}
+            img={menuProduct.imageSource ? menuProduct.imageSource : "/images/coming-soon.png"}
+            quantity={basketProduct.quantity}
+            onDelete={() => handleDeleteBasket(menuProduct.id)}
+            isHoverable={isAdmin}
+            isSelected={checkIfProductIsClicked(basketProduct.id, selectedProduct.id)}
+            onClick={isAdmin ? () => handleSelectedCard(menuProduct.id) : null}
+          />
+        )
+      })}
     </BasketMenuStyled>
   )
 }
