@@ -28,6 +28,11 @@ export default function Menu() {
     event.stopPropagation()
     handleAddToBasket(idProductToAdd)
   }
+  const handleDeleteCart = (event, id) => {
+    event.stopPropagation()
+    handleDelete(id)
+    handleDeleteBasket(id)
+  }
 
   //Affichage
   if (isEmpty(products)) {
@@ -43,10 +48,7 @@ export default function Menu() {
           imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
           title={title}
           price={formatPrice(price)}
-          onDelete={(event) => {
-            handleDelete(id)
-            handleDeleteBasket(id)
-          }}
+          onDelete={(event) => handleDeleteCart(event, id)}
           hasDeleteButton={isAdmin}
           onclick={isAdmin ? () => handleSelectedCard(id) : null}
           isHoverable={isAdmin}

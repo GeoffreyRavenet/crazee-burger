@@ -4,7 +4,7 @@ import OrderContext from "../../../../../../context/OrderContext.jsx"
 import { getInputsConfig } from "./inputsConfig.jsx"
 import Form from "./Form.jsx"
 import { theme } from "../../../../../../theme/index.js"
-import { replaceFrenchCommaWithDot } from "../../../../../../utils/maths.js"
+//import { replaceFrenchCommaWithDot } from "../../../../../../utils/maths.js"
 
 export default function EditProduct() {
   const { selectedProduct, setSelectedProduct, titleEditRef, handleEdit, handleEditBasket } =
@@ -16,17 +16,12 @@ export default function EditProduct() {
     const productToEdit = {
       ...selectedProduct,
       [name]: value,
-      price: replaceFrenchCommaWithDot(value),
     }
     setSelectedProduct(productToEdit)
     handleEdit(event, selectedProduct)
     handleEditBasket(event, selectedProduct)
   }
 
-  /*if (selectedProduct.title === "") {
-    return <EditProductStyled className="toto"></EditProductStyled>
-  
-  }*/
   return (
     <EditProductStyled>
       <Form

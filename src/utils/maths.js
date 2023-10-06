@@ -16,3 +16,9 @@ export function replaceFrenchCommaWithDot(price) {
   if (typeof price === "string") price = parseFloat(price.replace(",", "."))
   return price
 }
+
+export function roundNumber(numberToRound) {
+  let number = replaceFrenchCommaWithDot(numberToRound)
+  if (isNaN(number)) return 0
+  return number.toFixed(2)
+}
