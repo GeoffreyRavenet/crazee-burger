@@ -6,6 +6,7 @@ import Form from "./Form.jsx"
 import Button from "../../../../../reusable-ui/Button.jsx"
 import { useSuccessMessage } from "../../../../../../hooks/useDisplaySubmitMessage.js"
 import { EMPTY_PRODUCT } from "../../../../../../enums/product.js"
+import { replaceFrenchCommaWithDot } from "../../../../../../utils/maths.js"
 
 export default function AddProduct() {
   //state
@@ -18,7 +19,7 @@ export default function AddProduct() {
     const newProductToAdd = {
       ...product,
       id: crypto.randomUUID(), // new Date().getTime()
-      price: product.price.replace(",", "."),
+      price: replaceFrenchCommaWithDot(product.price),
     }
     handleAdd(newProductToAdd)
     setProduct(EMPTY_PRODUCT)
