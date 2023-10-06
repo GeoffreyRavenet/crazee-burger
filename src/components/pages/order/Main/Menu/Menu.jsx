@@ -24,9 +24,9 @@ export default function Menu() {
   } = useContext(OrderContext)
   //Comportements
 
-  const handleAddToCart = (event, productId) => {
+  const handleAddToCart = (event, idProductToAdd) => {
     event.stopPropagation()
-    handleAddToBasket(productId, products)
+    handleAddToBasket(idProductToAdd)
   }
 
   //Affichage
